@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/myFavicon.png">
+  <link rel="icon" type="image/png" href="/img/myFavicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="XDB的博客诞生了">
+  <meta name="author" content="XDB">
+  <meta name="keywords" content="Blog CG 离线渲染 分布式">
+  <title>【MIT6.837】A1:Ray Casting - XDB&#39;S Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>DoBetter</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/myDefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-05-13 23:11" pubdate>
+      May 13, 2020 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">【MIT6.837】A1:Ray Casting</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：13 minutes ago
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="A1：Ray-Casting（光线投射"><a href="#A1：Ray-Casting（光线投射" class="headerlink" title="A1：Ray Casting（光线投射)"></a>A1：<a href="http://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/assignment1/" target="_blank" rel="noopener">Ray Casting</a>（光线投射)</h1><hr>
+<h2 id="学术名词"><a href="#学术名词" class="headerlink" title="学术名词"></a>学术名词</h2><blockquote>
+<p>camera obscura：针孔照相机<br>Perspective：透视投影<br>Orthographic：正交投影<br>Parallel projection：平行投影<br>Ray-Plane Intersection：射线与平面相交<br>Ray-Sphere Intersection：射线与球面相交<br>orthonormal basis：标准正交基<br>Ray Casting：光线投射<br>Ray tracing：光线追踪<br>Geometric：几何学<br>Algebraic：代数学<br>Object-Oriented Design：面向对象设计</p>
+</blockquote>
+<h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><p>本实验的目标是要完成一个光线投射算法。光线投射算法的原理如下图（文字部分为个人见解）：<br>对于每一个像素<br>&emsp;构建一条从视点处开始的射线<br>    &emsp;&emsp;对场景中的每一个对象<br>       &emsp;&emsp;判断当前射线是否和当前对象有交点（此处要用到求交点函数）<br>    &emsp;&emsp;如果有且该交点距离视点更近，则更新最近交点值</p>
+<p><img src="https://img-blog.csdnimg.cn/20200513230801435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>下面说明一下本实验完成过程的重点。</p>
+<h3 id="射线和球模型的计算交点方法的实现"><a href="#射线和球模型的计算交点方法的实现" class="headerlink" title="射线和球模型的计算交点方法的实现"></a>射线和球模型的计算交点方法的实现</h3><p>此处采用的是Algebraic方法，该方法的实现不是很难理解，根据PPT的公式及实验讲解即可完成该部分。Geometric方法使用较少因此没有实现。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020051323082180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200513230821154.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Sphere::intersect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Ray&amp; r, Hit&amp; h, <span class="hljs-keyword">float</span> tmin)</span> </span>&#123;
+	<span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">false</span>;<span class="hljs-comment">//有交点返回true</span>
+	Vec3f ro = r.getOrigin() - center;<span class="hljs-comment">//ro:射线到球中心的向量</span>
+	Vec3f rd = r.getDirection();<span class="hljs-comment">//射线方向</span>
+	<span class="hljs-keyword">float</span> a = rd.Dot3(rd);<span class="hljs-comment">//rd与rd点积</span>
+	<span class="hljs-keyword">float</span> b = <span class="hljs-number">2</span> * ro.Dot3(rd);<span class="hljs-comment">//ro与rd点积,可能为负</span>
+	<span class="hljs-keyword">float</span> c = ro.Dot3(ro) - radius * radius;
+	<span class="hljs-keyword">float</span> delta = b * b - <span class="hljs-number">4</span> * a * c;
+	
+	<span class="hljs-comment">//float t;//当前距离,此处可以不用</span>
+	<span class="hljs-comment">//获取最近的交点</span>
+	<span class="hljs-keyword">if</span> (delta &gt;= <span class="hljs-number">0</span>) &#123;
+		<span class="hljs-keyword">float</span> d = <span class="hljs-built_in">sqrt</span>(delta);<span class="hljs-comment">//一定为正</span>
+		<span class="hljs-keyword">float</span> t1 = (-b - d) / (<span class="hljs-number">2</span> * a);<span class="hljs-comment">//通常t1更小</span>
+		<span class="hljs-keyword">float</span> t2 = (-b + d) / (<span class="hljs-number">2</span> * a);
+		<span class="hljs-comment">// For an orthographic camera, rays always start at infinity, so tmin will be a large negative value</span>
+		<span class="hljs-comment">//由于本节作业是正交相机，正交相机的tmin为无穷大，因此下面这块代码可以不用</span>
+		<span class="hljs-comment">//if (t1 &gt;= tmin) &#123;//在origin之前</span>
+		<span class="hljs-comment">//	t = t1;</span>
+		<span class="hljs-comment">//&#125;</span>
+		<span class="hljs-comment">//else if (t2 &gt;= tmin) &#123;</span>
+		<span class="hljs-comment">//	t = t2;</span>
+		<span class="hljs-comment">//&#125;</span>
+		<span class="hljs-keyword">if</span> (t1 &lt; h.getT()) &#123;<span class="hljs-comment">//closer当前交点，更新</span>
+			h.<span class="hljs-built_in">set</span>(t1, material, r);
+			flag = <span class="hljs-literal">true</span>;
+		&#125;
+	&#125;
+	<span class="hljs-keyword">return</span> flag;
+&#125;</code></pre></div>
+
+<h3 id="正交相机的实现"><a href="#正交相机的实现" class="headerlink" title="正交相机的实现"></a>正交相机的实现</h3><p>直接参见PPT上给出的原理进行实现<br><img src="https://img-blog.csdnimg.cn/20200513230920794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function">Ray <span class="hljs-title">OrthographicCamera::generateRay</span><span class="hljs-params">(Vec2f point)</span> </span>&#123;
+	Vec3f ro = center + (point.x() - <span class="hljs-number">0.5</span>) * horizontal * size + (point.y() - <span class="hljs-number">0.5</span>) * up * size;<span class="hljs-comment">//射线起始点到对象中心</span>
+	<span class="hljs-keyword">return</span> Ray(ro, direction);
+&#125;</code></pre></div>
+
+<h3 id="光线投射算法的实现"><a href="#光线投射算法的实现" class="headerlink" title="光线投射算法的实现"></a>光线投射算法的实现</h3><p>该函数在主函数中进行了实现，代码如下</p>
+<div class="hljs"><pre><code class="hljs cpp">   <span class="hljs-comment">/*输入——初始化场景、相机、对象组及两幅图像*/</span>
+<span class="hljs-function">SceneParser <span class="hljs-title">scene</span><span class="hljs-params">(input_file)</span></span>;
+Camera* camera = scene.getCamera();
+Object3D* group = scene.getGroup();
+<span class="hljs-function">Image <span class="hljs-title">image</span><span class="hljs-params">(width, height)</span></span>;<span class="hljs-comment">//设置图像大小</span>
+image.SetAllPixels(scene.getBackgroundColor());<span class="hljs-comment">//图像背景颜色设置为场景背景颜色</span>
+<span class="hljs-function">Image <span class="hljs-title">depthImage</span><span class="hljs-params">(width, height)</span></span>;<span class="hljs-comment">//设置深度图像</span>
+depthImage.SetAllPixels(Vec3f(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>));<span class="hljs-comment">//设置成黑色</span>
+
+   <span class="hljs-comment">//光线投射</span>
+<span class="hljs-comment">/*循环遍历图像平面中的像素，使用OrthographicCamera类生成射线，将其与Group中的各个对象求交点，并将最近点保存到hit中*/</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;width;++i)&#123;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; height; ++j) &#123;
+		<span class="hljs-keyword">float</span> x = <span class="hljs-keyword">float</span>(i) / <span class="hljs-keyword">float</span>(width);
+		<span class="hljs-keyword">float</span> y = <span class="hljs-keyword">float</span>(j) / <span class="hljs-keyword">float_t</span>(height);
+		Ray ray = camera-&gt;generateRay(Vec2f(x, y));<span class="hljs-comment">//产生射线</span>
+		<span class="hljs-function">Hit <span class="hljs-title">hit</span><span class="hljs-params">(INFINITY, <span class="hljs-literal">nullptr</span>)</span></span>;<span class="hljs-comment">//hit存储最近的交点，此处初始t设置为了无穷大</span>
+		<span class="hljs-keyword">bool</span> flag = group-&gt;intersect(ray, hit, camera-&gt;getTMin());<span class="hljs-comment">//使该条射线和每一个基本图元求交点</span>
+		<span class="hljs-keyword">if</span> (flag) &#123;<span class="hljs-comment">//如果存在交点</span>
+			image.SetPixel(i, j, hit.getMaterial()-&gt;getDiffuseColor());<span class="hljs-comment">//设置该点像素的颜色</span>
+			<span class="hljs-keyword">float</span> t = hit.getT();
+			<span class="hljs-comment">//可视化深度t</span>
+			<span class="hljs-comment">//超过则设置为边界值</span>
+			<span class="hljs-keyword">if</span> (t &gt; depth_max) t = depth_max;<span class="hljs-comment">//此处max=1、min=0</span>
+			<span class="hljs-keyword">if</span> (t &lt; depth_min) t = depth_min;
+			t = (depth_max - t) / (depth_max - depth_min);<span class="hljs-comment">//t越小越近，越近的颜色越深</span>
+			depthImage.SetPixel(i, j, Vec3f(t, t, t));<span class="hljs-comment">//设置颜色值</span>
+		&#125;
+	&#125;
+&#125;</code></pre></div>
+
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="https://img-blog.csdnimg.cn/20200513230851178.png" srcset="/img/loading.gif" alt="在这里插入图片描述">  <img src="https://img-blog.csdnimg.cn/20200513230851180.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>在实验的过程中，阅读完实验讲义和PPT，不是很明白实验需要完成那些内容。因此我直接参考了别人已完成的代码，并对需要实现的部分一点点对着阅读和理解。边看代码边看PPT和实验讲义，对每个文件每个函数充分理解，实验也逐渐完成，本实验也是之后实验的重点，需要充分弄明白。<br>自己完成实验的步骤：<br>1.通看PPT<br>2.通看实验讲义<br>3.执行别人的代码<br>4.在不懂的情况下阅读实验讲义、PPT并阅读别人的代码</p>
+<ul>
+<li>记录自己要编写那些文件，完成那些函数</li>
+<li>记录这些函数的实验原理，进一步理解这些算法的思想</li>
+<li>记录下参考过的资料</li>
+<li>重复该过程，直到弄懂</li>
+</ul>
+<p>5.整理实验，并写成报告</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.csdn.net/weixin_40552524/article/details/104436544" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40552524/article/details/104436544</a></li>
+<li><a href="https://www.cnblogs.com/fengyuheliu/archive/2011/08/28/2155627.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengyuheliu/archive/2011/08/28/2155627.html</a></li>
+</ul>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/xdobetter/MIT-CG6.837/tree/master/A1%20Ray%20Casting" target="_blank" rel="noopener">xdobetter的GitHub</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">【精·术】计算机图形学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/MIT6-837/">MIT6.837</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E3%80%90mit6-837%E3%80%91a2-transformations-additional-primitives.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【MIT6.837】A2:Transformations & Additional Primitives</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E3%80%90mit6-837%E3%80%91a0-ifs.html">
+                        <span class="hidden-mobile">【MIT6.837】A0:IFS</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "【MIT6.837】A1:Ray Casting&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

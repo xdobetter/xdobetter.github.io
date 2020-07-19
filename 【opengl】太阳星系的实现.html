@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/myFavicon.png">
+  <link rel="icon" type="image/png" href="/img/myFavicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="XDB的博客诞生了">
+  <meta name="author" content="XDB">
+  <meta name="keywords" content="Blog CG 离线渲染 分布式">
+  <title>【OpenGL】太阳星系的实现 - XDB&#39;S Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>DoBetter</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/myDefault.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-03-22 14:47" pubdate>
+      March 22, 2020 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">【OpenGL】太阳星系的实现</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：13 minutes ago
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="一、功能"><a href="#一、功能" class="headerlink" title="一、功能"></a>一、功能</h2><h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><p>三个球体、一个表示太阳、一个表示地球、一个表示月亮；地球不停地绕太阳旋转，月亮绕地球旋转，期间它们三者都发生自转。</p>
+<h3 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h3><p>地球有两个月亮，画上轨道线，使轨道倾斜，放缩效果</p>
+<h3 id="自己完成的效果图"><a href="#自己完成的效果图" class="headerlink" title="自己完成的效果图"></a>自己完成的效果图<img src="https://img-blog.csdnimg.cn/20200322143615489.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></h3><h2 id="二、思路"><a href="#二、思路" class="headerlink" title="二、思路"></a>二、思路</h2><h3 id="基本功能的实现"><a href="#基本功能的实现" class="headerlink" title="基本功能的实现"></a>基本功能的实现</h3><p>首先搭好程序框架：<br>1、    设置显示模式<br>2、    初始化窗口<br>3、    创建窗口<br>4、    设置一系列回调函数<br>5、    启动主循环<br>框架设置完毕后，针对display()函数进行编写，关于display函数的编写，即是整个基本功能的绘制，本人刚开始编写的时候，对全局变换和局部变换理解不够透彻，因此我在编写过程中一直采用全局变换的思路，并没有采用的局部变换的思路。</p>
+<h4 id="1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置"><a href="#1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置" class="headerlink" title="1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置"></a>1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置</h4><p> <img src="https://img-blog.csdnimg.cn/20200322143807518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h4 id="2、使地球绕太阳转起来"><a href="#2、使地球绕太阳转起来" class="headerlink" title="2、使地球绕太阳转起来"></a>2、使地球绕太阳转起来</h4><p>我假设太阳为默认原点位置，地球将在xoz平面围绕太阳进行旋转，绕其旋转，起初，我思考地球位置的改变即为其x,z值的改变，对于一个圆，其x,z值采用极坐标的形式来表达，        </p>
+<div class="hljs"><pre><code class="hljs cpp">   earthPosX=earthBound*<span class="hljs-built_in">cos</span>(curTheta*pi);<span class="hljs-comment">//求地球x</span>
+earthPosZ=earthBound*<span class="hljs-built_in">sin</span>(curTheta*pi);<span class="hljs-comment">//求地球z</span></code></pre></div>
+<p>因此只要改变坐标，就能使求发生转动，于是通过编写定义定时器回调函数<code>void myTimerFunc(int value)</code>，在函数中不断增加theda的值，就可以使圆不断转动。</p>
+<h4 id="3、使月亮绕地球转起来"><a href="#3、使月亮绕地球转起来" class="headerlink" title="3、使月亮绕地球转起来"></a>3、使月亮绕地球转起来</h4><p>月亮围绕地球转，由于我始终是从全局坐标的角度考虑了这个问题，<br>因此，月亮的坐标也要转换为全局坐标值，假设月球绕地球转动角度为far，则其x，z采用极坐标的形式来表达为</p>
+<div class="hljs"><pre><code class="hljs cpp">monthPosX = earthPosX + monthBound* <span class="hljs-built_in">cos</span>(curFar * pi);<span class="hljs-comment">//求月球x</span>
+monthPosZ = earthPosZ + monthBound* <span class="hljs-built_in">sin</span>(curFar * pi);<span class="hljs-comment">//求月球y</span></code></pre></div>
+<p>同样使其转动，在<code>void myTimerFunc(int value)</code>中，不断增加far的值即可，具体效果见SunEarthMonth.gif。而其中两个球体的自转，则设定一个自转角度curSpeed来控制，而其值的变化也在定时器回调函数中完成。<br><img src="https://img-blog.csdnimg.cn/20200322143920762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="扩展功能的实现"><a href="#扩展功能的实现" class="headerlink" title="扩展功能的实现"></a>扩展功能的实现</h3><h4 id="1、（扩展功能）实现地球上有两个月亮"><a href="#1、（扩展功能）实现地球上有两个月亮" class="headerlink" title="1、（扩展功能）实现地球上有两个月亮"></a>1、（扩展功能）实现地球上有两个月亮</h4><p>对于这个效果，很容易实现，此处简化，只设置月亮B和月亮A在同一平面内，并且两者速度相等，只需要保持轨道半径相等，位置不同即可，而如何做到这一点，仍然可以从圆出发，这里我做的是将另一个月亮和此月亮形成对称，因此使月亮B绕地球的角度比月亮A多180度即可，坐标值如下：</p>
+<div class="hljs"><pre><code class="hljs cpp">month2PosX = earthPosX + monthBound * <span class="hljs-built_in">cos</span>(curFar * pi+pi);<span class="hljs-comment">//求月球2x</span>
+month2PosZ = earthPosZ + monthBound * <span class="hljs-built_in">sin</span>(curFar * pi+pi);<span class="hljs-comment">//求月球2z</span></code></pre></div>
+<p>具体实现效果见下图<br><img src="https://img-blog.csdnimg.cn/2020032214435296.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h4 id="2、（扩展功能）画上轨道线"><a href="#2、（扩展功能）画上轨道线" class="headerlink" title="2、（扩展功能）画上轨道线"></a>2、（扩展功能）画上轨道线</h4><p>实现地球绕太阳的轨道线描绘的就是以太阳为中心，以地球到太阳的距离为半径画的圆，而在OpenGL中，绘画基本图元没有圆，因此我思考通过不断的画直线来逼近圆，因此使用GL_LINE_LOOP来绘制，线段我一共绘制了7200次。同理，月亮绕地球的轨道线，就是以地球为中心，以月亮到地球的距离为半径画的圆。效果图可见下图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200322144340217.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h4 id="3、（扩展功能）让轨道倾斜"><a href="#3、（扩展功能）让轨道倾斜" class="headerlink" title="3、（扩展功能）让轨道倾斜"></a>3、（扩展功能）让轨道倾斜</h4><p>首先我实现的是地球绕太阳的轨道倾斜，要做的效果实际上就是使xoy平面发生旋转，此处我是使其绕z轴先进行旋转，后续步骤不变即可。需要注意的是此处轨道倾斜，相应的地球和月亮也要随着倾斜。<br>倾斜代码为：<br>glRotatef(earthOrbitAngle, 0.0f, 0.0f, 1.0f);//地球轨道倾斜earthOrbitAngle度,轨道沿着Z轴逆时针旋转<br>对于月亮绕地球的轨道倾斜，其效果就是在地球绕太阳的轨道平面上，再旋转即可，此处我假定月亮绕地球的轨道平面绕地球到月亮的轴线进行旋转。因此先将其变换到地球绕太阳的轨道平面上后，再进行旋转一定角度即可实现。效果图详见：<br> <img src="https://img-blog.csdnimg.cn/20200322144047223.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h4 id="4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能"><a href="#4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能" class="headerlink" title="4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能"></a>4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能</h4><p>对于轨道倾斜，通过键盘控制函数改变其角度参数值（earthOrbitAngle、monthOrbitAngle）即可，对于放大缩小，通过控制G_fDistance值即可。效果图详见SunEarthMonth4.gif：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200322144102861.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="三、源代码"><a href="#三、源代码" class="headerlink" title="三、源代码"></a>三、源代码</h2><p><a href="https://download.csdn.net/download/weixin_41234001/12262604" target="_blank" rel="noopener">CSDN下载</a><br><a href="">Github下载</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">【精·术】计算机图形学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGL/">OpenGL</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MOOC-%E5%9B%BE%E5%BD%A2%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/">MOOC-图形编程技术</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E3%80%90opengl%E3%80%91%E5%85%89%E7%85%A7%E5%A4%AA%E9%98%B3%E7%B3%BB.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【OpenGL】光照太阳系</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E3%80%90leetcode%E3%80%91409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2.html">
+                        <span class="hidden-mobile">【LeetCode】409. 最长回文串</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "【OpenGL】太阳星系的实现&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

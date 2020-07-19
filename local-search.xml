@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>【Blog】Markdown的写作技巧</title>
+    <link href="/%E3%80%90blog%E3%80%91markdown%E7%9A%84%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7.html"/>
+    <url>/%E3%80%90blog%E3%80%91markdown%E7%9A%84%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="Markdown中的公式书写"><a href="#Markdown中的公式书写" class="headerlink" title="Markdown中的公式书写"></a>Markdown中的公式书写</h2><p>1.markdown中的公式在线编辑网站</p><blockquote><p><a href="https://www.codecogs.com/latex/eqneditor.php" target="_blank" rel="noopener">https://www.codecogs.com/latex/eqneditor.php</a></p></blockquote><p>2.一些MarkDown 公式书写的指导手册</p><blockquote><p><a href="https://blog.csdn.net/u012736685/article/details/87009449" target="_blank" rel="noopener">https://blog.csdn.net/u012736685/article/details/87009449</a></p></blockquote><p>3.一些书写规范</p><blockquote><p>在行内的公式写在<code>$ $</code>内，行间的公式写在<code>$$ $$</code>内</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>【术】博客撰写</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Markdown</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】46. 把数字翻译成字符串</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h5 id="第一步：定义数组元素的含义"><a href="#第一步：定义数组元素的含义" class="headerlink" title="第一步：定义数组元素的含义"></a>第一步：定义数组元素的含义</h5><p>题目要求的是一个数字有多少种不同的翻译方法，因此设<code>dp[i]</code>代表第i个结尾的数字的翻译方案数量</p><h5 id="第二步：找出关系数组元素间的关系式"><a href="#第二步：找出关系数组元素间的关系式" class="headerlink" title="第二步：找出关系数组元素间的关系式"></a>第二步：找出关系数组元素间的关系式</h5><p>若$x_{i}$和$x_{i-1}$组成的数字可以被翻译，<br>则<code>dp[i]=dp[i-1]+dp[i-2]</code>,$x_{i-1}x_{i}\epsilon [10,25]$;<br>否则<code>dp[i]=dp[i-1]</code>,$x_{i-1}x_{i}\epsilon [1,10)\cup\left ( 25,99 \right ]$</p><h5 id="第三步：初始状态"><a href="#第三步：初始状态" class="headerlink" title="第三步：初始状态"></a>第三步：初始状态</h5><p><code>dp[0]=dp[1]=1</code> ,即“无数字”和“第1位数字”的翻译方法数量均为1</p><h5 id="第四步：返回值"><a href="#第四步：返回值" class="headerlink" title="第四步：返回值"></a>第四步：返回值</h5><p><code>dp[n]</code>，即此数字的翻译方案数量</p><h4 id="代码1——字符串遍历"><a href="#代码1——字符串遍历" class="headerlink" title="代码1——字符串遍历"></a>代码1——字符串遍历</h4><p>利用迭代方式编写</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">translateNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> ans = <span class="hljs-built_in">std</span>::to_string(num);        <span class="hljs-keyword">if</span> (ans.size() &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<span class="hljs-comment">//特判</span>        <span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(ans.size() + <span class="hljs-number">1</span>)</span></span>;        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;        dp[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= ans.size(); i++) &#123;            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> temp = ans.substr(i - <span class="hljs-number">2</span>, <span class="hljs-number">2</span>);            <span class="hljs-keyword">if</span> (temp &lt; <span class="hljs-string">"10"</span> || temp&gt;<span class="hljs-string">"25"</span>) dp[i] = dp[i - <span class="hljs-number">1</span>];<span class="hljs-comment">//不可以翻译</span>            <span class="hljs-keyword">else</span> dp[i] = dp[i - <span class="hljs-number">1</span>] + dp[i - <span class="hljs-number">2</span>];<span class="hljs-comment">//可以翻译</span>        &#125;        <span class="hljs-keyword">return</span> dp[ans.size()];    &#125;&#125;;</code></pre></div><h4 id="代码2——数字求余"><a href="#代码2——数字求余" class="headerlink" title="代码2——数字求余"></a>代码2——数字求余</h4><p>利用递归方式编写</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">translateNum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;        <span class="hljs-keyword">return</span> f(num);    &#125;    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;        <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">10</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;        <span class="hljs-keyword">if</span> (num % <span class="hljs-number">100</span> &lt; <span class="hljs-number">10</span> || num % <span class="hljs-number">100</span> &gt; <span class="hljs-number">25</span>) &#123;            <span class="hljs-keyword">return</span> f(num / <span class="hljs-number">10</span>);<span class="hljs-comment">//不可以翻译</span>        &#125;        <span class="hljs-keyword">else</span> &#123;            <span class="hljs-keyword">return</span> f(num / <span class="hljs-number">10</span>) + f(num / <span class="hljs-number">100</span>);<span class="hljs-comment">//可以翻译</span>        &#125;    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>动态规划</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】45. 把数组排成最小的数</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9145-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9145-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>通过题意可知，不管这些数字如何排列，形成的数字位数时不变的。所以如果高位的数字越小，则最终的结果也就越小。下面的<code>n</code>为数字的个数</p><ul><li>对于<code>n=2</code>的情况<br>如[26,38],根据高位越小越好，可知，我们应该排列成2638</li><li>对于<code>n&gt;2</code>的情况<br>如[26,29,1]，根据我们定义的规则，一定是将第一位小的数字放在最高位，因此先选出1，对于剩下两个数字，由于第1位数字相同，我们会比较第2位，因此我们最终会排列成12629<br>从上面我们可以发现的排序规则就是，如果第1位小，就将其排到最前面，如果第1位相等，则比较第2位，直到数字位数结束。 </li></ul><p>注意，这里的排列规则和字符串的排列规则有区别，比如，2和20，明显应该20排在2前面，结果才会更小(202&lt;220)，因此我们可以得到最终的排序规则应该是<br>如果<code>s1+s2&lt;s2+s1</code>，那么<code>s1&lt;s2</code><br>因此我们可以写一个<code>cmp</code>函数</p><div class="hljs"><pre><code class="hljs cpp"> <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s2)</span> </span>&#123;    <span class="hljs-keyword">return</span> s1 + s2 &lt; s2 + s1;&#125;</code></pre></div><p>下面代码分别给出了<code>cmp</code>函数写排序规则和<code>lambda</code>写排序规则两种形式</p><h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>1.初始化字符串数组<code>strs</code>，存储结果的字符串<code>ans</code><br>2.遍历初始的整型数组<code>nums</code>，将其元素加入<code>strs</code><br>3.调用排序<br>4.遍历<code>strs</code>，将其元素相加即为最终结果</p><p>由于使用了快排，时间复杂度<code>O(nlogn)</code><br>空间负责度<code>O(n)</code></p><h4 id="自定义排序"><a href="#自定义排序" class="headerlink" title="自定义排序"></a>自定义排序</h4><h5 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h5><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s2)</span> </span>&#123; <span class="hljs-comment">//注意这里的cmp函数可以写作Solution外</span>    <span class="hljs-keyword">return</span> s1 + s2 &lt; s2 + s1;&#125; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span> <span class="hljs-keyword">public</span>:     <span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-title">minNumber</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;         <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; strs;         <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> ans;         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> n : nums) &#123;             strs.push_back(<span class="hljs-built_in">std</span>::to_string(n));         &#125;         <span class="hljs-built_in">std</span>::sort(strs.begin(), strs.end(), cmp);         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> s : strs) &#123;             ans += s;         &#125;         <span class="hljs-keyword">return</span> ans;     &#125; &#125;;</code></pre></div><h5 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h5><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s2)</span> </span>&#123;<span class="hljs-comment">//也可以写作solution内，但要加上static，否则会报错</span>        <span class="hljs-keyword">return</span> s1 + s2 &lt; s2 + s1;    &#125;    <span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-title">minNumber</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; strs;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> ans;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> n : nums) &#123;            strs.push_back(<span class="hljs-built_in">std</span>::to_string(n));        &#125;        <span class="hljs-built_in">std</span>::sort(strs.begin(), strs.end(), cmp);        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> s : strs) &#123;            ans += s;        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;;</code></pre></div><h5 id="代码3"><a href="#代码3" class="headerlink" title="代码3"></a>代码3</h5><p>利用lambda表达式写排序的规则，如果不熟悉lambda，可以采用上述方法即可</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//lambda表达式排序</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-title">minNumber</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; strs;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> ans;        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.size(); i++) &#123;            strs.push_back(<span class="hljs-built_in">std</span>::to_string(nums[i]));        &#125;        <span class="hljs-comment">//lambda表达式</span>        <span class="hljs-built_in">std</span>::sort(strs.begin(), strs.end(), [](<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&amp; s2) &#123;<span class="hljs-keyword">return</span> s1 + s2 &lt; s2 + s1; &#125;);        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; strs.size(); i++) &#123;            ans += strs[i];        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>字符串</tag>
+      
+      <tag>排序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】134.加油站</title>
+    <link href="/%E3%80%90leetcode%E3%80%91134-%E5%8A%A0%E6%B2%B9%E7%AB%99.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91134-%E5%8A%A0%E6%B2%B9%E7%AB%99.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a>暴力法</h4><p>暴力破解，一方面验证自己对题目的理解是否正确，另一方面后续的优化也可以从这里入手。<br>1、考虑从第<code>0</code>个点出发，能否回到第<code>0</code>个点。<br>2、考虑从第<code>1</code>个点出发，能否回到第<code>1</code>个点。<br>3、考虑从第<code>2</code>个点出发，能否回到第<code>2</code>个点。<br>… …<br>4、考虑从第<code>n</code>个点出发，能否回到第<code>n</code>个点。</p><h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//暴力法</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">canCompleteCircuit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; gas, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; cost)</span> </span>&#123;<span class="hljs-keyword">int</span> n = gas.size();<span class="hljs-comment">//考虑从每一个点出发</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<span class="hljs-keyword">int</span> j = i;<span class="hljs-keyword">int</span> remain = gas[i];<span class="hljs-comment">//当前剩余的油能否到达下一个点</span><span class="hljs-keyword">while</span> (remain-cost[j]&gt;=<span class="hljs-number">0</span>)&#123;<span class="hljs-comment">//减去花费的加上新的点的补给</span>remain = remain - cost[j] + gas[(j + <span class="hljs-number">1</span>) % n];j = (j + <span class="hljs-number">1</span>) % n;<span class="hljs-comment">//如果j回到了i</span><span class="hljs-keyword">if</span> (j == i) &#123;<span class="hljs-keyword">return</span> i;&#125;&#125;&#125;<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;&#125;&#125;;</code></pre></div><h4 id="贪心法"><a href="#贪心法" class="headerlink" title="贪心法"></a>贪心法</h4><p>说实话这个在LeetCode上看了很久的题解，但还是对于官方题解不是很懂，对于这个问题，主要参考了该博主的题解<a href="https://leetcode-cn.com/problems/gas-station/solution/shi-yong-tu-de-si-xiang-fen-xi-gai-wen-ti-by-cyayc/" target="_blank" rel="noopener">使用图的思想分析该问题</a></p><h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">canCompleteCircuit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; gas, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; cost)</span> </span>&#123;<span class="hljs-keyword">int</span> len = gas.size();<span class="hljs-keyword">int</span> spare = <span class="hljs-number">0</span>;<span class="hljs-comment">//总剩余汽油量</span><span class="hljs-keyword">int</span> minSpare = <span class="hljs-number">9999999999</span>;<span class="hljs-comment">//最小的总剩余汽油量</span><span class="hljs-keyword">int</span> minIndex = <span class="hljs-number">0</span>;<span class="hljs-comment">//记录出发点</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;spare += gas[i] - cost[i];<span class="hljs-keyword">if</span> (spare&lt;minSpare)&#123;minSpare = spare;minIndex = i;&#125;&#125;<span class="hljs-keyword">return</span> spare &lt; <span class="hljs-number">0</span> ? <span class="hljs-number">-1</span> : (minIndex + <span class="hljs-number">1</span>) % len;<span class="hljs-comment">//minIndex+1%len为出发点</span>&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>贪心</tag>
+      
+      <tag>LeetCode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】215.数组中的第K个最大元素</title>
+    <link href="/%E3%80%90leetcode%E3%80%91215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>使用快速排序中的Partition函数，获得第j位上的元素，如果第j位和k-1相同，则直接返回即可<br>时间复杂度O(N)</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> end = nums.size() - <span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> index = Partition(nums, start, end);        <span class="hljs-keyword">while</span> (index!=k<span class="hljs-number">-1</span>) &#123;            <span class="hljs-keyword">if</span> (index &gt; k - <span class="hljs-number">1</span>) &#123;                end = index - <span class="hljs-number">1</span>;                index = Partition(nums, start, end);            &#125;            <span class="hljs-keyword">else</span> &#123;                start = index + <span class="hljs-number">1</span>;                index = Partition(nums, start, end);            &#125;        &#125;        <span class="hljs-keyword">return</span> nums[index];    &#125;    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Partition</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span> </span>&#123;        <span class="hljs-keyword">int</span> index = (rand() % (end - start + <span class="hljs-number">1</span>)) + start;        <span class="hljs-built_in">std</span>::swap(nums[start], nums[index]);<span class="hljs-comment">//start为主元</span>        <span class="hljs-keyword">int</span> i = start + <span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> j = end;        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<span class="hljs-comment">//从大到小排序</span>            <span class="hljs-keyword">while</span> (i &lt;= j &amp;&amp; nums[i] &gt;= nums[start]) i++;<span class="hljs-comment">//注意要加上"="号</span>            <span class="hljs-keyword">while</span> (i &lt;= j &amp;&amp; nums[j] &lt;= nums[start]) j--;            <span class="hljs-keyword">if</span> (i &gt; j) <span class="hljs-keyword">break</span>;            <span class="hljs-built_in">std</span>::swap(nums[i], nums[j]);        &#125;        <span class="hljs-built_in">std</span>::swap(nums[j], nums[start]);        <span class="hljs-keyword">return</span> j;    &#125;&#125;;</code></pre></div><h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>小顶堆，维护一个k大的小顶堆，最终的小顶堆的堆顶，即为第k大的元素<br>时间复杂度O(nlogk)</p><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-built_in">std</span>::priority_queue&lt;<span class="hljs-keyword">int</span>,<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;,<span class="hljs-built_in">std</span>::greater&lt;<span class="hljs-keyword">int</span>&gt;&gt; q;<span class="hljs-comment">//小元素放在队首，小顶堆 </span>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> e : nums) &#123;            q.push(e);            <span class="hljs-keyword">if</span> (q.size() &gt; k) &#123;                q.pop();            &#125;        &#125;        <span class="hljs-keyword">return</span> q.top();    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>优先队列</tag>
+      
+      <tag>Partition算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】36. 二叉搜索树与双向链表</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9136-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9136-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程：<br><code>Node* treeToDoublyList(Node* root)</code><br>1.特例处理：若结点root为空，直接返回<br>2.转化为排序双向链表：调用<code>inorder(Node* root)</code><br>3.构建循环链表：head和pre双向结点引用<br>4.返回头结点</p><p><code>void inorder(Node* root)</code><br>中序遍历的改写，在访问根节点时，同时更新pre，head的值，使其能够双向连接</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    Node* pre=<span class="hljs-literal">nullptr</span>, *head;<span class="hljs-comment">//需要初始化pre=nullptr,head为链表头结点，pre为链表前驱结点</span>    <span class="hljs-function">Node* <span class="hljs-title">treeToDoublyList</span><span class="hljs-params">(Node* root)</span> </span>&#123;        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//特例处理</span>        inorder(root);<span class="hljs-comment">//中序遍历</span>        <span class="hljs-comment">//遍历完成后，head指向头结点，pre指向尾结点，因此要修改head和pre的双向结点引用，使其首尾相连</span>        head-&gt;left = pre;        pre-&gt;right = head;        <span class="hljs-keyword">return</span> head;    &#125;    <span class="hljs-comment">//中序遍历</span>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">inorder</span><span class="hljs-params">(Node* root)</span> </span>&#123;        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span>;<span class="hljs-comment">//递归边界</span>        inorder(root-&gt;left);        <span class="hljs-keyword">if</span> (pre == <span class="hljs-literal">nullptr</span>) head = root;<span class="hljs-comment">//pre为空，说明此结点为链表头结点</span>        <span class="hljs-keyword">else</span> &#123;            pre-&gt;right = root;<span class="hljs-comment">//前驱结点的后继即为root</span>            root-&gt;left = pre;<span class="hljs-comment">//当前结点的前驱即为pre</span>        &#125;        pre = root;<span class="hljs-comment">//pre更新，结点root是后继结点的pre</span>        inorder(root-&gt;right);    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>BST</tag>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】35. 复杂链表的复制</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9135-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9135-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>算法流程：</p><ol><li>建立映射<blockquote><p>对新链表结点和原链表结点建立<code>hashmap</code>的映射关系，原链表结点为<code>key</code>，新链表结点为<code>value</code></p></blockquote></li><li>赋值 <blockquote><p>通过<code>hashmap</code>将原链表的<code>next</code>，<code>random</code>所指结点赋给新链表，注意赋值时，要判断该两值是否不为空，因为建立<code>hashmap</code>时，没有建立<code>null</code>，<code>null</code>的映射</p></blockquote></li><li>返回新链表头结点<code>hashmap[head]</code></li></ol><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">Node* <span class="hljs-title">copyRandomList</span><span class="hljs-params">(Node* head)</span> </span>&#123;        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_map</span>&lt;Node*, Node*&gt; listMap;        Node* p = head;        <span class="hljs-comment">//将原链表和新链表建立映射关系</span>        <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">nullptr</span>) &#123;            listMap[p] = <span class="hljs-keyword">new</span> Node(p-&gt;val);            p = p-&gt;next;        &#125;        p = head;        <span class="hljs-comment">//将原链表的next，random值赋给新链表</span>        <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">nullptr</span>) &#123;            <span class="hljs-keyword">if</span>(p-&gt;next)  listMap[p]-&gt;next = listMap[p-&gt;next];<span class="hljs-comment">//如果p-&gt;next不为空</span>            <span class="hljs-keyword">if</span>(p-&gt;random) listMap[p]-&gt;random = listMap[p-&gt;random];<span class="hljs-comment">//如果p-&gt;random不为空</span>            p = p-&gt;next;        &#125;        <span class="hljs-keyword">return</span> listMap[head];    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】33.二叉搜索树的后序遍历序列</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9133-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9133-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>BST</tag>
+      
+      <tag>剑指offer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>二叉树的遍历方法总结</title>
+    <link href="/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.html"/>
+    <url>/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h3><h5 id="递归版"><a href="#递归版" class="headerlink" title="递归版"></a>递归版</h5><h5 id="非递归版"><a href="#非递归版" class="headerlink" title="非递归版"></a>非递归版</h5><h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><h5 id="递归版-1"><a href="#递归版-1" class="headerlink" title="递归版"></a>递归版</h5><h5 id="非递归版-1"><a href="#非递归版-1" class="headerlink" title="非递归版"></a>非递归版</h5><h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><h5 id="递归版-2"><a href="#递归版-2" class="headerlink" title="递归版"></a>递归版</h5><h5 id="非递归版-2"><a href="#非递归版-2" class="headerlink" title="非递归版"></a>非递归版</h5><h3 id="层序遍历"><a href="#层序遍历" class="headerlink" title="层序遍历"></a>层序遍历</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TreeNode</span> &#123;</span>      <span class="hljs-keyword">int</span> val;      TreeNode *left;      TreeNode *right;      TreeNode(<span class="hljs-keyword">int</span> x) : val(x), left(<span class="hljs-literal">NULL</span>), right(<span class="hljs-literal">NULL</span>) &#123;&#125;&#125;;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">levelOrder</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> ans;        <span class="hljs-built_in">queue</span>&lt;TreeNode*&gt; q;        q.push(root);<span class="hljs-comment">//将根结点root加入队列q</span>        <span class="hljs-keyword">while</span> (!q.empty()) &#123;            TreeNode* front = q.front();<span class="hljs-comment">//取出队首结点，访问它</span>            ans.push_back(front-&gt;val);            q.pop();<span class="hljs-comment">//弹出</span>            <span class="hljs-keyword">if</span> (front-&gt;left != <span class="hljs-literal">nullptr</span>) q.push(front-&gt;left);<span class="hljs-comment">//左子树不为空，压入左子树</span>            <span class="hljs-keyword">if</span> (front-&gt;right != <span class="hljs-literal">nullptr</span>) q.push(front-&gt;right);<span class="hljs-comment">//右子树不为空，压入右子树</span>        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;;</code></pre></div><h3 id="树的层次遍历"><a href="#树的层次遍历" class="headerlink" title="树的层次遍历"></a>树的层次遍历</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">levelOrder</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> ans;        <span class="hljs-built_in">queue</span>&lt;TreeNode*&gt; q;        q.push(root);        <span class="hljs-keyword">while</span> (!q.empty()) &#123;            <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; temp;            <span class="hljs-keyword">int</span> len = q.size();<span class="hljs-comment">//这里的size要提前拿，不要写作下面的循环中</span>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;                TreeNode* front = q.front();                temp.push_back(front-&gt;val);                q.pop();                <span class="hljs-keyword">if</span> (front-&gt;left != <span class="hljs-literal">nullptr</span>) q.push(front-&gt;left);                <span class="hljs-keyword">if</span> (front-&gt;right != <span class="hljs-literal">nullptr</span>) q.push(front-&gt;right);            &#125;            ans.push_back(temp);        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二叉树</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】31. 栈的压入、弹出序列</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9131-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9131-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>算法流程：</p><ol><li>初始化，辅助栈tempS和弹出序列的索引i</li><li>遍历压入序列pushed<ul><li>压入pushed的元素e</li><li>判断tempS是否为空且栈顶元素和popped[i]相等<ul><li>tempS出栈</li><li>i++</li></ul></li></ul></li></ol><p>3.返回tempS.empty()，如果其为空，说明合法，反之不合法</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">validateStackSequences</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; pushed, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; popped)</span> </span>&#123;        <span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt; tempS;<span class="hljs-comment">//辅助栈</span>        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<span class="hljs-comment">//弹出序列的索引i</span>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> e : pushed) &#123;            tempS.push(e);<span class="hljs-comment">//入栈</span>            <span class="hljs-keyword">while</span> (!tempS.empty()&amp;&amp;tempS.top()==popped[i])&#123;<span class="hljs-comment">//栈顶元素，相等，弹出序列元素popped[i]</span>                tempS.pop();<span class="hljs-comment">//出栈</span>                i++;<span class="hljs-comment">//i++</span>            &#125;        &#125;        <span class="hljs-keyword">return</span> tempS.empty();<span class="hljs-comment">//如果为空，说明合法</span>    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>栈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】21. 调整数组顺序使奇数位于偶数前面</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9121-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9121-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>双指针，p1指向头，p2指向尾，p1在遇到偶数时停下，p2在遇到奇数时停下，如果此时p1&lt;p2，则进行交换</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">exchange</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;        <span class="hljs-keyword">int</span> p1 = <span class="hljs-number">0</span>, p2 = nums.size() - <span class="hljs-number">1</span>;        <span class="hljs-keyword">while</span> (p1&lt;p2)        &#123;            <span class="hljs-keyword">while</span> (p1 &lt; p2 &amp;&amp; (nums[p1] &amp; <span class="hljs-number">1</span>)  ) p1++;<span class="hljs-comment">//p1所指为奇数时</span>            <span class="hljs-keyword">while</span> (p1 &lt; p2 &amp;&amp; (nums[p2] &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) p2--;<span class="hljs-comment">//p2所指为偶数时</span>            <span class="hljs-keyword">if</span> (p1 &lt; p2) swap(nums[p1], nums[p2]);<span class="hljs-comment">//p1&lt;p2时</span>        &#125;        <span class="hljs-keyword">return</span> nums;    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【MIT6.837】A3:OpenGL &amp; Phong Shading</title>
+    <link href="/%E3%80%90mit6-837%E3%80%91a3-opengl-phong-shading.html"/>
+    <url>/%E3%80%90mit6-837%E3%80%91a3-opengl-phong-shading.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="A3：OpenGL-amp-Phong-Shading"><a href="#A3：OpenGL-amp-Phong-Shading" class="headerlink" title="A3：OpenGL &amp; Phong Shading"></a>A3：<a href="http://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/assignment3/" target="_blank" rel="noopener">OpenGL &amp; Phong Shading</a></h1><hr><h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><ul><li>实现交互式相机</li><li>实现Blinn-Phong光照模型及对应的光滑明暗处理技术</li><li>实现绘制各个图元的方法，尤其是球图元的绘制</li></ul><h2 id="Hints"><a href="#Hints" class="headerlink" title="Hints"></a>Hints</h2><h4 id="1、Phong模型与Bling-Phong的区别"><a href="#1、Phong模型与Bling-Phong的区别" class="headerlink" title="1、Phong模型与Bling-Phong的区别"></a>1、Phong模型与Bling-Phong的区别</h4><ul><li><p>Phong适合模拟塑料，比”反射”材质表现出的介质更光滑一些，适合模拟玻璃、水、冰等高反光特性的介质</p></li><li><p>BlinnPhong大多适用于金属材质</p></li><li><p>Blinn-Phong它能提供比Phong更柔和、更平滑的高光，而且速度上也更快，因此成为很多CG软件中默认的光照渲染方法，同时也被集成到大多数的图形芯片中</p></li></ul><h4 id="2、光滑明暗处理技术"><a href="#2、光滑明暗处理技术" class="headerlink" title="2、光滑明暗处理技术"></a>2、光滑明暗处理技术</h4><ul><li>平坦着色（Flat Shading）</li></ul><p>算法思想：</p><blockquote><p>通过三角形三顶点的坐标计算出整个三角形的法向量。<br>优缺点：<br>这样就导致相邻两个三角形的法向量差别很大，所以就能看到明显的三角形的边。</p></blockquote><ul><li>Gouraud光亮度插值技术</li></ul><p>算法思想：</p><blockquote><p>将曲面表面某一点的光亮度做近似表示，近似值取为该曲面的各多边形顶点光亮度的双线性插值。</p></blockquote><p>优缺点：</p><blockquote><p>采用Gouraud明暗处理不但可以克服由多边形近似表示的曲面的光亮度不连续现象，而且计算量也很小。<br>1.不能正确地模拟高光。这是因为采用光亮度插值后将使多边形内的高光丢失。<br>2.所绘制画面会诱发马赫带效应。<br>虽然光亮度双线性插值保证了由多边形近似表示的曲面上各处光亮度的连续变化，但在相邻多边形的公共边界上光亮度的一阶导数并不连续，由于人眼的光学错觉，光亮度变化一阶不连续的边界处会呈现亮带或黑带，即马赫带效应。<br>3.克服这些缺点的一种方法是采用Phong明暗处理。</p></blockquote><ul><li>Phong法向量插值技术</li></ul><p>算法思想：</p><blockquote><p>它的基本思想是对多边形顶点处（平均）法向量做双线性插值，以增加一定的计算量为代价克服了Gouraud明暗处理的缺点。</p></blockquote><p>优缺点：</p><blockquote><p>1.优点：绘制的图形比Gouraud方法更真实<br>2.缺点：计算量远大于Gouraud方法</p></blockquote><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>部分结果如下：<br><img src="https://img-blog.csdnimg.cn/2020051922240261.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020051922240259.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://github.com/fuzhanzhan/MIT-CG6.837-2004" target="_blank" rel="noopener">符佬的github</a></li><li><a href="https://baike.baidu.com/item/%E5%A5%87%E5%BC%82%E7%9F%A9%E9%98%B5/9658459?fr=aladdin" target="_blank" rel="noopener">奇异矩阵</a></li><li><a href="https://www.cnblogs.com/yuxingli/p/7821102.html" target="_blank" rel="noopener">extern的使用</a></li><li><a href="https://www.mathsisfun.com/algebra/matrix-inverse.html" target="_blank" rel="noopener">逆矩阵的含义和应用</a></li><li><a href="https://wenku.baidu.com/view/4e6443ea9b89680202d8250f.html" target="_blank" rel="noopener">phong光照模型</a>（此中文PPT讲的还不错）</li></ul><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/xdobetter/MIT-CG6.837/tree/master/A3%20Assignment%203%20OpenGL%20&%20Phong%20Shading" target="_blank" rel="noopener">Github</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MIT6.837</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【MIT6.837】A2:Transformations &amp; Additional Primitives</title>
+    <link href="/%E3%80%90mit6-837%E3%80%91a2-transformations-additional-primitives.html"/>
+    <url>/%E3%80%90mit6-837%E3%80%91a2-transformations-additional-primitives.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="A2：Transformations-amp-Additional-Primitives"><a href="#A2：Transformations-amp-Additional-Primitives" class="headerlink" title="A2：Transformations &amp; Additional Primitives"></a>A2：<a href="http://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/assignment2/" target="_blank" rel="noopener">Transformations &amp; Additional Primitives</a></h1><hr><h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><p>本实验的目标是实现更多的基本图元（如Plane、Triangle类的实现）、新增两种渲染模式(normal visualization和diffuse shading)、新增PerspectiveCamera类及变换(Transform类)的实现。</p><h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><h3 id="1-TASK分析"><a href="#1-TASK分析" class="headerlink" title="1 TASK分析"></a>1 TASK分析</h3><p><img src="https://img-blog.csdnimg.cn/20200517222206828.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_8,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200517222206854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>下面右边的序号是在实验中实际完成的顺序</p><p>[1] Object中更新球的计算交点方法【3】<br>[2] Object中派生出plane【2】，并实现其求交点方法【3】<br><img src="https://img-blog.csdnimg.cn/20200517222245699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>[3] Object中派生出Triangle【2】，并实现其求交点方法【3】</p><p><img src="https://img-blog.csdnimg.cn/20200517222305400.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200517222305395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p><b>红色部分即为|A|</b></p><p><img src="https://img-blog.csdnimg.cn/20200517222339559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200517222339550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>[4]Object中派生出Transform【2】<br>[5]实现Transform类的求交点方法【3】<br>[6]实现normal visualization和diffuse shading的渲染模式【4】</p><blockquote><p>在主函数中实现两个渲染模式，同时封装一下命令解析代码</p></blockquote><p>[7]在Camera中派生出PerspectiveCamera【1】</p><h3 id="2-代码结构分析"><a href="#2-代码结构分析" class="headerlink" title="2 代码结构分析"></a>2 代码结构分析</h3><p>不需要的编写的文件</p><blockquote><p>hit.h（A2更新）、light.h（A2给出）、ray.h、vectors.h、materials.h、image.h(c)、matrix.h(c)、scene_parser.h(c)（A2更新）<br>需要编写的文件<br>camera.h(c)、main.c、object3d.h(c)、</p></blockquote><h2 id="注意点-Hints"><a href="#注意点-Hints" class="headerlink" title="注意点(Hints)"></a>注意点(Hints)</h2><p>除实验中给出的Hints，这里给出自己在完成过程中遇到的不懂之处。</p><p>1 virtual ~Object3D() {} 为什么加virtual，有什么含义？</p><blockquote><p>上述写法叫虚析构函数，和其他函数一样，我们通过在基类中将析构函数定义成虚函数以确保执行正确的析构函数版本；当我们delete一个动态分配的对象的指针时将执行析构函数，如果该指针指向继承体系中的某个类型，则有可能出现指针的静态类型与被删除对象的动态类型不符的情况。</p></blockquote><p>2 virtual 和 override</p><blockquote><p>override只能对virtual进行重写</p></blockquote><p>3 叉乘坐标系的表示方式</p><blockquote><p>右手法则（right hand rule）</p></blockquote><p>4 new并delete指针数组的方式</p><blockquote><p><a href="https://www.cnblogs.com/chenhuan001/p/7373448.html" target="_blank" rel="noopener">见此博客</a></p></blockquote><p>5 C/C++ assert()函数用法</p><blockquote><p><a href="https://blog.csdn.net/myyllove/article/details/82898875" target="_blank" rel="noopener">见此博客</a></p></blockquote><p>6 error C2065: “M_PI”: 未声明的标识符</p><blockquote><p><a href="https://www.cnblogs.com/zzsama/p/10993125.html" target="_blank" rel="noopener">见此博客</a></p></blockquote><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>部分实验结果如下:</p><p><img src="https://img-blog.csdnimg.cn/20200517222403886.png" srcset="/img/loading.gif" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200517222403463.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p><img src="https://img-blog.csdnimg.cn/20200517222427325.png" srcset="/img/loading.gif" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20200517222427272.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/xdobetter/MIT-CG6.837/tree/master/A2%20Transformations%20%26%20Additional%20Primitives" target="_blank" rel="noopener">xdobetter的github</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MIT6.837</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【MIT6.837】A1:Ray Casting</title>
+    <link href="/%E3%80%90mit6-837%E3%80%91a1-ray-casting.html"/>
+    <url>/%E3%80%90mit6-837%E3%80%91a1-ray-casting.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="A1：Ray-Casting（光线投射"><a href="#A1：Ray-Casting（光线投射" class="headerlink" title="A1：Ray Casting（光线投射)"></a>A1：<a href="http://groups.csail.mit.edu/graphics/classes/6.837/F04/assignments/assignment1/" target="_blank" rel="noopener">Ray Casting</a>（光线投射)</h1><hr><h2 id="学术名词"><a href="#学术名词" class="headerlink" title="学术名词"></a>学术名词</h2><blockquote><p>camera obscura：针孔照相机<br>Perspective：透视投影<br>Orthographic：正交投影<br>Parallel projection：平行投影<br>Ray-Plane Intersection：射线与平面相交<br>Ray-Sphere Intersection：射线与球面相交<br>orthonormal basis：标准正交基<br>Ray Casting：光线投射<br>Ray tracing：光线追踪<br>Geometric：几何学<br>Algebraic：代数学<br>Object-Oriented Design：面向对象设计</p></blockquote><h2 id="实验概述"><a href="#实验概述" class="headerlink" title="实验概述"></a>实验概述</h2><p>本实验的目标是要完成一个光线投射算法。光线投射算法的原理如下图（文字部分为个人见解）：<br>对于每一个像素<br>&emsp;构建一条从视点处开始的射线<br>    &emsp;&emsp;对场景中的每一个对象<br>       &emsp;&emsp;判断当前射线是否和当前对象有交点（此处要用到求交点函数）<br>    &emsp;&emsp;如果有且该交点距离视点更近，则更新最近交点值</p><p><img src="https://img-blog.csdnimg.cn/20200513230801435.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>下面说明一下本实验完成过程的重点。</p><h3 id="射线和球模型的计算交点方法的实现"><a href="#射线和球模型的计算交点方法的实现" class="headerlink" title="射线和球模型的计算交点方法的实现"></a>射线和球模型的计算交点方法的实现</h3><p>此处采用的是Algebraic方法，该方法的实现不是很难理解，根据PPT的公式及实验讲解即可完成该部分。Geometric方法使用较少因此没有实现。</p><p><img src="https://img-blog.csdnimg.cn/2020051323082180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200513230821154.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Sphere::intersect</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Ray&amp; r, Hit&amp; h, <span class="hljs-keyword">float</span> tmin)</span> </span>&#123;<span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">false</span>;<span class="hljs-comment">//有交点返回true</span>Vec3f ro = r.getOrigin() - center;<span class="hljs-comment">//ro:射线到球中心的向量</span>Vec3f rd = r.getDirection();<span class="hljs-comment">//射线方向</span><span class="hljs-keyword">float</span> a = rd.Dot3(rd);<span class="hljs-comment">//rd与rd点积</span><span class="hljs-keyword">float</span> b = <span class="hljs-number">2</span> * ro.Dot3(rd);<span class="hljs-comment">//ro与rd点积,可能为负</span><span class="hljs-keyword">float</span> c = ro.Dot3(ro) - radius * radius;<span class="hljs-keyword">float</span> delta = b * b - <span class="hljs-number">4</span> * a * c;<span class="hljs-comment">//float t;//当前距离,此处可以不用</span><span class="hljs-comment">//获取最近的交点</span><span class="hljs-keyword">if</span> (delta &gt;= <span class="hljs-number">0</span>) &#123;<span class="hljs-keyword">float</span> d = <span class="hljs-built_in">sqrt</span>(delta);<span class="hljs-comment">//一定为正</span><span class="hljs-keyword">float</span> t1 = (-b - d) / (<span class="hljs-number">2</span> * a);<span class="hljs-comment">//通常t1更小</span><span class="hljs-keyword">float</span> t2 = (-b + d) / (<span class="hljs-number">2</span> * a);<span class="hljs-comment">// For an orthographic camera, rays always start at infinity, so tmin will be a large negative value</span><span class="hljs-comment">//由于本节作业是正交相机，正交相机的tmin为无穷大，因此下面这块代码可以不用</span><span class="hljs-comment">//if (t1 &gt;= tmin) &#123;//在origin之前</span><span class="hljs-comment">//t = t1;</span><span class="hljs-comment">//&#125;</span><span class="hljs-comment">//else if (t2 &gt;= tmin) &#123;</span><span class="hljs-comment">//t = t2;</span><span class="hljs-comment">//&#125;</span><span class="hljs-keyword">if</span> (t1 &lt; h.getT()) &#123;<span class="hljs-comment">//closer当前交点，更新</span>h.<span class="hljs-built_in">set</span>(t1, material, r);flag = <span class="hljs-literal">true</span>;&#125;&#125;<span class="hljs-keyword">return</span> flag;&#125;</code></pre></div><h3 id="正交相机的实现"><a href="#正交相机的实现" class="headerlink" title="正交相机的实现"></a>正交相机的实现</h3><p>直接参见PPT上给出的原理进行实现<br><img src="https://img-blog.csdnimg.cn/20200513230920794.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function">Ray <span class="hljs-title">OrthographicCamera::generateRay</span><span class="hljs-params">(Vec2f point)</span> </span>&#123;Vec3f ro = center + (point.x() - <span class="hljs-number">0.5</span>) * horizontal * size + (point.y() - <span class="hljs-number">0.5</span>) * up * size;<span class="hljs-comment">//射线起始点到对象中心</span><span class="hljs-keyword">return</span> Ray(ro, direction);&#125;</code></pre></div><h3 id="光线投射算法的实现"><a href="#光线投射算法的实现" class="headerlink" title="光线投射算法的实现"></a>光线投射算法的实现</h3><p>该函数在主函数中进行了实现，代码如下</p><div class="hljs"><pre><code class="hljs cpp">   <span class="hljs-comment">/*输入——初始化场景、相机、对象组及两幅图像*/</span><span class="hljs-function">SceneParser <span class="hljs-title">scene</span><span class="hljs-params">(input_file)</span></span>;Camera* camera = scene.getCamera();Object3D* group = scene.getGroup();<span class="hljs-function">Image <span class="hljs-title">image</span><span class="hljs-params">(width, height)</span></span>;<span class="hljs-comment">//设置图像大小</span>image.SetAllPixels(scene.getBackgroundColor());<span class="hljs-comment">//图像背景颜色设置为场景背景颜色</span><span class="hljs-function">Image <span class="hljs-title">depthImage</span><span class="hljs-params">(width, height)</span></span>;<span class="hljs-comment">//设置深度图像</span>depthImage.SetAllPixels(Vec3f(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>));<span class="hljs-comment">//设置成黑色</span>   <span class="hljs-comment">//光线投射</span><span class="hljs-comment">/*循环遍历图像平面中的像素，使用OrthographicCamera类生成射线，将其与Group中的各个对象求交点，并将最近点保存到hit中*/</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;width;++i)&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; height; ++j) &#123;<span class="hljs-keyword">float</span> x = <span class="hljs-keyword">float</span>(i) / <span class="hljs-keyword">float</span>(width);<span class="hljs-keyword">float</span> y = <span class="hljs-keyword">float</span>(j) / <span class="hljs-keyword">float_t</span>(height);Ray ray = camera-&gt;generateRay(Vec2f(x, y));<span class="hljs-comment">//产生射线</span><span class="hljs-function">Hit <span class="hljs-title">hit</span><span class="hljs-params">(INFINITY, <span class="hljs-literal">nullptr</span>)</span></span>;<span class="hljs-comment">//hit存储最近的交点，此处初始t设置为了无穷大</span><span class="hljs-keyword">bool</span> flag = group-&gt;intersect(ray, hit, camera-&gt;getTMin());<span class="hljs-comment">//使该条射线和每一个基本图元求交点</span><span class="hljs-keyword">if</span> (flag) &#123;<span class="hljs-comment">//如果存在交点</span>image.SetPixel(i, j, hit.getMaterial()-&gt;getDiffuseColor());<span class="hljs-comment">//设置该点像素的颜色</span><span class="hljs-keyword">float</span> t = hit.getT();<span class="hljs-comment">//可视化深度t</span><span class="hljs-comment">//超过则设置为边界值</span><span class="hljs-keyword">if</span> (t &gt; depth_max) t = depth_max;<span class="hljs-comment">//此处max=1、min=0</span><span class="hljs-keyword">if</span> (t &lt; depth_min) t = depth_min;t = (depth_max - t) / (depth_max - depth_min);<span class="hljs-comment">//t越小越近，越近的颜色越深</span>depthImage.SetPixel(i, j, Vec3f(t, t, t));<span class="hljs-comment">//设置颜色值</span>&#125;&#125;&#125;</code></pre></div><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="https://img-blog.csdnimg.cn/20200513230851178.png" srcset="/img/loading.gif" alt="在这里插入图片描述">  <img src="https://img-blog.csdnimg.cn/20200513230851180.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>在实验的过程中，阅读完实验讲义和PPT，不是很明白实验需要完成那些内容。因此我直接参考了别人已完成的代码，并对需要实现的部分一点点对着阅读和理解。边看代码边看PPT和实验讲义，对每个文件每个函数充分理解，实验也逐渐完成，本实验也是之后实验的重点，需要充分弄明白。<br>自己完成实验的步骤：<br>1.通看PPT<br>2.通看实验讲义<br>3.执行别人的代码<br>4.在不懂的情况下阅读实验讲义、PPT并阅读别人的代码</p><ul><li>记录自己要编写那些文件，完成那些函数</li><li>记录这些函数的实验原理，进一步理解这些算法的思想</li><li>记录下参考过的资料</li><li>重复该过程，直到弄懂</li></ul><p>5.整理实验，并写成报告</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://blog.csdn.net/weixin_40552524/article/details/104436544" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40552524/article/details/104436544</a></li><li><a href="https://www.cnblogs.com/fengyuheliu/archive/2011/08/28/2155627.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengyuheliu/archive/2011/08/28/2155627.html</a></li></ul><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/xdobetter/MIT-CG6.837/tree/master/A1%20Ray%20Casting" target="_blank" rel="noopener">xdobetter的GitHub</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MIT6.837</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【MIT6.837】A0:IFS</title>
+    <link href="/%E3%80%90mit6-837%E3%80%91a0-ifs.html"/>
+    <url>/%E3%80%90mit6-837%E3%80%91a0-ifs.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="A0：IFS（迭代函数系统）"><a href="#A0：IFS（迭代函数系统）" class="headerlink" title="A0：IFS（迭代函数系统）"></a>A0：IFS（迭代函数系统）</h1><h2 id="任务概述"><a href="#任务概述" class="headerlink" title="任务概述"></a>任务概述</h2><p>6.837的第一个作业，实现IFS算法。目的是熟悉C++的语法特性，并且熟悉使用两个和图像生成和线性代数相关的简单库。通过生成一些奇妙的分形物体来体会图形学的乐趣。</p><p>IFS <strong>是一种构造分形的方法，得到的分形通常是自相似(self-similar)的</strong>。IFS最经典的例子是绘制一种蕨类植物(Barnsley’s fern)，如下图所示，可以看到，每一个子叶片与整个叶片的形状相同。</p><p>IFS由<strong>一个仿射变换(affine transformations)集合所定义，通常定义的仿射变换包括旋转(rotation)、缩放(scale)、平移(translations)、斜切(skew)等等线性变换方法</strong>。这些变换不着了自相似的物体形状。IFS可以定义在多个维度上，在这个作业中，我们只需实现二维的变换。</p><h2 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h2><p>本实验已经提供了matrix.h、vectors.h、image.h、image.cpp、matrix.cpp5个文件<br>而我们要实现的文件是ifs.h、ifs.cpp、main.cpp<br>因此本实验的关键是实现ifs类、ifs的输入和ifs的渲染算法</p><h3 id="ifs类的创建"><a href="#ifs类的创建" class="headerlink" title="ifs类的创建"></a>ifs类的创建</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"matrix.h"</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"image.h"</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"vectors.h"</span></span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IFS</span> &#123;</span><span class="hljs-keyword">private</span>:<span class="hljs-comment">//仿射变换的个数</span><span class="hljs-keyword">int</span> n;<span class="hljs-comment">//仿射变换矩阵数组</span>Matrix* matrix;<span class="hljs-comment">//每一个仿射变换的选取概率数组</span><span class="hljs-keyword">float</span>* prob;<span class="hljs-keyword">public</span>:<span class="hljs-comment">//构造函数，使用仿射变换个数初始化</span>IFS():n(<span class="hljs-number">0</span>),matrix(<span class="hljs-literal">nullptr</span>),prob(<span class="hljs-literal">nullptr</span>)&#123;&#125;<span class="hljs-comment">//析构函数</span>~IFS() &#123;<span class="hljs-keyword">delete</span>[] matrix;<span class="hljs-keyword">delete</span>[] prob;&#125;<span class="hljs-comment">//读取IFS输入</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">input</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* file)</span></span>;<span class="hljs-comment">//绘制IFS图片</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">render</span><span class="hljs-params">(Image&amp; image, <span class="hljs-keyword">int</span> num_points, <span class="hljs-keyword">int</span> num_iters)</span></span>;&#125;;</code></pre></div><h3 id="IFS输入的实现"><a href="#IFS输入的实现" class="headerlink" title="IFS输入的实现"></a>IFS输入的实现</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">IFS::input</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* file)</span> </span>&#123;FILE* input = fopen(file, <span class="hljs-string">"r"</span>);assert(input != <span class="hljs-literal">nullptr</span>);<span class="hljs-comment">//断言帮助调式解决逻辑bug</span><span class="hljs-comment">//从一个流中执行格式化输入，fscanf遇到空格和换行时结束，注意空格时也结束</span><span class="hljs-built_in">fscanf</span>(input, <span class="hljs-string">"%d"</span>, &amp;n);<span class="hljs-comment">//读取变换的数量</span>matrix = <span class="hljs-keyword">new</span> Matrix[n];prob = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[n];<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<span class="hljs-built_in">fscanf</span>(input, <span class="hljs-string">"%f"</span>, &amp;prob[i]);<span class="hljs-comment">//读取变换的概率</span>matrix[i].Read3x3(input);<span class="hljs-comment">//读取变换的3x3浮点矩阵</span>&#125;fclose(input);<span class="hljs-comment">//关闭输入流</span>&#125;</code></pre></div><h3 id="IFS算法的实现"><a href="#IFS算法的实现" class="headerlink" title="IFS算法的实现"></a>IFS算法的实现</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">IFS::render</span><span class="hljs-params">(Image&amp; image, <span class="hljs-keyword">int</span> num_points, <span class="hljs-keyword">int</span> num_iters)</span> </span>&#123;<span class="hljs-keyword">int</span> width = image.Width();<span class="hljs-keyword">int</span> height = image.Height();<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;num_points;++i)&#123;Vec2f v = Vec2f(rand() * <span class="hljs-number">1.0f</span> / RAND_MAX, rand() * <span class="hljs-number">1.0f</span> / RAND_MAX);<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; num_iters; ++j) &#123;<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;<span class="hljs-keyword">float</span> sum = <span class="hljs-number">0</span>;<span class="hljs-keyword">float</span> t = rand() * <span class="hljs-number">1.0f</span> / RAND_MAX;<span class="hljs-keyword">for</span> (;k&lt;n;++k)&#123;sum += prob[k];<span class="hljs-keyword">if</span> (sum &gt; t) <span class="hljs-keyword">break</span>;&#125;matrix[k].Transform(v);&#125;<span class="hljs-keyword">if</span> (v.x() &gt;= <span class="hljs-number">0</span> &amp;&amp; v.x() &lt;= <span class="hljs-number">1</span> &amp;&amp; v.y() &gt;= <span class="hljs-number">0</span> &amp;&amp; v.y() &lt;= <span class="hljs-number">1</span>) &#123;image.SetPixel(v.x() * width, v.y() * height, Vec3f(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>));&#125;&#125;&#125;</code></pre></div><p>这里我不是很懂这个算法的思想，主要是参考了别人的代码完成</p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p><img src="https://img-blog.csdnimg.cn/20200512201918546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200512201918518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200512201918506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200512201918519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="https://github.com/nycshisan/MIT6_837_Assignments/tree/master/src" target="_blank" rel="noopener">https://github.com/nycshisan/MIT6_837_Assignments/tree/master/src</a></li><li><a href="https://blog.csdn.net/u012420309/article/details/52948729" target="_blank" rel="noopener">vs2013遇到fopen不安全替换fopen_s的问题</a></li><li><a href="https://www.cnblogs.com/132818Creator/p/11014639.html" target="_blank" rel="noopener">VS中多级目录的写法</a></li><li><a href="https://blog.csdn.net/poinsettia/article/details/17138801" target="_blank" rel="noopener">CMAKE的学习</a></li><li><a href="https://github.com/fuzhanzhan/MIT-CG6.837-2004" target="_blank" rel="noopener">https://github.com/fuzhanzhan/MIT-CG6.837-2004</a></li><li><a href="https://blog.csdn.net/wonggonghong/article/details/16381975" target="_blank" rel="noopener">(MIT 6.837)迭代函数系统IFS画自相似图形的算法</a></li></ul><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p><a href="https://github.com/xdobetter/MIT-CG6.837" target="_blank" rel="noopener">Github下载</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MIT6.837</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】三维场景漫游的实现</title>
+    <link href="/%E3%80%90opengl%E3%80%91%E4%B8%89%E7%BB%B4%E5%9C%BA%E6%99%AF%E6%BC%AB%E6%B8%B8%E7%9A%84%E5%AE%9E%E7%8E%B0.html"/>
+    <url>/%E3%80%90opengl%E3%80%91%E4%B8%89%E7%BB%B4%E5%9C%BA%E6%99%AF%E6%BC%AB%E6%B8%B8%E7%9A%84%E5%AE%9E%E7%8E%B0.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul><li>构建一个三维场景<br>  可利用glut提供的各种简单形体来搭建，或者读入别的模型，并加入光照效果</li><li>用键盘操作一个物体（如一艘飞船，或一个机器人），在三维场景中漫游<br>视点可以放在物体上，或跟随物体，利用gluLookAt()函数来实现对视点的控制</li></ul><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、开始想直接利用OpenGL的glulookAt函数，但发现并不好用<br>2、之后参考他人资料寻思构造一个摄像机类，通过摄像机类达到控制视点，这部分通过参考LearnOpenGL上的摄像机类进行实现 </p><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><h3 id="实验效果图"><a href="#实验效果图" class="headerlink" title="实验效果图"></a>实验效果图</h3><p><img src="https://img-blog.csdnimg.cn/2020051220023985.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h3 id="程序控制键说明"><a href="#程序控制键说明" class="headerlink" title="程序控制键说明"></a>程序控制键说明</h3><ul><li>w,s,a,d分别控制视点的前进，后推，左移，右移</li><li>q，e控制视点进行左旋转，右旋转</li><li>方向键LEFT、RIGHT、UP、DOWN，视线方向转向左，视线方向转向右，视线方向转向上，视线方向转向下</li><li>Page_UP、Page_Down，视点位置升高，降低</li></ul><h2 id="实验思考"><a href="#实验思考" class="headerlink" title="实验思考"></a>实验思考</h2><h3 id="glulookAt"><a href="#glulookAt" class="headerlink" title="glulookAt()"></a>glulookAt()</h3><p>一般gluLookAt()用于从世界坐标系到眼坐标系的转换，但是由于OpenGL里面模型视图矩阵直接将本地坐标系转换为眼坐标系，所以gluLookAt()应该被用来设置模型视图矩阵，但是有一点得注意了：<br>gluLookAt()的调用应该在场景绘制初glLoadIdentity()函数调用之后，在所有的glTranslate<em>()、glRotate</em>()、glScale*()函数调用之前调用，且只调用一次<br>参考自以下资料<br><a href="https://bbs.csdn.net/topics/390124968" target="_blank" rel="noopener">https://bbs.csdn.net/topics/390124968</a><br><a href="https://blog.csdn.net/fyyyr/article/details/79298636" target="_blank" rel="noopener">https://blog.csdn.net/fyyyr/article/details/79298636</a></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><p><a href="https://blog.csdn.net/conan_4869lucky/article/details/72811009" target="_blank" rel="noopener">OpenGL初探：三维迷宫游戏（一）——场景漫游</a></p><blockquote><p>首先是是场景漫游：实现场景漫游有两种方式，一种是固定照相机的位置，对整个场景进行变换，例如当人物前进时，其实是通过将整个场景向后平移实现的，转向时，是通过反向旋转整个场景实现的；另一种方式是使照相机在场景中移动，通过gluLookAt()函数设定照相机的位置，可以任意指定照相机的位置和朝向。</p></blockquote><ul><li><a href="https://blog.csdn.net/qq_27161673/article/details/72860890" target="_blank" rel="noopener">OPENGL三维场景搭建、漫游、交互</a></li></ul><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><ul><li><a href="https://download.csdn.net/download/weixin_41234001/12412946" target="_blank" rel="noopener">CSDN下载</a></li><li><a href="">Github下载</a> 待完成</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+      <tag>MOOC-图形编程技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】机器人手臂的实现</title>
+    <link href="/%E3%80%90opengl%E3%80%91%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%89%8B%E8%87%82%E7%9A%84%E5%AE%9E%E7%8E%B0.html"/>
+    <url>/%E3%80%90opengl%E3%80%91%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%89%8B%E8%87%82%E7%9A%84%E5%AE%9E%E7%8E%B0.html</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+      <tag>MOOC-图形编程技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】面试题51. 数组中的逆序对</title>
+    <link href="/%E3%80%90leetcode%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9851-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9851-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>分治法：<br>采用的就是归并函数中的分治思想，该题与分治排序的不同点在于，在治的过程中进行逆序对的统计，逆序对的个数为<br><code>cnt += center - i + 1;</code><br>这也是在归并排序上要加的代码</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><span class="hljs-comment">思路：分治</span><span class="hljs-comment">通过分的方式，获得每个子区间，在合并每个子区间时计算每个子区间内部的逆序对个数</span><span class="hljs-comment">*/</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">reversePairs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<span class="hljs-keyword">if</span> (nums.size() &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//特判，size为0,1不可能出现逆序对</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">temps</span><span class="hljs-params">(nums.size())</span></span>;mergeSort(nums, temps, <span class="hljs-number">0</span>, nums.size() - <span class="hljs-number">1</span>);<span class="hljs-keyword">return</span> cnt;&#125;<span class="hljs-comment">//归并排序</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mergeSort</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; temps, <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span> </span>&#123;<span class="hljs-keyword">if</span> (left &lt; right) &#123;<span class="hljs-keyword">int</span> center = left + (right - left) / <span class="hljs-number">2</span>;mergeSort(nums, temps, left, center);<span class="hljs-comment">//左分</span>mergeSort(nums, temps, center + <span class="hljs-number">1</span>, right);<span class="hljs-comment">//右分</span>merge(nums, temps, left, center, right);<span class="hljs-comment">//治</span>&#125;&#125;<span class="hljs-comment">//合并</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; temp, <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> center, <span class="hljs-keyword">int</span> right)</span> </span>&#123;<span class="hljs-keyword">int</span> i = left, j = center + <span class="hljs-number">1</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = left; k &lt;= right; k++) &#123;<span class="hljs-keyword">if</span> (i &gt; center) &#123;<span class="hljs-comment">//左边的已经比较完，将右边的全部放到temp中</span>temp[k] = nums[j++];&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j &gt; right) &#123;<span class="hljs-comment">//右边的已经比较完，将左边的全部放到temp中</span>temp[k] = nums[i++];&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[i] &gt; nums[j]) &#123;<span class="hljs-comment">//左边大于右边，出现逆序对，</span>temp[k] = nums[j++];<span class="hljs-comment">//取右边数组值</span>cnt += center - i + <span class="hljs-number">1</span>;<span class="hljs-comment">//此处+1是因为center是等于right的,这里也是比归并排序多的一行代码</span>&#125;<span class="hljs-keyword">else</span><span class="hljs-comment">//左边小于等于右边</span>&#123;temp[k] = nums[i++];<span class="hljs-comment">//取左边数组值</span>&#125;&#125;<span class="hljs-comment">//将temp中的元素复制到nums中</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = left; k &lt;= right; k++) &#123;nums[k] = temp[k];&#125;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>分治</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】光照太阳系</title>
+    <link href="/%E3%80%90opengl%E3%80%91%E5%85%89%E7%85%A7%E5%A4%AA%E9%98%B3%E7%B3%BB.html"/>
+    <url>/%E3%80%90opengl%E3%80%91%E5%85%89%E7%85%A7%E5%A4%AA%E9%98%B3%E7%B3%BB.html</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+      <tag>MOOC-图形编程技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】太阳星系的实现</title>
+    <link href="/%E3%80%90opengl%E3%80%91%E5%A4%AA%E9%98%B3%E6%98%9F%E7%B3%BB%E7%9A%84%E5%AE%9E%E7%8E%B0.html"/>
+    <url>/%E3%80%90opengl%E3%80%91%E5%A4%AA%E9%98%B3%E6%98%9F%E7%B3%BB%E7%9A%84%E5%AE%9E%E7%8E%B0.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、功能"><a href="#一、功能" class="headerlink" title="一、功能"></a>一、功能</h2><h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><p>三个球体、一个表示太阳、一个表示地球、一个表示月亮；地球不停地绕太阳旋转，月亮绕地球旋转，期间它们三者都发生自转。</p><h3 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h3><p>地球有两个月亮，画上轨道线，使轨道倾斜，放缩效果</p><h3 id="自己完成的效果图"><a href="#自己完成的效果图" class="headerlink" title="自己完成的效果图"></a>自己完成的效果图<img src="https://img-blog.csdnimg.cn/20200322143615489.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></h3><h2 id="二、思路"><a href="#二、思路" class="headerlink" title="二、思路"></a>二、思路</h2><h3 id="基本功能的实现"><a href="#基本功能的实现" class="headerlink" title="基本功能的实现"></a>基本功能的实现</h3><p>首先搭好程序框架：<br>1、    设置显示模式<br>2、    初始化窗口<br>3、    创建窗口<br>4、    设置一系列回调函数<br>5、    启动主循环<br>框架设置完毕后，针对display()函数进行编写，关于display函数的编写，即是整个基本功能的绘制，本人刚开始编写的时候，对全局变换和局部变换理解不够透彻，因此我在编写过程中一直采用全局变换的思路，并没有采用的局部变换的思路。</p><h4 id="1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置"><a href="#1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置" class="headerlink" title="1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置"></a>1、创建三个球体，分别为太阳、地球和月亮，并移至对应位置</h4><p> <img src="https://img-blog.csdnimg.cn/20200322143807518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h4 id="2、使地球绕太阳转起来"><a href="#2、使地球绕太阳转起来" class="headerlink" title="2、使地球绕太阳转起来"></a>2、使地球绕太阳转起来</h4><p>我假设太阳为默认原点位置，地球将在xoz平面围绕太阳进行旋转，绕其旋转，起初，我思考地球位置的改变即为其x,z值的改变，对于一个圆，其x,z值采用极坐标的形式来表达，        </p><div class="hljs"><pre><code class="hljs cpp">   earthPosX=earthBound*<span class="hljs-built_in">cos</span>(curTheta*pi);<span class="hljs-comment">//求地球x</span>earthPosZ=earthBound*<span class="hljs-built_in">sin</span>(curTheta*pi);<span class="hljs-comment">//求地球z</span></code></pre></div><p>因此只要改变坐标，就能使求发生转动，于是通过编写定义定时器回调函数<code>void myTimerFunc(int value)</code>，在函数中不断增加theda的值，就可以使圆不断转动。</p><h4 id="3、使月亮绕地球转起来"><a href="#3、使月亮绕地球转起来" class="headerlink" title="3、使月亮绕地球转起来"></a>3、使月亮绕地球转起来</h4><p>月亮围绕地球转，由于我始终是从全局坐标的角度考虑了这个问题，<br>因此，月亮的坐标也要转换为全局坐标值，假设月球绕地球转动角度为far，则其x，z采用极坐标的形式来表达为</p><div class="hljs"><pre><code class="hljs cpp">monthPosX = earthPosX + monthBound* <span class="hljs-built_in">cos</span>(curFar * pi);<span class="hljs-comment">//求月球x</span>monthPosZ = earthPosZ + monthBound* <span class="hljs-built_in">sin</span>(curFar * pi);<span class="hljs-comment">//求月球y</span></code></pre></div><p>同样使其转动，在<code>void myTimerFunc(int value)</code>中，不断增加far的值即可，具体效果见SunEarthMonth.gif。而其中两个球体的自转，则设定一个自转角度curSpeed来控制，而其值的变化也在定时器回调函数中完成。<br><img src="https://img-blog.csdnimg.cn/20200322143920762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h3 id="扩展功能的实现"><a href="#扩展功能的实现" class="headerlink" title="扩展功能的实现"></a>扩展功能的实现</h3><h4 id="1、（扩展功能）实现地球上有两个月亮"><a href="#1、（扩展功能）实现地球上有两个月亮" class="headerlink" title="1、（扩展功能）实现地球上有两个月亮"></a>1、（扩展功能）实现地球上有两个月亮</h4><p>对于这个效果，很容易实现，此处简化，只设置月亮B和月亮A在同一平面内，并且两者速度相等，只需要保持轨道半径相等，位置不同即可，而如何做到这一点，仍然可以从圆出发，这里我做的是将另一个月亮和此月亮形成对称，因此使月亮B绕地球的角度比月亮A多180度即可，坐标值如下：</p><div class="hljs"><pre><code class="hljs cpp">month2PosX = earthPosX + monthBound * <span class="hljs-built_in">cos</span>(curFar * pi+pi);<span class="hljs-comment">//求月球2x</span>month2PosZ = earthPosZ + monthBound * <span class="hljs-built_in">sin</span>(curFar * pi+pi);<span class="hljs-comment">//求月球2z</span></code></pre></div><p>具体实现效果见下图<br><img src="https://img-blog.csdnimg.cn/2020032214435296.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h4 id="2、（扩展功能）画上轨道线"><a href="#2、（扩展功能）画上轨道线" class="headerlink" title="2、（扩展功能）画上轨道线"></a>2、（扩展功能）画上轨道线</h4><p>实现地球绕太阳的轨道线描绘的就是以太阳为中心，以地球到太阳的距离为半径画的圆，而在OpenGL中，绘画基本图元没有圆，因此我思考通过不断的画直线来逼近圆，因此使用GL_LINE_LOOP来绘制，线段我一共绘制了7200次。同理，月亮绕地球的轨道线，就是以地球为中心，以月亮到地球的距离为半径画的圆。效果图可见下图：</p><p><img src="https://img-blog.csdnimg.cn/20200322144340217.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h4 id="3、（扩展功能）让轨道倾斜"><a href="#3、（扩展功能）让轨道倾斜" class="headerlink" title="3、（扩展功能）让轨道倾斜"></a>3、（扩展功能）让轨道倾斜</h4><p>首先我实现的是地球绕太阳的轨道倾斜，要做的效果实际上就是使xoy平面发生旋转，此处我是使其绕z轴先进行旋转，后续步骤不变即可。需要注意的是此处轨道倾斜，相应的地球和月亮也要随着倾斜。<br>倾斜代码为：<br>glRotatef(earthOrbitAngle, 0.0f, 0.0f, 1.0f);//地球轨道倾斜earthOrbitAngle度,轨道沿着Z轴逆时针旋转<br>对于月亮绕地球的轨道倾斜，其效果就是在地球绕太阳的轨道平面上，再旋转即可，此处我假定月亮绕地球的轨道平面绕地球到月亮的轴线进行旋转。因此先将其变换到地球绕太阳的轨道平面上后，再进行旋转一定角度即可实现。效果图详见：<br> <img src="https://img-blog.csdnimg.cn/20200322144047223.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h4 id="4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能"><a href="#4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能" class="headerlink" title="4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能"></a>4、（扩展功能）实现按键控制轨道倾斜与整体图形放大缩小功能</h4><p>对于轨道倾斜，通过键盘控制函数改变其角度参数值（earthOrbitAngle、monthOrbitAngle）即可，对于放大缩小，通过控制G_fDistance值即可。效果图详见SunEarthMonth4.gif：</p><p><img src="https://img-blog.csdnimg.cn/20200322144102861.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="三、源代码"><a href="#三、源代码" class="headerlink" title="三、源代码"></a>三、源代码</h2><p><a href="https://download.csdn.net/download/weixin_41234001/12262604" target="_blank" rel="noopener">CSDN下载</a><br><a href="">Github下载</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+      <tag>MOOC-图形编程技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】409. 最长回文串</title>
+    <link href="/%E3%80%90leetcode%E3%80%91409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91409-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>若要形成最长的回文串，则回文串中只会出现1次单个字符，因此只需统计字符串中有多少个字符其数目为奇数，s.size()-n个为奇数个数的字符+1即为最长回文串<br>如果字符串没有出现奇数个数目的字符，则s.size()即为最长回文串</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">longestPalindrome</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> </span>&#123;<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">char</span>, <span class="hljs-keyword">int</span>&gt; sMap;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span> c:s)&#123;sMap[c]++;&#125;<span class="hljs-keyword">int</span> oddNum = <span class="hljs-number">0</span>;<span class="hljs-keyword">for</span> (pair&lt;<span class="hljs-keyword">char</span>,<span class="hljs-keyword">int</span>&gt; it:sMap)&#123;<span class="hljs-keyword">if</span> (it.second % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) oddNum++;&#125;<span class="hljs-keyword">if</span> (oddNum &gt; <span class="hljs-number">0</span>)  <span class="hljs-keyword">return</span> s.size() - oddNum + <span class="hljs-number">1</span>;<span class="hljs-comment">//s.size()-为奇数个的字符数目+1</span><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> s.size();<span class="hljs-comment">//无奇数</span>&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】142. 环形链表 II</title>
+    <link href="/%E3%80%90leetcode%E3%80%91142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-ii.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91142-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8-ii.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="hashmap法"><a href="#hashmap法" class="headerlink" title="hashmap法"></a>hashmap法</h4><p>思路简单，时间复杂度O(n),空间复杂度O(n)</p><h4 id="Floyd法"><a href="#Floyd法" class="headerlink" title="Floyd法"></a>Floyd法</h4><p>知道结论进行编程容易，但是自己推导出Floyd公式比较难，理解该方法，进行编程即可<br>时间复杂度O(n),空间复杂度O(1)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="hashmap法-1"><a href="#hashmap法-1" class="headerlink" title="hashmap法"></a>hashmap法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<span class="hljs-built_in">unordered_map</span>&lt;ListNode*, <span class="hljs-keyword">int</span>&gt; nodeMap;ListNode* cur = head;<span class="hljs-keyword">while</span> (cur)&#123;<span class="hljs-keyword">if</span> (nodeMap.find(cur) != nodeMap.end()) <span class="hljs-keyword">return</span> cur;nodeMap[cur]++;cur = cur-&gt;next;&#125;<span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;&#125;&#125;;</code></pre></div><h4 id="Floyd法-1"><a href="#Floyd法-1" class="headerlink" title="Floyd法"></a>Floyd法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">detectCycle</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<span class="hljs-comment">//特判</span><span class="hljs-comment">//排除空节点或单个节点不成环的情况</span><span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;ListNode* slow, * fast;slow = head;<span class="hljs-comment">//slow和fast要从head同时出发，要不然根据Floyd的原理进行指针移动会发生死循环</span>fast = head;<span class="hljs-keyword">while</span> (fast &amp;&amp; fast-&gt;next)&#123;slow = slow-&gt;next;fast = fast-&gt;next-&gt;next;<span class="hljs-keyword">if</span> (fast==slow)<span class="hljs-comment">//存在环</span>&#123;fast = head;<span class="hljs-comment">//fast重置为head，slow不变，然后fast和slow现在开始每次只走一步，相遇点就是环的入口</span><span class="hljs-keyword">while</span> (fast!=slow)&#123;fast = fast-&gt;next;slow = slow-&gt;next;&#125;<span class="hljs-keyword">return</span> fast;&#125;&#125;<span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+      <tag>Floyd</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】141.环形链表</title>
+    <link href="/%E3%80%90leetcode%E3%80%91141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="方法1-hash表"><a href="#方法1-hash表" class="headerlink" title="方法1 hash表"></a>方法1 hash表</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasCycle</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<span class="hljs-comment">//特判</span><span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<span class="hljs-built_in">unordered_map</span>&lt;ListNode*,<span class="hljs-keyword">int</span>&gt; <span class="hljs-built_in">list</span>;ListNode* cur = head;<span class="hljs-keyword">while</span> (cur)&#123;<span class="hljs-keyword">if</span> (<span class="hljs-built_in">list</span>.find(cur) != <span class="hljs-built_in">list</span>.end()) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<span class="hljs-built_in">list</span>[cur]++;cur = cur-&gt;next;&#125;<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;&#125;&#125;;</code></pre></div><h4 id="方法2-双指针"><a href="#方法2-双指针" class="headerlink" title="方法2 双指针"></a>方法2 双指针</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasCycle</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<span class="hljs-comment">//特判</span><span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;ListNode *slow = head;<span class="hljs-comment">//慢指针</span>ListNode* fast = head-&gt;next;<span class="hljs-comment">//快指针</span><span class="hljs-keyword">while</span> (slow!=fast)&#123;<span class="hljs-keyword">if</span> (fast == <span class="hljs-literal">nullptr</span> || fast-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<span class="hljs-comment">//fast已走为null或fast走一步已为null</span>slow = slow-&gt;next;fast = fast-&gt;next-&gt;next;&#125;<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+      <tag>双指针</tag>
+      
+      <tag>哈希表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】516. 最长回文子序列</title>
+    <link href="/%E3%80%90leetcode%E3%80%91516-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91516-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>其实就是求ｓ和ｓ的逆序的最长公共子序列的。转化成最长公共子序列问题就迎刃而解了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">longestPalindromeSubseq</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> </span>&#123;<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s2</span><span class="hljs-params">(s)</span></span>;<span class="hljs-comment">//s2反转</span>reverse(s2.begin(), s2.end());<span class="hljs-comment">//定义状态</span><span class="hljs-comment">//s的前i个字符和s2的前j个字符的LCS</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">dp</span><span class="hljs-params">(s.size() + <span class="hljs-number">1</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(s.size() + <span class="hljs-number">1</span>))</span></span>;<span class="hljs-comment">//初始化</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=s.size();i++)&#123;dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">0</span>;dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;&#125;<span class="hljs-comment">//状态转移</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=s.size();i++)&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=s.size();j++)&#123;<span class="hljs-keyword">if</span> (s[i<span class="hljs-number">-1</span>] == s2[j<span class="hljs-number">-1</span>]) &#123;dp[i][j] = dp[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;&#125;<span class="hljs-keyword">else</span>&#123;dp[i][j] = max(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>]);&#125;&#125;&#125;<span class="hljs-keyword">return</span> dp[s.size()][s.size()];&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】647. 回文子串</title>
+    <link href="/%E3%80%90leetcode%E3%80%91647-%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91647-%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路同最长回文子串，只不过此题再开辟一个变量记录回文子串出现的次数即可</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">countSubstrings</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> </span>&#123;<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt;&gt; <span class="hljs-title">dp</span><span class="hljs-params">(s.size(), <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt;(s.size()))</span></span>;<span class="hljs-comment">//初始化</span><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.size();i++)&#123;dp[i][i] = <span class="hljs-number">1</span>;ans++;<span class="hljs-keyword">if</span> (s[i] == s[i + <span class="hljs-number">1</span>]) &#123;dp[i][i + <span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;ans++;&#125;&#125;<span class="hljs-comment">//状态转移</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> len=<span class="hljs-number">3</span>;len&lt;=s.size();len++)&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i+len<span class="hljs-number">-1</span>&lt;s.size();i++)&#123;<span class="hljs-keyword">int</span> j = i + len - <span class="hljs-number">1</span>;<span class="hljs-keyword">if</span> (s[i]==s[j]&amp;&amp;dp[i+<span class="hljs-number">1</span>][j<span class="hljs-number">-1</span>])&#123;ans++;dp[i][j] = <span class="hljs-number">1</span>;&#125;<span class="hljs-keyword">else</span>&#123;dp[i][j] = <span class="hljs-number">0</span>;&#125;&#125;&#125;<span class="hljs-keyword">return</span> ans;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】绘制球体</title>
+    <link href="/%E3%80%90opengl%E3%80%91%E7%BB%98%E5%88%B6%E7%90%83%E4%BD%93.html"/>
+    <url>/%E3%80%90opengl%E3%80%91%E7%BB%98%E5%88%B6%E7%90%83%E4%BD%93.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="1-初始化："><a href="#1-初始化：" class="headerlink" title="1-初始化："></a>1-初始化：</h4><p> GLFW窗口，GLAD</p><h4 id="2-计算球体顶点："><a href="#2-计算球体顶点：" class="headerlink" title="2-计算球体顶点："></a>2-计算球体顶点：</h4><p>通过数学方法计算球体的每个顶点坐标</p><h4 id="3-数据处理："><a href="#3-数据处理：" class="headerlink" title="3-数据处理："></a>3-数据处理：</h4><p> 通过球体顶点坐标构造三角形网络，生成并绑定VAO&amp;VBO&amp;EBO（准备再GPU中进行处理)，设置顶点属性指针（本质上就是告诉OpenGL如何处理数据）</p><h4 id="4-着色器："><a href="#4-着色器：" class="headerlink" title="4-着色器："></a>4-着色器：</h4><p>给出顶点和片段着色器，然后链接为着色器程序，渲染时使用着色器程序</p><h4 id="5-渲染："><a href="#5-渲染：" class="headerlink" title="5-渲染："></a>5-渲染：</h4><p>使用画线模式画圆，开启面剔除，剔除背面，使用线框模式画球,清空缓冲，交换缓冲区检查触发事件</p><h4 id="6-结束："><a href="#6-结束：" class="headerlink" title="6-结束："></a>6-结束：</h4><p>释放资源</p><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><h4 id="填充模式和线框模式效果对比"><a href="#填充模式和线框模式效果对比" class="headerlink" title="填充模式和线框模式效果对比"></a>填充模式和线框模式效果对比</h4><div align=center><img src="https://img-blog.csdnimg.cn/20200306183123169.png" srcset="/img/loading.gif" width=400 height=400><img src="https://img-blog.csdnimg.cn/20200306183442280.png" srcset="/img/loading.gif" width=400 height=400></div><h4 id="开启面剔除和线框模式效果对比"><a href="#开启面剔除和线框模式效果对比" class="headerlink" title="开启面剔除和线框模式效果对比"></a>开启面剔除和线框模式效果对比</h4><p>只需要展示一个面，否则会有重合，此处剔除背面为例</p><div align=center><img src="https://img-blog.csdnimg.cn/20200306183708962.png" srcset="/img/loading.gif" width=400 height=400><img src="https://img-blog.csdnimg.cn/20200306183442280.png" srcset="/img/loading.gif" width=400 height=400></div><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>此处只给出main.cpp,具体工程参考<a href="">本人的github</a></p><h5 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h5><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><span class="hljs-comment">步骤：</span><span class="hljs-comment">1-初始化： GLFW窗口，GLAD</span><span class="hljs-comment">2-计算球体顶点：通过数学方法计算球体的每个顶点坐标</span><span class="hljs-comment">3-数据处理： 通过球体顶点坐标构造三角形网络，生成并绑定VAO&amp;VBO&amp;EBO（准备再GPU中进行处理)，设置顶点属性指针（本质上就是告诉OpenGL如何处理数据）</span><span class="hljs-comment">4-着色器：给出顶点和片段着色器，然后链接为着色器程序，渲染时使用着色器程序</span><span class="hljs-comment">5-渲染：使用画线模式画圆，开启面剔除，剔除背面，使用线框模式画球,清空缓冲，交换缓冲区检查触发事件</span><span class="hljs-comment">6-结束：释放资源</span><span class="hljs-comment">*/</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;glad/glad.h&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;GLFW/glfw3.h&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"Shader.h"</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;math.h&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> screen_width = <span class="hljs-number">780</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> screen_height = <span class="hljs-number">780</span>;<span class="hljs-keyword">const</span> GLfloat PI= <span class="hljs-number">3.14159265358979323846f</span>;<span class="hljs-comment">//将球横纵划分成50*50的网格</span><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Y_SEGMENTS = <span class="hljs-number">50</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> X_SEGMENTS = <span class="hljs-number">50</span>;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;<span class="hljs-comment">/*1-初始化*/</span><span class="hljs-comment">//初始化GLFW</span>glfwInit();<span class="hljs-comment">//初始化GLFW</span>glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="hljs-number">3</span>);<span class="hljs-comment">//opengl版本号3.3</span>glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="hljs-number">3</span>);<span class="hljs-comment">// 次版本号3</span>glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);<span class="hljs-comment">//使用核心模式(无序向后兼容性)</span>glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);<span class="hljs-comment">//如果使用的是Mac OS X系统，需加上这行</span>glfwWindowHint(GLFW_RESIZABLE, <span class="hljs-literal">false</span>);<span class="hljs-comment">//不可改变窗口大小</span><span class="hljs-comment">//创建窗口（宽、高、窗口名称）</span><span class="hljs-keyword">auto</span> window = glfwCreateWindow(screen_width, screen_height,<span class="hljs-string">"Sphere"</span>,<span class="hljs-literal">nullptr</span>,<span class="hljs-literal">nullptr</span>);<span class="hljs-comment">//检测窗口是否创建成功</span><span class="hljs-keyword">if</span> (window==<span class="hljs-literal">nullptr</span>)&#123;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Failed to Create OpenGL Context"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;glfwTerminate();<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;&#125;glfwMakeContextCurrent(window);<span class="hljs-comment">//将窗口的上下文设置为当前进程的主上下文</span><span class="hljs-comment">//初始化GLAD，加载OpenGL指针地址的函数</span><span class="hljs-keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))&#123;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"Failed to initialize GLAD"</span>&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;&#125;<span class="hljs-comment">//指定当前视口尺寸（前两个参数为左下角位置，后两个参数是渲染窗口宽、高）</span>glViewport(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, screen_width, screen_height);<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt; sphereVertices;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; sphereIndices;<span class="hljs-comment">/*2-计算球体顶点*/</span><span class="hljs-comment">//生成球的顶点</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y=<span class="hljs-number">0</span>;y&lt;=Y_SEGMENTS;y++)&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x=<span class="hljs-number">0</span>;x&lt;=X_SEGMENTS;x++)&#123;<span class="hljs-keyword">float</span> xSegment = (<span class="hljs-keyword">float</span>)x / (<span class="hljs-keyword">float</span>)X_SEGMENTS;<span class="hljs-keyword">float</span> ySegment = (<span class="hljs-keyword">float</span>)y / (<span class="hljs-keyword">float</span>)Y_SEGMENTS;<span class="hljs-keyword">float</span> xPos = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cos</span>(xSegment * <span class="hljs-number">2.0f</span> * PI) * <span class="hljs-built_in">std</span>::<span class="hljs-built_in">sin</span>(ySegment * PI);<span class="hljs-keyword">float</span> yPos = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cos</span>(ySegment * PI);<span class="hljs-keyword">float</span> zPos = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">sin</span>(xSegment * <span class="hljs-number">2.0f</span> * PI) * <span class="hljs-built_in">std</span>::<span class="hljs-built_in">sin</span>(ySegment * PI);sphereVertices.push_back(xPos);sphereVertices.push_back(yPos);sphereVertices.push_back(zPos);&#125;&#125;<span class="hljs-comment">//生成球的Indices</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;Y_SEGMENTS;i++)&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;X_SEGMENTS;j++)&#123;sphereIndices.push_back(i * (X_SEGMENTS + <span class="hljs-number">1</span>) + j);sphereIndices.push_back((i + <span class="hljs-number">1</span>) * (X_SEGMENTS + <span class="hljs-number">1</span>) + j);sphereIndices.push_back((i + <span class="hljs-number">1</span>) * (X_SEGMENTS + <span class="hljs-number">1</span>) + j+<span class="hljs-number">1</span>);sphereIndices.push_back(i* (X_SEGMENTS + <span class="hljs-number">1</span>) + j);sphereIndices.push_back((i + <span class="hljs-number">1</span>) * (X_SEGMENTS + <span class="hljs-number">1</span>) + j + <span class="hljs-number">1</span>);sphereIndices.push_back(i * (X_SEGMENTS + <span class="hljs-number">1</span>) + j + <span class="hljs-number">1</span>);&#125;&#125;<span class="hljs-comment">/*3-数据处理*/</span><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> VBO, VAO;glGenVertexArrays(<span class="hljs-number">1</span>, &amp;VAO);glGenBuffers(<span class="hljs-number">1</span>, &amp;VBO);<span class="hljs-comment">//生成并绑定球体的VAO和VBO</span>glBindVertexArray(VAO);glBindBuffer(GL_ARRAY_BUFFER, VBO);<span class="hljs-comment">//将顶点数据绑定至当前默认的缓冲中</span>glBufferData(GL_ARRAY_BUFFER, sphereVertices.size() * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>), &amp;sphereVertices[<span class="hljs-number">0</span>], GL_STATIC_DRAW);GLuint element_buffer_object;<span class="hljs-comment">//EBO</span>glGenBuffers(<span class="hljs-number">1</span>, &amp;element_buffer_object);glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer_object);glBufferData(GL_ELEMENT_ARRAY_BUFFER, sphereIndices.size() * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>), &amp;sphereIndices[<span class="hljs-number">0</span>], GL_STATIC_DRAW);<span class="hljs-comment">//设置顶点属性指针</span>glVertexAttribPointer(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, GL_FLOAT, GL_FALSE, <span class="hljs-number">3</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>), (<span class="hljs-keyword">void</span>*)<span class="hljs-number">0</span>);glEnableVertexAttribArray(<span class="hljs-number">0</span>);<span class="hljs-comment">//解绑VAO和VBO</span>glBindBuffer(GL_ARRAY_BUFFER, <span class="hljs-number">0</span>);glBindVertexArray(<span class="hljs-number">0</span>);<span class="hljs-comment">/*4-着色器*/</span><span class="hljs-function">Shader <span class="hljs-title">shader</span><span class="hljs-params">(<span class="hljs-string">"task3.vs"</span>, <span class="hljs-string">"task3.fs"</span>)</span></span>;<span class="hljs-comment">/*5-渲染*/</span><span class="hljs-comment">//渲染循环</span><span class="hljs-keyword">while</span> (!glfwWindowShouldClose(window))&#123;<span class="hljs-comment">//清空颜色缓冲</span>glClearColor(<span class="hljs-number">0.0f</span>, <span class="hljs-number">0.34f</span>, <span class="hljs-number">0.57f</span>, <span class="hljs-number">1.0f</span>);glClear(GL_COLOR_BUFFER_BIT);shader.Use();<span class="hljs-comment">//绘制球</span><span class="hljs-comment">//开启面剔除(只需要展示一个面，否则会有重合)</span>glEnable(GL_CULL_FACE);glCullFace(GL_BACK);glBindVertexArray(VAO);<span class="hljs-comment">//使用线框模式绘制</span>glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);glDrawElements(GL_TRIANGLES, X_SEGMENTS * Y_SEGMENTS * <span class="hljs-number">6</span>, GL_UNSIGNED_INT, <span class="hljs-number">0</span>);<span class="hljs-comment">//点阵模式绘制</span><span class="hljs-comment">//glPointSize(5);</span><span class="hljs-comment">//glDrawElements(GL_POINTS, X_SEGMENTS * Y_SEGMENTS * 6, GL_UNSIGNED_INT, 0);</span><span class="hljs-comment">//交换缓冲并且检查是否有触发事件(比如键盘输入、鼠标移动)</span>glfwSwapBuffers(window);glfwPollEvents();&#125;<span class="hljs-comment">/*6-结束*/</span><span class="hljs-comment">//删除VAO和VBO，EBO</span>glDeleteVertexArrays(<span class="hljs-number">1</span>, &amp;VAO);glDeleteBuffers(<span class="hljs-number">1</span>, &amp;VBO);glDeleteBuffers(<span class="hljs-number">1</span>, &amp;element_buffer_object);<span class="hljs-comment">//清理所有的资源并正确退出程序</span>glfwTerminate();<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+      <tag>MOOC-计算机图形学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>

@@ -341,9 +341,9 @@ public:
             
               <a href="/tags/LeetCode/">LeetCode</a>
             
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
-            
               <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+            
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
             
               <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
             
@@ -470,20 +470,19 @@ public:
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/%E3%80%90opengl%E3%80%91%E7%BB%98%E5%88%B6%E7%90%83%E4%BD%93.html">【OpenGL】绘制球体</a>
+        <a href="/%E3%80%90leetcode%E3%80%911160-%E6%8B%BC%E5%86%99%E5%8D%95%E8%AF%8D.html">【LeetCode】1160. 拼写单词</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/%E3%80%90opengl%E3%80%91%E7%BB%98%E5%88%B6%E7%90%83%E4%BD%93.html">
+        <a href="/%E3%80%90leetcode%E3%80%911160-%E6%8B%BC%E5%86%99%E5%8D%95%E8%AF%8D.html">
           
           
             
           
-          步骤1-初始化： GLFW窗口，GLAD
-2-计算球体顶点：通过数学方法计算球体的每个顶点坐标
-3-数据处理： 通过球体顶点坐标构造三角形网络，生成并绑定VAO&amp;VBO&amp;EBO（准备再GPU中进行处理)，设置顶点属性指针（本质上就是告诉OpenGL如何处理数据）
-4-着色器：给出顶点和片段着色器，然后链接为着色器程序，渲染时使用着色器程序
-5-渲染：使用画线模式画圆，开启面剔除，剔
+          思路 哈希表计数对于一个单词word，只要其中的每个字母数量都不大于chars中对应的字母的数量，那么就可以用chars中的字母拼写出word。所以我们只需要用一个哈希表存储chars中每个字母的数量，再用一个哈希表存储word中每个字母的数量，最后将两个哈希表的键值逐一进行比较即可。
+代码class Solution &#123;
+public:
+	int countCharacters(vec
         </a>
       </p>
 
@@ -491,8 +490,8 @@ public:
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-06 18:45" pubdate>
-              2020-03-06
+            <time datetime="2020-03-17 10:30" pubdate>
+              2020-03-17
             </time>
           </div>
         
@@ -500,7 +499,7 @@ public:
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">【精·术】计算机图形学</a>
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
             
           </div>
         
@@ -508,9 +507,225 @@ public:
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/OpenGL/">OpenGL</a>
+              <a href="/tags/LeetCode/">LeetCode</a>
             
-              <a href="/tags/MOOC-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">MOOC-计算机图形学</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90leetcode%E3%80%915-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html">【LeetCode】5. 最长回文子串</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90leetcode%E3%80%915-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2.html">
+          
+          
+            
+          
+          思路1、定义数组元素的含义/定义状态dp[i][j]表示S[i]至s[j]所表示的子串是否是回文子串，是则为1，不是为0.
+2、找出数组间的关系式dp[i][j]=&#123;
+        dp[i+1][j-1],S[i]==S[j]
+        0,S[i]!=S[j]
+&#125;
+3、找出初始值dp[i][i]=1,dp[i][i+1]=(S[i]==S[i+1])?1:0
+代码c
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-15 15:49" pubdate>
+              2020-03-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/LeetCode/">LeetCode</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9157-%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97.html">【剑指offer】57. 和为s的两个数字</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9157-%E5%92%8C%E4%B8%BAs%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97.html">
+          
+          
+            
+          
+          思路刚开始自己的想法，对数组进行遍历，取第一个数时，通过二分法来找target-nums[i]，但发现最终这样的代码超时，时间复杂度O(nlogn)
+改进的想法使用双指针法，左指针指向最小元素，右指针指向最大元素，比较两个指针所指元素的和与target的大小，如果相等，则说明找到，如果sum&gt;target，则左指针++，反之，右指针++
+代码正确解法class Solution &#123;
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-15 00:14" pubdate>
+              2020-03-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9117-16-%E6%8C%89%E6%91%A9%E5%B8%88.html">【程序员面试金典】17.16.按摩师</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9117-16-%E6%8C%89%E6%91%A9%E5%B8%88.html">
+          
+          
+            
+          
+          解题思路一、定义数组元素的含义dp[i]:第i次预约时，按摩师总预约时间长
+二、找出关系数组元素间的关系式第i次时，总预约时长，要么是从第i-2次接受预约后，本次也接受预约，要么本次不接受预约dp[i] = max(dp[i - 2] + nums[i-1], dp[i - 1]);
+三、找出初始值由题目可知，第1次接受预约时，总预约时长为dp[1]=nums[0]
+代码class Solutio
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-14 21:42" pubdate>
+              2020-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8/">程序员面试金典</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9116-17-%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97.html">【程序员面试金典】16.17.连续数列</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9116-17-%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97.html">
+          
+          
+            
+          
+          class Solution &#123;
+public:
+	int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;
+		if (nums.size() == 0) return 0;
+		vector&lt;int&gt; dp(nums.size());
+		dp[0] = nums[0];
+		int sum = dp[0];
+		for (i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-14 18:50" pubdate>
+              2020-03-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8/">程序员面试金典</a>
             
           </div>
         
@@ -522,7 +737,7 @@ public:
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

@@ -181,7 +181,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">10 posts in total.</p>
+  <p class="h4">12 posts in total.</p>
   <hr>
   
     
@@ -248,6 +248,18 @@
     </a>
   
 </div>
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/page/2/">2</a><a class="extend next" rel="next" href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 

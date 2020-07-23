@@ -231,9 +231,9 @@
             
               <a href="/tags/LeetCode/">LeetCode</a>
             
-              <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
-            
               <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            
+              <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
             
           </div>
         
@@ -406,11 +406,345 @@ public:
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9147-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC.html">【剑指offer】47.礼物的最大价值</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9147-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC.html">
+          
+          
+            
+          
+          解题思路状态转移
+dp[i][j] &#x3D; max(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+初始值
+dp[0][0] &#x3D; grid[0][0];
+dp[i][0] &#x3D; grid[i][0] + dp[i - 1][0];
+dp[0][j] &#x3D; dp[0][j - 1] + grid[0][j];
+
+代码class So
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-28 01:10" pubdate>
+              2020-02-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9149-%E4%B8%91%E6%95%B0.html">【剑指offer】49.丑数</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9149-%E4%B8%91%E6%95%B0.html">
+          
+          
+            
+          
+          解题思路题目做了很久，看了很多解析都很迷惑，看到一位同学关于此题的评论，感觉很有道理，解释也很清晰，特此和大家分享，我只是个搬运工，大家多感谢原作者。sunrise。同学的评论以下均节选自该同学的评论
+
+丑数的排列肯定是1,2,3,4,5,6,8,10…. 然后有一个特点是，任意一个丑数都是由小于它的某一个丑数2，3或者5得到的，那么如何得到所有丑数呢？ 现在假设有3个数组，分别是： A：{12，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-28 00:25" pubdate>
+              2020-02-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%A4%9A%E6%8C%87%E9%92%88/">多指针</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9112-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.html">【剑指offer】12. 矩阵中的路径</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9112-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84.html">
+          
+          
+            
+          
+          解题思路回溯法可以看成蛮力法的升级版，它从解决问题每一步的所有可能选项里系统地选择出一个可行的解决方案。回溯法非常适合由多个步骤组成的问题，并且每个步骤都有多个选项。当我们在某一步选择了其中一个选项时，就进入下一步，然后又面临新的选项。我们就这样重复选择，直至到达最终的状态。举例如下
+
+代码class Solution &#123;
+public:
+	/*
+		x[4]、y[4]和dfs中for循
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-27 20:39" pubdate>
+              2020-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%9B%9E%E6%BA%AF/">回溯</a>
+            
+              <a href="/tags/BFS/">BFS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9148-%E6%9C%80%E9%95%BF%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html">【剑指offer】48.最长不含重复字符的子字符串</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9148-%E6%9C%80%E9%95%BF%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+          
+          
+            
+          
+          解题思路利用unordered_map作滑动窗口算法：1.初始化头尾指针分别为head=0,tail=02.tail指针右移，并将tail所指元素加入到窗口中，判断tail当前指向的元素在滑动窗口中是否出现，    - 如果出现，则将滑动窗口当前head所指元素数量-1，并移动head，直到该窗口中不包含该元素.    - 如果未出现，则更新res，并进行下一轮循环，直到tail=s.size()
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-27 16:45" pubdate>
+              2020-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9150-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6.html">【剑指offer】50.第一个只出现一次的字符</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9150-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AD%97%E7%AC%A6.html">
+          
+          
+            
+          
+          解题思路先统计出每个字符的出现次数再按照s中字符的顺序进行遍历
+代码class Solution &#123;
+public:
+	char firstUniqChar(string s) &#123;
+		char res=' ';
+		map&lt;char, int&gt; hashMap;
+		for (auto it=s.begin();it!=s.end();it++)
+		&#123;
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-27 15:22" pubdate>
+              2020-02-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+            
+              <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9117-%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E6%95%B0.html">【剑指offer】17. 打印从1到最大的n位数</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9117-%E6%89%93%E5%8D%B0%E4%BB%8E1%E5%88%B0%E6%9C%80%E5%A4%A7%E7%9A%84n%E4%BD%8D%E6%95%B0.html">
+          
+          
+            
+          
+          2020.7.6解题复习了一下全排列的写法
+class Solution &#123;
+public:
+    vector&lt;int&gt; ans;
+    vector&lt;int&gt; printNumbers(int n) &#123;
+        if (n &lt;= 0) return ans;
+        string number(n, '0');
+      
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-26 18:31" pubdate>
+              2020-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
+            
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/">大数问题</a>
+            
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88/">深度优先</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

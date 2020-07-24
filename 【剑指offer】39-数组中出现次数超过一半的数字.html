@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【剑指offer】39.数组中出现次数超过一半的数字</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：19 minutes ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="2020-7-15"><a href="#2020-7-15" class="headerlink" title="2020.7.15"></a>2020.7.15</h3><p>增加了新的方法，使用快排中的Partion函数实现，Partition函数每次会返回排在第j大的数及其位置，在leetcode上的前44个case可以跑通，但是不知道为什么在leetcode上的最后一个case总是超时，由于该方法会改变原始数组的顺序，因此如果不能改变顺序的这种方法不可行，还是应该采用摩尔投票法</p>
 <div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
@@ -601,6 +595,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

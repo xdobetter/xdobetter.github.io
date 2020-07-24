@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【程序员面试金典】17.16.按摩师</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="一、定义数组元素的含义"><a href="#一、定义数组元素的含义" class="headerlink" title="一、定义数组元素的含义"></a>一、定义数组元素的含义</h4><p><code>dp[i]</code>:第i次预约时，按摩师总预约时间长</p>
 <h4 id="二、找出关系数组元素间的关系式"><a href="#二、找出关系数组元素间的关系式" class="headerlink" title="二、找出关系数组元素间的关系式"></a>二、找出关系数组元素间的关系式</h4><p>第i次时，总预约时长，要么是从第i-2次接受预约后，本次也接受预约，要么本次不接受预约<br><code>dp[i] = max(dp[i - 2] + nums[i-1], dp[i - 1]);</code></p>
@@ -548,6 +542,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

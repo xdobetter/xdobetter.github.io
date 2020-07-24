@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】322. 零钱兑换</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>dp[n]:当前的目标金额是n，至少需要dp[n]个金币凑出该金额<br>初始值，dp[0]=0,目标金额为0，需要0个金币<br>状态转移，dp[money] = min(dp[money], dp[money - coin] + 1);<br>当前需要金币个数，等于dp[money-coin]+1个与dp[money]的小者</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//动态规划-迭代</span>
@@ -555,6 +549,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

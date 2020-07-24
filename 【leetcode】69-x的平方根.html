@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】69. x的平方根</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>题目要求的是x的平方根，且只保留整数的部分，小数部分都被舍去<br>以x=8为例，题目是 <strong>求最后1个小于2.828的正整数</strong><br>这属于“寻找有序序列中第一个满足某条件的元素的位置”中的一类题目（所要求的的正整数就是位置），如果想要寻找最后一个满足“条件C”的元素的位置，则可以先求第一个满足“条件!C”的元素的位置，然后将该位置减1即可。<br>因此题目就变为了 <strong>求第一个大于2.828的正整数</strong> ，套用“求序列中第一个大于x的元素的位置”的二分查找模板即可</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
@@ -552,6 +546,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

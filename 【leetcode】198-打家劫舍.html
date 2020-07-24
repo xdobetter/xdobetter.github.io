@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】198. 打家劫舍</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：a day ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>动态规划<br>dp[i]：第i个房间可盗窃的最大值<br>由于不可以在相邻的房屋闯入,所以在当前房屋i可盗窃的最大值，要么就是i-1房屋可盗窃的最大值，要么就是<br>i-2房屋可盗窃的最大值加上当前房屋的值，二者之前取最大值<br>dp[i] = max(dp[i - 1], nums[i-1] + dp[i - 2]); 其中nums[i-1]为当前房屋的值</p>
 <p>使用循环的方式自底向上实现该思想<br>时间复杂度O(n)<br>空间复杂度O(n)</p>
@@ -550,6 +544,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

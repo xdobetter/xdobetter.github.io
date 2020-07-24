@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【OpenGL】绘制三角形</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：a day ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><h5 id="1-初始化："><a href="#1-初始化：" class="headerlink" title="1-初始化："></a>1-初始化：</h5><p>初始化GLFW，创建窗口，初始化GLAD，创建视口</p>
 <h5 id="2-数据处理："><a href="#2-数据处理：" class="headerlink" title="2-数据处理："></a>2-数据处理：</h5><p>给定顶点数据，生成并绑定VAO&amp;VBO（准备再GPU中进行处理），设置顶点属性指针（本质上就是告诉OpenGL如何处理数据）。</p>
@@ -696,6 +690,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

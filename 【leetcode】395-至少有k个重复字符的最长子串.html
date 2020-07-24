@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】395. 至少有K个重复字符的最长子串</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>分治思想<br>先遍历一遍统计字符串S中每个字母出现的次数，然后再遍历一遍找到出现次数小于k的一个字母对应的位置(partition)，包含S[mid]的子串显然不可能符合题目要求，所以原问题求S[l,r]字符串对应的答案等价于求S[l,partition-1]和S[partition+1,r]；<br>此外，可以对一些情况进行优化，例如，当l和r所指字符已经不符合题目要求，可以跳过这些字符，以减少计算量。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="未改进代码"><a href="#未改进代码" class="headerlink" title="未改进代码"></a>未改进代码</h4><p>超时</p>
@@ -596,6 +590,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

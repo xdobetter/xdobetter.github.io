@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】167. 两数之和 II - 输入有序数组</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>自己开始的思路是，对另一个数，在已有的数组中进行二分查找，而不是简单的遍历，自己觉得复杂度挺小的O(nlogn)，但是一直超时，同时自己的代码考虑了一种情况[2,7,7,10,11]，target=9，如果是官方题解应该是返回值时{1,3}；而我觉得正确的情况是[1,2]（我写的代码可以获得该结果），因此从官方题解可以看出没有这种情况出现。代码见后<br><img src="https://img-blog.csdnimg.cn/20200304191328292.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <p>之后参考自<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/solution/liang-shu-zhi-he-ii-shu-ru-you-xu-shu-zu-by-leetco/" target="_blank" rel="noopener">LeetCode官方提解</a><br>使用两个指针，初始分别位于第一个元素和最后一个元素位置，比较这两个元素之和与目标值的大小。<br>如果和等于目标值，我们发现了这个唯一解。<br>如果比目标值小，我们将较小元素指针增加一。<br>如果比目标值大，将较大指针减小一。移动指针后重复上述比较直到找到答案。<br>时间复杂度O(n)，空间复杂度O(1)</p>
@@ -591,6 +585,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

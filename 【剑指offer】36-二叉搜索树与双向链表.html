@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【剑指offer】36. 二叉搜索树与双向链表</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算法流程：<br><code>Node* treeToDoublyList(Node* root)</code><br>1.特例处理：若结点root为空，直接返回<br>2.转化为排序双向链表：调用<code>inorder(Node* root)</code><br>3.构建循环链表：head和pre双向结点引用<br>4.返回头结点</p>
 <p><code>void inorder(Node* root)</code><br>中序遍历的改写，在访问根节点时，同时更新pre，head的值，使其能够双向连接</p>
@@ -558,6 +552,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

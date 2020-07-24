@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【剑指offer】46. 把数字翻译成字符串</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h5 id="第一步：定义数组元素的含义"><a href="#第一步：定义数组元素的含义" class="headerlink" title="第一步：定义数组元素的含义"></a>第一步：定义数组元素的含义</h5><p>题目要求的是一个数字有多少种不同的翻译方法，因此设<code>dp[i]</code>代表第i个结尾的数字的翻译方案数量</p>
 <h5 id="第二步：找出关系数组元素间的关系式"><a href="#第二步：找出关系数组元素间的关系式" class="headerlink" title="第二步：找出关系数组元素间的关系式"></a>第二步：找出关系数组元素间的关系式</h5><p>若$x_{i}$和$x_{i-1}$组成的数字可以被翻译，<br>则<code>dp[i]=dp[i-1]+dp[i-2]</code>,$x_{i-1}x_{i}\epsilon [10,25]$;<br>否则<code>dp[i]=dp[i-1]</code>,$x_{i-1}x_{i}\epsilon [1,10)\cup\left ( 25,99 \right ]$</p>
@@ -571,6 +565,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

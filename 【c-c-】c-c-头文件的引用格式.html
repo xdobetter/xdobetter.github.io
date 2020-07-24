@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【C/C++】C/C++头文件的引用格式</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h4 id="include-lt-gt"><a href="#include-lt-gt" class="headerlink" title="#include&lt;&gt;"></a>#include&lt;&gt;</h4><p>1.在编译器设置的include路径内搜索；<br>2.如果是在命令行中编译，则在系统的INCLUDE环境变量内搜索。</p>
 <h4 id="include””"><a href="#include””" class="headerlink" title="#include””"></a>#include””</h4><p>1.在包含当前include指令的文件所在的文件夹内搜索；<br>2.如果上一步找不到，则在之前已经使用include指令打开过的文件所在的文件夹内搜索，如果已经有多个被include的文件，则按照它们被打开的相反顺序去搜索；<br>3.如果上一步找不到，则在编译器设置的include路径内搜索；<br>4.如果上一步找不到，则在系统的include环境变量内搜索。</p>
@@ -532,6 +526,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

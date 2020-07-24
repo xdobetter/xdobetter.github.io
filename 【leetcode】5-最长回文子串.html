@@ -235,12 +235,6 @@
             <!-- SEO header -->
             <h1 style="display: none">【LeetCode】5. 最长回文子串</h1>
             
-              <p class="note note-info">
-                
-                  本文最后更新于：4 days ago
-                
-              </p>
-            
             <div class="markdown-body" id="post-body">
               <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="1、定义数组元素的含义-定义状态"><a href="#1、定义数组元素的含义-定义状态" class="headerlink" title="1、定义数组元素的含义/定义状态"></a>1、定义数组元素的含义/定义状态</h4><p><code>dp[i][j]</code>表示<code>S[i]</code>至<code>s[j]</code>所表示的子串是否是回文子串，是则为1，不是为0.</p>
 <h4 id="2、找出数组间的关系式"><a href="#2、找出数组间的关系式" class="headerlink" title="2、找出数组间的关系式"></a>2、找出数组间的关系式</h4><div class="hljs"><pre><code class="hljs cpp">dp[i][j]=&#123;
@@ -579,6 +573,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
 
 
 

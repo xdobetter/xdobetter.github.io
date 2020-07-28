@@ -405,6 +405,226 @@ public:
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9138-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html">【剑指offer】38.字符串的排列</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9138-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html">
+          
+          
+            
+          
+          解题思路第一步求所有可能出现在第一个位置的字符，即把第一个字符和后面的所有字符交换。第二步固定第一个字符，求后面所有字符的排列。这时候仍然把后面的所有字符分成两部分：后面字符的第一个字符，以及这个字符之后的所有字符。然后把第一个字符逐一和它后面的字符交换。举例如下以字符串”abc”为例对于重复结果的处理，我采用set进行解决
+代码class Solution &#123;
+public:
+
+	ve
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-25 15:51" pubdate>
+              2020-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
+            
+              <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/">全排列</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9111-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html">【剑指offer】11.旋转数组的最小数字</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9111-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html">
+          
+          
+            
+          
+          7.1号更新
+思路二分查找
+class Solution &#123;
+public:
+    int minArray(vector&lt;int&gt;&amp; numbers) &#123;
+        int index1 = 0;//左指针
+        int index2 = numbers.size() - 1;//右指针
+        int midIndex = in
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-24 22:15" pubdate>
+              2020-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9116-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html">【剑指offer】16.数值的整数次方</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9116-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html">
+          
+          
+            
+          
+          7.3号更新
+解题思路本题的细节很多1、要对无效输入进行判断2、对指数的不同范围分别进行计算3、计算Pow函数的优化
+平常的Pow函数会这么计算
+double Power(double base, int exponent) &#123;
+    double result = 1.0f;
+    for (int i = 1; i &lt;= exponent; i++) &#123;
+    
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-24 21:43" pubdate>
+              2020-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%85%A8%E6%8E%92%E5%88%97/">全排列</a>
+            
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E9%97%AE%E9%A2%98/">大数问题</a>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9810-ii-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98.html">【剑指offer】面试题10-II.青蛙跳台阶问题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9810-ii-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98.html">
+          
+          
+            
+          
+          解题思路把n级台阶时的跳法看出n的函数，记为f(n)。当n&gt;2时，第一次跳的时候就有两种不同的选择：一是第一次只跳1级，此时跳法数目等于后面剩下的n-1级台阶的跳法数目，即为f(n-1)；二是第一次跳2级，此时跳法数目等于剩下的n-2级台阶的跳法数目，即为f(n-2.因此，n级台阶的不同跳法的总数f(n)=f(n-1)+f(n-2);于是此问题转换为求斐波那契数列问题。
+代码class So
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-02-24 19:49" pubdate>
+              2020-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/%E3%80%90blog%E3%80%91markdown%E7%9A%84%E5%86%99%E4%BD%9C%E6%8A%80%E5%B7%A7.html">【Blog】Markdown的写作技巧</a>
       </h1>
 
@@ -553,8 +773,6 @@ https://blog.csdn.net/u012736685/article/details/87009449
 
     
   </div>
-</footer>
-
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>

@@ -78,11 +78,11 @@
     
     <tags>
       
+      <tag>LeetCode</tag>
+      
       <tag>优先队列</tag>
       
       <tag>Partition算法</tag>
-      
-      <tag>LeetCode</tag>
       
     </tags>
     
@@ -425,9 +425,9 @@
     
     <tags>
       
-      <tag>LeetCode</tag>
-      
       <tag>贪心</tag>
+      
+      <tag>LeetCode</tag>
       
     </tags>
     
@@ -1484,9 +1484,9 @@
       
       <tag>LeetCode</tag>
       
-      <tag>动态规划</tag>
-      
       <tag>二叉搜索树</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -1511,9 +1511,9 @@
     
     <tags>
       
-      <tag>剑指offer</tag>
-      
       <tag>贪心</tag>
+      
+      <tag>剑指offer</tag>
       
       <tag>动态规划</tag>
       
@@ -1602,9 +1602,9 @@
       
       <tag>LeetCode</tag>
       
-      <tag>动态规划</tag>
-      
       <tag>二叉搜索树</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -2028,6 +2028,120 @@
       <tag>剑指offer</tag>
       
       <tag>Partition分割</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】38.字符串的排列</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9138-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9138-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>第一步求所有可能出现在第一个位置的字符，即把第一个字符和后面的所有字符交换。<br>第二步固定第一个字符，求后面所有字符的排列。<br>这时候仍然把后面的所有字符分成两部分：后面字符的第一个字符，以及这个字符之后的所有字符。然后把第一个字符逐一和它后面的字符交换。<br>举例如下<br>以字符串”abc”为例<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tL2IzMDZlM2JmY2UxMDY1MjJmMGVmOTY4M2Q0MjRmZDc4NDQ0YzFlZTJlMDY4OWQyN2YyM2IxODhjZDc0ZTZmMzYtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"><br>对于重复结果的处理，我采用set进行解决</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; res;<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt; tempRes;<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-title">permutation</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> </span>&#123;<span class="hljs-keyword">if</span> (s.size() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> res;<span class="hljs-comment">//字符串排列</span>solvePermutation(s, &amp;s[<span class="hljs-number">0</span>]);<span class="hljs-keyword">for</span> (<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt;::iterator it=tempRes.begin();it!=tempRes.end();it++)&#123;res.push_back(*it);&#125;<span class="hljs-keyword">return</span> res;&#125;<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solvePermutation</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; s, <span class="hljs-keyword">char</span>* sBegin)</span></span><span class="hljs-function"></span>&#123;<span class="hljs-comment">//sBegin所指字符为空'\0'，将当前字符串s存储起来</span><span class="hljs-keyword">if</span> (*sBegin == <span class="hljs-string">'\0'</span>) tempRes.insert(s);<span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//将字符串s中的字符从sBegin位置开始依次和当前字符串的首字符交换位置</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">char</span>* sCh = sBegin; *sCh != <span class="hljs-string">'\0'</span>; sCh++)&#123;<span class="hljs-comment">//交换位置</span><span class="hljs-keyword">char</span> temp = *sBegin;*sBegin = *sCh;*sCh = temp;<span class="hljs-comment">//交换完后继续全排列</span>solvePermutation(s, sBegin + <span class="hljs-number">1</span>);<span class="hljs-comment">//回溯</span>temp = *sBegin;*sBegin = *sCh;*sCh = temp;&#125;&#125;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>递归</tag>
+      
+      <tag>全排列</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】11.旋转数组的最小数字</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9111-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9111-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.html</url>
+    
+    <content type="html"><![CDATA[<p><strong><em>7.1号更新</em></strong></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>二分查找</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">minArray</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; numbers)</span> </span>&#123;        <span class="hljs-keyword">int</span> index1 = <span class="hljs-number">0</span>;<span class="hljs-comment">//左指针</span>        <span class="hljs-keyword">int</span> index2 = numbers.size() - <span class="hljs-number">1</span>;<span class="hljs-comment">//右指针</span>        <span class="hljs-keyword">int</span> midIndex = index1;<span class="hljs-comment">//中间位置</span>        <span class="hljs-keyword">while</span> (numbers[index1]&gt;=numbers[index2])        &#123;            <span class="hljs-keyword">if</span> (index2 - index1 == <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//索引相邻，说明index2即为最小值</span>                midIndex = index2;                <span class="hljs-keyword">break</span>;            &#125;            midIndex = index1 + (index2 - index1) / <span class="hljs-number">2</span>;            <span class="hljs-comment">//当index1和index2和midIndex相等，需要顺序查找</span>            <span class="hljs-keyword">if</span> (numbers[index1] == numbers[index2] &amp;&amp; numbers[midIndex] == numbers[index1]) &#123;                <span class="hljs-keyword">int</span> result = numbers[index1];                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = index1 + <span class="hljs-number">1</span>; i &lt;= index2; ++i) &#123;                    <span class="hljs-keyword">if</span> (result &gt; numbers[i]) result = numbers[i];<span class="hljs-comment">//找最小值</span>                &#125;                <span class="hljs-keyword">return</span> result;            &#125;            <span class="hljs-keyword">if</span> (numbers[midIndex] &gt;= numbers[index1]) index1 = midIndex;<span class="hljs-comment">//中间值比左边大,说明在左侧的递增子区间中</span>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(numbers[midIndex]&lt;=numbers[index2])index2 = midIndex;<span class="hljs-comment">//中间值比右边小，说明在右侧的递增子区间中</span>        &#125;        <span class="hljs-keyword">return</span> numbers[midIndex];    &#125;&#125;;</code></pre></div><hr><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>看二分的解析头炸了，就采用传统的循环方法，感觉效果也不错<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tLzcyM2JjM2RiN2M0MGMxYWQ1YjY4Zjk1YzljNzcxZGJmY2UwYWVmZjA0YzI5NGEwZGM2Njk5MzBkOTNlYzc4MDItaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"><br>在另一道<a href="https://pic.leetcode-cn.com/c127219380f411a127d355e52062a99d19453c005c6dd4283617f28934b831f7" target="_blank" rel="noopener">154.寻找旋转排序数组中的最小值</a>中<br>执行耗时如下：<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tL2ZiNTRhZTQzMzJhNjM1NWNkZDQ4MzQ5NTlkNjE0Yjk4MWFmMDJiZjFjZjE1NTUxNmM4OGVkNTlhNjIwNGIyN2QtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">minArray</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; numbers)</span> </span>&#123;<span class="hljs-keyword">if</span> (numbers.empty()) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//特判</span><span class="hljs-keyword">int</span> min = numbers[<span class="hljs-number">0</span>];<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;numbers.size();i++)&#123;<span class="hljs-keyword">if</span> (min &gt; numbers[i]) <span class="hljs-keyword">return</span> numbers[i];&#125;<span class="hljs-keyword">return</span> min;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>二分查找</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】16.数值的整数次方</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9116-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9116-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9.html</url>
+    
+    <content type="html"><![CDATA[<p>7.3号更新</p><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题的细节很多<br>1、要对无效输入进行判断<br>2、对指数的不同范围分别进行计算<br>3、计算Pow函数的优化</p><p>平常的Pow函数会这么计算</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Power</span><span class="hljs-params">(<span class="hljs-keyword">double</span> base, <span class="hljs-keyword">int</span> exponent)</span> </span>&#123;    <span class="hljs-keyword">double</span> result = <span class="hljs-number">1.0f</span>;    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= exponent; i++) &#123;        result *= base;    &#125;    <span class="hljs-keyword">return</span> result;&#125;</code></pre></div><p>上述代码的时间复杂度O(n)，进一步可以采用如下公式简化<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tLzllZjZmZWIyMTE0MWFmNGQzNmE2OWY1MDczYWNhNDA2Mzc4NjA2ZDAwYmYxMGYyZTI0YTVkYmU4MWZlMTIyZTgtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"><br>实现代码如下</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">PowerWithUnsignedExponent</span><span class="hljs-params">(<span class="hljs-keyword">double</span> base, <span class="hljs-keyword">long</span> exponent)</span> </span>&#123;    <span class="hljs-keyword">if</span> (exponent == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span>;    <span class="hljs-keyword">if</span> (exponent == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> base;    <span class="hljs-keyword">double</span> result = PowerWithUnsignedExponent(base, exponent &gt;&gt; <span class="hljs-number">1</span>);<span class="hljs-comment">//为偶数时</span>    result *= result;    <span class="hljs-keyword">if</span> (exponent &amp; <span class="hljs-number">1</span> == <span class="hljs-number">1</span>)<span class="hljs-comment">//为奇数时</span>        result *= base;    <span class="hljs-keyword">return</span> result;&#125;</code></pre></div><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-keyword">bool</span> g_InvalidInput = <span class="hljs-literal">false</span>;<span class="hljs-comment">//判断是否为无效输入</span>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>&#123;        <span class="hljs-keyword">if</span> (equal(x, <span class="hljs-number">0.0</span>) &amp;&amp; n &lt;= <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//无效输入,对于x=0时，n为正数时为0，n为非正数时无意义</span>            g_InvalidInput = <span class="hljs-literal">true</span>;            <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>;        &#125;        <span class="hljs-keyword">double</span> result;        <span class="hljs-keyword">long</span> num = n;        <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">//指数小于0</span>            num = -num;            <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> / PowerWithUnsignedExponent(x, num);        &#125;        <span class="hljs-comment">//指数大于等于0</span>        <span class="hljs-keyword">return</span> PowerWithUnsignedExponent(x, num);    &#125;    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">PowerWithUnsignedExponent</span><span class="hljs-params">(<span class="hljs-keyword">double</span> base, <span class="hljs-keyword">long</span> exponent)</span> </span>&#123;        <span class="hljs-keyword">if</span> (exponent == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span>;        <span class="hljs-keyword">if</span> (exponent == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> base;        <span class="hljs-keyword">double</span> result = PowerWithUnsignedExponent(base, exponent &gt;&gt; <span class="hljs-number">1</span>);<span class="hljs-comment">//为偶数时</span>        result *= result;        <span class="hljs-keyword">if</span> (exponent &amp; <span class="hljs-number">1</span> == <span class="hljs-number">1</span>)<span class="hljs-comment">//为奇数时</span>            result *= base;        <span class="hljs-keyword">return</span> result;    &#125;    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">equal</span><span class="hljs-params">(<span class="hljs-keyword">double</span> n1, <span class="hljs-keyword">double</span> n2)</span> </span>&#123;<span class="hljs-comment">//浮点数大小判断</span>        <span class="hljs-keyword">if</span> (n1 - n2&lt;<span class="hljs-number">0.0000001</span> &amp;&amp; n1 - n2&gt;<span class="hljs-number">-0.0000001</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<span class="hljs-comment">//|n1-n2|&lt;p</span>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;    &#125;&#125;;</code></pre></div><h3 id="hints"><a href="#hints" class="headerlink" title="hints"></a>hints</h3><p>我发现此处使用unsigned int来保存exponent，过不了当int为负的最小值的case</p><hr><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>本道题目做了很久才通过，感觉有很多的坑等着自己。<br>首先刚拿到手，觉得题目很简单，开始时，分了两种情况（指数为正和负）+一些特殊情况（底数为0，指数为0）在做<br>但运行过程中，仍然有报错，第一个错误时n=-2147483648时的错误，刚开始没有反应过来，后来通过题意，才想明白，自己平时做题也没有去考虑过int型的范围，<br>在n=-2147483648时，由于我先转换成了abs(n)，而正数n最大值为2147483647，因此报错。<br>第二个遇到的问题是，总是运行超时，一开始我写的pow()函数，是一般的循环算法，但是进行运行测试发现需要2700多ms，所以这种方法不行；<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tL2VlODhjNzFmMDhmZGQ3MmQyMzgzNjQ0NDViOWYwMWNhNjAzMzVmOGM5ZThhOTFkODBmNmU4YzFhMWJjNzlkNDAtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"><br>剑指offer中的公式<br>参考了剑指offer中的转换为递归的思路，<br>n为偶数，pow(8)=pow(4)<em>pow(4),pow(4)=pow(2)</em>pow(2),pow(2)=pow(1)<em>pow(1)<br>n为奇数，pow(9)=pow(4)</em>pow(4)<em>base,pow(4)=pow(2)</em>pow(2),pow(2)=pow(1)*pow(1)<br>在其编写的代码中，也了解到通过异常捕获，使程序鲁棒性更强，通过位运算，能实运行速度更加地快（B格也高了不少）；<br>总之，学习了。</p><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> EPSILON 0.000001 <span class="hljs-comment">//根据精度需要进行调整</span></span><span class="hljs-keyword">bool</span> g_InvalidInput = <span class="hljs-literal">false</span>;<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<span class="hljs-comment">//基数为0且指数&lt;0</span><span class="hljs-keyword">if</span> (<span class="hljs-built_in">fabs</span>(x - <span class="hljs-number">0.0</span>) &lt; EPSILON &amp;&amp; n &lt;= <span class="hljs-number">0</span>)&#123;g_InvalidInput = <span class="hljs-literal">true</span>;<span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>;&#125;<span class="hljs-comment">//如果指数为负时，为临界值时，要特殊处理</span><span class="hljs-keyword">if</span> (n == <span class="hljs-number">-2147483648</span>) &#123;<span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> / (x * Pow(x, <span class="hljs-built_in">abs</span>(n + <span class="hljs-number">1</span>)));&#125;<span class="hljs-keyword">else</span>&#123;<span class="hljs-keyword">int</span> absN = <span class="hljs-built_in">abs</span>(n);<span class="hljs-comment">//指数&lt;0，返回其倒数</span><span class="hljs-keyword">return</span> n &gt; <span class="hljs-number">0</span> ? Pow(x, absN) : <span class="hljs-number">1.0</span> / Pow(x, absN);&#125;&#125;<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Pow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> base, <span class="hljs-keyword">int</span> e)</span></span><span class="hljs-function"></span>&#123;<span class="hljs-keyword">if</span> (e == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<span class="hljs-keyword">if</span> (e == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> base;<span class="hljs-comment">//右移1位，相等于/2，位运算速度更快</span><span class="hljs-keyword">double</span> result = Pow(base, e &gt;&gt; <span class="hljs-number">1</span>);result *= result;<span class="hljs-comment">//如果指数为奇数，根据公式，最后还要*base</span><span class="hljs-comment">//此处判断奇数，通过与1相与，速度更快</span><span class="hljs-keyword">if</span> (e &amp; <span class="hljs-number">0x1</span> == <span class="hljs-number">1</span>) result*= base;<span class="hljs-keyword">return</span> result;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>全排列</tag>
+      
+      <tag>大数问题</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】面试题10-II.青蛙跳台阶问题</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9810-ii-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9810-ii-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>把n级台阶时的跳法看出n的函数，记为f(n)。当n&gt;2时，第一次跳的时候就有两种不同的选择：<br>一是第一次只跳1级，此时跳法数目等于后面剩下的n-1级台阶的跳法数目，即为f(n-1)；<br>二是第一次跳2级，此时跳法数目等于剩下的n-2级台阶的跳法数目，即为f(n-2.<br>因此，n级台阶的不同跳法的总数f(n)=f(n-1)+f(n-2);<br>于是此问题转换为求斐波那契数列问题。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-keyword">int</span> m = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">numWays</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>)</span></span>;<span class="hljs-keyword">return</span> Ways(n, dp);&#125;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Ways</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; dp)</span></span><span class="hljs-function"></span>&#123;<span class="hljs-comment">//递归边界</span><span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span> || n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<span class="hljs-comment">//状态转移方程</span><span class="hljs-keyword">if</span> (dp[n] != <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> dp[n];<span class="hljs-keyword">else</span>&#123;dp[n] = (Ways(n<span class="hljs-number">-1</span>,dp) + Ways(n<span class="hljs-number">-2</span>,dp))%m;<span class="hljs-keyword">return</span> dp[n];&#125;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     

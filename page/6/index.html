@@ -190,6 +190,58 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/%E3%80%90error%E3%80%91visual-studio2019%E6%8A%A5%E9%94%99%EF%BC%8C%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A4%96%E9%83%A8%E7%AC%A6%E5%8F%B7gladloadglloader%EF%BC%8C%E8%AF%A5%E7%AC%A6%E5%8F%B7%E5%9C%A8%E5%87%BD%E6%95%B0main%E4%B8%AD%E8%A2%AB%E5%BC%95%E7%94%A8.html">【Error】visual studio2019报错，无法解析的外部符号gladLoadGLLoader，该符号在函数main中被引用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90error%E3%80%91visual-studio2019%E6%8A%A5%E9%94%99%EF%BC%8C%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A4%96%E9%83%A8%E7%AC%A6%E5%8F%B7gladloadglloader%EF%BC%8C%E8%AF%A5%E7%AC%A6%E5%8F%B7%E5%9C%A8%E5%87%BD%E6%95%B0main%E4%B8%AD%E8%A2%AB%E5%BC%95%E7%94%A8.html">
+          
+          
+            
+          
+          遇到的错误今天在打开之前写的OpenGL绘制三角形的程序时，发现一直报如下错误当时一直以为是自己没有链接好头文件和库文件，经过上网搜索，终于找到了问题所在，是自己没有把glad.c文件添加到项目中。
+解决办法之前记得自己添加glad.c文件是通过在源文件-&gt;新建项，新建一个glad.c文件，然后把其他目录下的glad.c文件的内容拷贝进来。后来，我发现可以不需要这么麻烦。通过右击源文件-&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-03 12:04" pubdate>
+              2020-03-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">【精·术】计算机图形学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/OpenGL/">OpenGL</a>
+            
+              <a href="/tags/Error/">Error</a>
+            
+              <a href="/tags/MOOC-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">MOOC-计算机图形学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/%E3%80%90leetcode%E3%80%91303-%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98.html">【LeetCode】303. 区域和检索 - 数组不可变</a>
       </h1>
 
@@ -493,9 +545,9 @@ public:
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
-            
               <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
             
               <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
             
@@ -670,67 +722,11 @@ public:
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90leetcode%E3%80%91779-%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7.html">【LeetCode】779. 第K个语法符号</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90leetcode%E3%80%91779-%E7%AC%ACk%E4%B8%AA%E8%AF%AD%E6%B3%95%E7%AC%A6%E5%8F%B7.html">
-          
-          
-            
-          
-          思路参考自Ikaruga的题解通过上图分析，可以得到其实第N行的第K个数字，可以从第N-1行的第(K-1)/2+1个数字产生因此可以采用递归的方法进行处理
-代码//公式法
-//通过找规律可以发现
-//第n行的第k个等于第n-1行的第(k-1)/2+1个数产生
-//第n-1行的第(k-1)/2+1个数可能为0，可能为1，所以要分两种情况
-//判断第n行中的第k个数字，属于奇数还是偶数，奇数选择第一个
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-02-28 22:06" pubdate>
-              2020-02-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LeetCode/">LeetCode</a>
-            
-              <a href="/tags/%E9%80%92%E5%BD%92/">递归</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

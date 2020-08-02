@@ -19,7 +19,7 @@
   <meta name="description" content="XDB的博客诞生了">
   <meta name="author" content="XDB">
   <meta name="keywords" content="Blog CG 离线渲染 分布式">
-  <title>用两个栈实现队列 - XDB&#39;S Blog</title>
+  <title>【剑指offer】27.二叉树的镜像 - XDB&#39;S Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-02-23 21:10" pubdate>
-      February 23, 2020 9:10 PM pm
+    <time datetime="2020-02-21 20:24" pubdate>
+      February 21, 2020 8:24 PM pm
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      143 字
+      235 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -233,36 +233,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">用两个栈实现队列</h1>
+            <h1 style="display: none">【剑指offer】27.二叉树的镜像</h1>
             
             <div class="markdown-body" id="post-body">
-              <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>stack1负责插入，stack2负责删除<br>举例如下图所示<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tLzliNmI3MGE0M2I5MjQ3MDEwMDExOTg2MjY3MzhmNjZkYjZlZjk3OGE3Mzg5NzRlYTJmMWRlMDA5YWQyNWE5YWUtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CQueue</span> &#123;</span>
+              <h3 id="2020-7-9更新"><a href="#2020-7-9更新" class="headerlink" title="2020.7.9更新"></a>2020.7.9更新</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
 <span class="hljs-keyword">public</span>:
-	<span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt; s1,s2;<span class="hljs-comment">//s1负责插入，s2负责删除</span>
-	CQueue() &#123;
-
-	&#125;
-	<span class="hljs-comment">//队列尾部插入数据</span>
-	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">appendTail</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value)</span> </span>&#123;
-		s1.push(value);
-	&#125;
-	<span class="hljs-comment">//队列头部删除</span>
-	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">deleteHead</span><span class="hljs-params">()</span> </span>&#123;
-		<span class="hljs-keyword">if</span> (s2.empty())<span class="hljs-comment">//s2为空，则判断s1是否为空，不为空，将s1中数据压入到s2中</span>
+    <span class="hljs-function">TreeNode* <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+        swap(root-&gt;left, root-&gt;right);<span class="hljs-comment">//交换结点</span>
+        invertTree(root-&gt;left);<span class="hljs-comment">//左子树镜像</span>
+        invertTree(root-&gt;right);<span class="hljs-comment">//右子树镜像</span>
+        <span class="hljs-keyword">return</span> root;
+    &#125;
+&#125;;</code></pre></div>
+<hr>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>先序遍历<br>首先判断左右节点是否都不为null，如果不为，则进行交换；<br>然后对其左子树镜像，再对其右子树镜像</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * Definition for a binary tree node.</span>
+<span class="hljs-comment"> * struct TreeNode &#123;</span>
+<span class="hljs-comment"> *     int val;</span>
+<span class="hljs-comment"> *     TreeNode *left;</span>
+<span class="hljs-comment"> *     TreeNode *right;</span>
+<span class="hljs-comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span>
+<span class="hljs-comment"> * &#125;;</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
+<span class="hljs-keyword">public</span>:
+    	<span class="hljs-function">TreeNode* <span class="hljs-title">mirrorTree</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;
+		<span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<span class="hljs-comment">//为空不进行交换</span>
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(root-&gt;left!=<span class="hljs-literal">NULL</span>||root-&gt;right!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//左节点和右节点都不为null时就进行交换</span>
 		&#123;
-			<span class="hljs-keyword">while</span> (!s1.empty())
-			&#123;
-				s2.push(s1.top());
-				s1.pop();
-			&#125;
+			TreeNode* temp = root-&gt;left;
+			root-&gt;left = root-&gt;right;
+			root-&gt;right = temp;
+            <span class="hljs-keyword">if</span>(root-&gt;left!=<span class="hljs-literal">NULL</span>) mirrorTree(root-&gt;left);<span class="hljs-comment">//左子树存在则进行镜像</span>
+			<span class="hljs-keyword">if</span>(root-&gt;right!=<span class="hljs-literal">NULL</span>) mirrorTree(root-&gt;right);<span class="hljs-comment">//右子树存在则进行镜像</span>
 		&#125;
-		<span class="hljs-keyword">if</span> (s2.empty())<span class="hljs-comment">//如果s2压入s1数据后仍然为空</span>
-			<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
-		<span class="hljs-comment">//删除首元素</span>
-		<span class="hljs-keyword">int</span> value=s2.top();
-		s2.pop();
-		<span class="hljs-keyword">return</span> value;
+		<span class="hljs-keyword">return</span> root;
 	&#125;
 &#125;;</code></pre></div>
             </div>
@@ -283,9 +290,7 @@
                     
                       <a class="hover-with-bg" href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%A0%88/">栈</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E9%98%9F%E5%88%97/">队列</a>
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
                     
                   </div>
                 
@@ -298,9 +303,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9830-%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88.html">
+                      <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9128-%E5%AF%B9%E7%A7%B0%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91.html">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【剑指offer】面试题30.包含min函数的栈</span>
+                        <span class="hidden-mobile">【剑指offer】28.对称的二叉树</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -308,8 +313,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9868-ii-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88.html">
-                        <span class="hidden-mobile">【剑指offer】面试题68 - II.二叉树的最近公共祖先</span>
+                      <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9126-%E6%A0%91%E7%9A%84%E5%AD%90%E7%BB%93%E6%9E%84.html">
+                        <span class="hidden-mobile">【剑指offer】26.树的子结构</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -504,7 +509,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "用两个栈实现队列&nbsp;",
+        "【剑指offer】27.二叉树的镜像&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

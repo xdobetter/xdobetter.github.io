@@ -19,7 +19,7 @@
   <meta name="description" content="XDB的博客诞生了">
   <meta name="author" content="XDB">
   <meta name="keywords" content="Blog CG 离线渲染 分布式">
-  <title>滑动窗口的最大值 - XDB&#39;S Blog</title>
+  <title>【LeetCode】26. 删除排序数组中的重复项 - XDB&#39;S Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-29 23:27" pubdate>
-      July 29, 2020 11:27 PM pm
+    <time datetime="2020-02-13 18:27" pubdate>
+      February 13, 2020 6:27 PM pm
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      318 字
+      130 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      2
        分钟
     </span>
   
@@ -233,53 +233,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">滑动窗口的最大值</h1>
+            <h1 style="display: none">【LeetCode】26. 删除排序数组中的重复项</h1>
             
             <div class="markdown-body" id="post-body">
-              <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用双端队列deque形成一个存储每个滑动窗口最大值的下标</p>
-<p>举例如下：<br><img src="https://img-blog.csdnimg.cn/2020022411040736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+              <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>双指针法<br>i为慢指针，j为快指针<br>但nums[j]==nums[j-1]时，直接跳过，如果不相等，则复制nums[j]给nums[i]，并同时递增两个索引，重复这一过程，直到j到达数组的末尾，该数组的新长度为i</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span>
 <span class="hljs-keyword">public</span>:
-	<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">maxSlidingWindow</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
-		<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; dq;<span class="hljs-comment">//存放最大值的索引</span>
-		<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;<span class="hljs-comment">//存放答案</span>
-       
-		<span class="hljs-keyword">if</span> (nums.size() &gt;= k &amp;&amp; k &gt; <span class="hljs-number">0</span>) &#123;
-            <span class="hljs-comment">//获取第一个滑动窗口的最大值</span>
-			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++)
+	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;
+		<span class="hljs-keyword">if</span> (nums.size() &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<span class="hljs-comment">//慢指针</span>
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;nums.size();j++)
+		&#123;
+			<span class="hljs-keyword">if</span> (nums[j]!=nums[j<span class="hljs-number">-1</span>])
 			&#123;
-				<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])
-                    <span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span>
-					<span class="hljs-comment">//则把队列中的比它小的值删除</span>
-				&#123;
-					dq.pop_back();
-				&#125;
-                <span class="hljs-comment">//压入下标</span>
-				dq.push_back(i);
-			&#125;
-            <span class="hljs-comment">//存储最大值</span>
-			res.push_back(nums[dq.front()]);
-			<span class="hljs-comment">//获取其它滑动窗口的最大值</span>
-			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=k;i&lt;nums.size();i++)
-			&#123;
-				<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])
-					<span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span>
-					<span class="hljs-comment">//则把队列中的比其小的值删除</span>
-				&#123;
-					dq.pop_back();
-				&#125;
-                <span class="hljs-comment">//压入下标</span>
-				dq.push_back(i);
-				<span class="hljs-comment">//如果加入该值之后，队列的存储数据下标值之差比窗口值大（说明首元素不属于该滑动窗口），删除首元素</span>
-				<span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(dq.front()-dq.back())&gt;=k)
-				&#123;
-					dq.pop_front();
-				&#125;
-				<span class="hljs-comment">//存储最大值</span>
-				res.push_back(nums[dq.front()]);
+				nums[i++] = nums[j];
 			&#125;
 		&#125;
-		<span class="hljs-keyword">return</span> res;
+		<span class="hljs-keyword">return</span> i;
 	&#125;
 &#125;;</code></pre></div>
             </div>
@@ -298,9 +268,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%98%9F%E5%88%97/">队列</a>
+                      <a class="hover-with-bg" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
                     
                   </div>
                 
@@ -313,12 +283,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E3%80%90leetcode%E3%80%9180-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【LeetCode】80.删除排序数组中的重复项2</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
-                        <span class="hidden-mobile">【剑指offer】46. 把数字翻译成字符串</span>
+                      <a href="/%E3%80%90leetcode%E3%80%9127-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html">
+                        <span class="hidden-mobile">【LeetCode】27.移除元素</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -513,7 +489,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "滑动窗口的最大值&nbsp;",
+        "【LeetCode】26. 删除排序数组中的重复项&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

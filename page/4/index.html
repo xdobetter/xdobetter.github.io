@@ -190,65 +190,6 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9116-17-%E4%B8%89%E6%AD%A5%E9%97%AE%E9%A2%98.html">【程序员面试金典】16.17.三步问题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8%E3%80%9116-17-%E4%B8%89%E6%AD%A5%E9%97%AE%E9%A2%98.html">
-          
-          
-            
-          
-          代码class Solution &#123;
-public:
-	const int mod = 1e9 + 7;
-	int waysToStep(int n) &#123;
-		vector&lt;int&gt; dp(n+4);
-		dp[0] = 0;
-		dp[1] = 1;
-		dp[2] = 2;
-		dp[3] = 4;
-		for (int i=4;i&lt;=n;i++)
-		&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-14 18:32" pubdate>
-              2020-03-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-            
-              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9D%A2%E8%AF%95%E9%87%91%E5%85%B8/">程序员面试金典</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
         <a href="/%E3%80%90leetcode%E3%80%91300-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97.html">【LeetCode】300. 最长上升子序列</a>
       </h1>
 
@@ -705,11 +646,64 @@ public:
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E3%80%90leetcode%E3%80%91322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2.html">【LeetCode】322. 零钱兑换</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/%E3%80%90leetcode%E3%80%91322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2.html">
+          
+          
+            
+          
+          思路dp[n]:当前的目标金额是n，至少需要dp[n]个金币凑出该金额初始值，dp[0]=0,目标金额为0，需要0个金币状态转移，dp[money] = min(dp[money], dp[money - coin] + 1);当前需要金币个数，等于dp[money-coin]+1个与dp[money]的小者
+代码//动态规划-迭代
+class Solution &#123;
+public:
+	i
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-08 18:17" pubdate>
+              2020-03-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/LeetCode/">LeetCode</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

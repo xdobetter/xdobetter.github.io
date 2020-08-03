@@ -4,33 +4,6 @@
   
   
   <entry>
-    <title>滑动窗口的最大值</title>
-    <link href="/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html"/>
-    <url>/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html</url>
-    
-    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用双端队列deque形成一个存储每个滑动窗口最大值的下标</p><p>举例如下：<br><img src="https://img-blog.csdnimg.cn/2020022411040736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">maxSlidingWindow</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; dq;<span class="hljs-comment">//存放最大值的索引</span><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;<span class="hljs-comment">//存放答案</span>       <span class="hljs-keyword">if</span> (nums.size() &gt;= k &amp;&amp; k &gt; <span class="hljs-number">0</span>) &#123;            <span class="hljs-comment">//获取第一个滑动窗口的最大值</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++)&#123;<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])                    <span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span><span class="hljs-comment">//则把队列中的比它小的值删除</span>&#123;dq.pop_back();&#125;                <span class="hljs-comment">//压入下标</span>dq.push_back(i);&#125;            <span class="hljs-comment">//存储最大值</span>res.push_back(nums[dq.front()]);<span class="hljs-comment">//获取其它滑动窗口的最大值</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=k;i&lt;nums.size();i++)&#123;<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])<span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span><span class="hljs-comment">//则把队列中的比其小的值删除</span>&#123;dq.pop_back();&#125;                <span class="hljs-comment">//压入下标</span>dq.push_back(i);<span class="hljs-comment">//如果加入该值之后，队列的存储数据下标值之差比窗口值大（说明首元素不属于该滑动窗口），删除首元素</span><span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(dq.front()-dq.back())&gt;=k)&#123;dq.pop_front();&#125;<span class="hljs-comment">//存储最大值</span>res.push_back(nums[dq.front()]);&#125;&#125;<span class="hljs-keyword">return</span> res;&#125;&#125;;</code></pre></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>【魂】数据结构与算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>剑指offer</tag>
-      
-      <tag>队列</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>【剑指offer】46. 把数字翻译成字符串</title>
     <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html"/>
     <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html</url>
@@ -105,11 +78,11 @@
     
     <tags>
       
+      <tag>LeetCode</tag>
+      
       <tag>优先队列</tag>
       
       <tag>Partition算法</tag>
-      
-      <tag>LeetCode</tag>
       
     </tags>
     
@@ -452,9 +425,9 @@
     
     <tags>
       
-      <tag>LeetCode</tag>
-      
       <tag>贪心</tag>
+      
+      <tag>LeetCode</tag>
       
     </tags>
     
@@ -1511,9 +1484,9 @@
       
       <tag>LeetCode</tag>
       
-      <tag>动态规划</tag>
-      
       <tag>二叉搜索树</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -1538,9 +1511,9 @@
     
     <tags>
       
-      <tag>剑指offer</tag>
-      
       <tag>贪心</tag>
+      
+      <tag>剑指offer</tag>
       
       <tag>动态规划</tag>
       
@@ -1629,9 +1602,9 @@
       
       <tag>LeetCode</tag>
       
-      <tag>动态规划</tag>
-      
       <tag>二叉搜索树</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -2139,9 +2112,9 @@
       
       <tag>大数问题</tag>
       
-      <tag>字符串</tag>
-      
       <tag>全排列</tag>
+      
+      <tag>字符串</tag>
       
     </tags>
     
@@ -2209,6 +2182,33 @@
     <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%91%E9%9D%A2%E8%AF%95%E9%A2%9859-ii-%E9%98%9F%E5%88%97%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html</url>
     
     <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用两个队列实现队列的最大值<br>这道题目和59-1.滑动窗口的最大值类似，对于入栈处理方式相同，难点在于出栈的实现。<br>通过手动模拟出每次插入数据后，两个队列的情况，可以慢慢找到规律，所以对于这类题目思想上就是开始时多尝试通过手动模拟，找到一些规律，这样就容易下手<br>如对于[1,3,-1,5]这个序列的模拟，参考如下<br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tL2U4MTUwMzdmYWE0ZjNjMDc3YjA0MmRkOTI2MzZkMWE5MTU5YTVlNDIwZDBiMGYyMTNhYTE4Y2NmZTBkYWI2ZWMtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MaxQueue</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; dq_data;<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; dq_max;MaxQueue() &#123;&#125;<span class="hljs-comment">//获取最大值</span><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max_value</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">if</span> (dq_max.size() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<span class="hljs-keyword">return</span> dq_max.front();&#125;<span class="hljs-comment">//入栈</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_back</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value)</span> </span>&#123;dq_data.push_back(value);<span class="hljs-keyword">while</span> (!dq_max.empty()&amp;&amp;dq_max.back() &lt; value) &#123;dq_max.pop_back();&#125;dq_max.push_back(value);&#125;<span class="hljs-comment">//出栈</span><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop_front</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-comment">//栈为空</span><span class="hljs-keyword">if</span> (dq_data.size() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<span class="hljs-keyword">int</span> res=dq_data.front();<span class="hljs-comment">//如果当前元素，和dq_max的栈顶元素相同，栈顶元素也要出栈，如果不同，则不需要出栈；</span><span class="hljs-keyword">if</span> (dq_data.front() == dq_max.front()) dq_max.pop_front();        dq_data.pop_front();<span class="hljs-keyword">return</span> res;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>队列</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】59 - I. 滑动窗口的最大值</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9159-i-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9159-i-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用双端队列deque形成一个存储每个滑动窗口最大值的下标</p><p>举例如下：<br><img src="https://img-blog.csdnimg.cn/2020022411040736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">maxSlidingWindow</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<span class="hljs-built_in">deque</span>&lt;<span class="hljs-keyword">int</span>&gt; dq;<span class="hljs-comment">//存放最大值的索引</span><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;<span class="hljs-comment">//存放答案</span>       <span class="hljs-keyword">if</span> (nums.size() &gt;= k &amp;&amp; k &gt; <span class="hljs-number">0</span>) &#123;            <span class="hljs-comment">//获取第一个滑动窗口的最大值</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++)&#123;<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])                    <span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span><span class="hljs-comment">//则把队列中的比它小的值删除</span>&#123;dq.pop_back();&#125;                <span class="hljs-comment">//压入下标</span>dq.push_back(i);&#125;            <span class="hljs-comment">//存储最大值</span>res.push_back(nums[dq.front()]);<span class="hljs-comment">//获取其它滑动窗口的最大值</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=k;i&lt;nums.size();i++)&#123;<span class="hljs-keyword">while</span> (dq.size() &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] &gt; nums[dq.back()])<span class="hljs-comment">//队列中有值，且当前值比最后一个值大</span><span class="hljs-comment">//则把队列中的比其小的值删除</span>&#123;dq.pop_back();&#125;                <span class="hljs-comment">//压入下标</span>dq.push_back(i);<span class="hljs-comment">//如果加入该值之后，队列的存储数据下标值之差比窗口值大（说明首元素不属于该滑动窗口），删除首元素</span><span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(dq.front()-dq.back())&gt;=k)&#123;dq.pop_front();&#125;<span class="hljs-comment">//存储最大值</span>res.push_back(nums[dq.front()]);&#125;&#125;<span class="hljs-keyword">return</span> res;&#125;&#125;;</code></pre></div>]]></content>
     
     
     <categories>
@@ -2469,9 +2469,9 @@
     
     <tags>
       
-      <tag>二叉树</tag>
-      
       <tag>leetcode</tag>
+      
+      <tag>二叉树</tag>
       
       <tag>dfs</tag>
       
@@ -2552,11 +2552,11 @@
     
     <tags>
       
-      <tag>bfs</tag>
+      <tag>leetcode</tag>
       
       <tag>二叉树</tag>
       
-      <tag>leetcode</tag>
+      <tag>bfs</tag>
       
     </tags>
     
@@ -2581,11 +2581,11 @@
     
     <tags>
       
-      <tag>bfs</tag>
+      <tag>leetcode</tag>
       
       <tag>二叉树</tag>
       
-      <tag>leetcode</tag>
+      <tag>bfs</tag>
       
     </tags>
     
@@ -2610,11 +2610,11 @@
     
     <tags>
       
-      <tag>bfs</tag>
+      <tag>leetcode</tag>
       
       <tag>二叉树</tag>
       
-      <tag>leetcode</tag>
+      <tag>bfs</tag>
       
     </tags>
     
@@ -2774,9 +2774,9 @@
     
     <tags>
       
-      <tag>二叉树</tag>
-      
       <tag>leetcode</tag>
+      
+      <tag>二叉树</tag>
       
     </tags>
     
@@ -2995,6 +2995,550 @@
       <tag>数组</tag>
       
       <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】03.数组中重复的数字</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9103-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9103-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用哈希表解决，时间复杂度o(n)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findRepeatNumber</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;unordered_map&lt;int, int&gt; hashMap(nums.size());//需要初始化大小<span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator it=nums.begin();it!=nums.end();it++)&#123;<span class="hljs-keyword">if</span> (hashMap.find(*it)==hashMap.end())<span class="hljs-comment">//如果该数字不存在</span>&#123;hashMap[*it] = <span class="hljs-number">1</span>;&#125;<span class="hljs-keyword">else</span><span class="hljs-comment">//存在该数字,则直接返回</span>&#123;<span class="hljs-keyword">return</span> *it;&#125;&#125;<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<span class="hljs-comment">//这里不能省略，否则会编译出错</span>&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>数组</tag>
+      
+      <tag>哈希表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】52.两个链表的第一个公共节点</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9152-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9152-%E4%B8%A4%E4%B8%AA%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1%E8%8A%82%E7%82%B9.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>采用两个指针，快指针指向长链表，慢指针指向短链表，先求出两者的长度，再求出长链表比短链表的差值diff，之后让快指针先走diff步后，再和慢指针一起走，直到达到边界条件为止</p><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>o(m+n),m和n分别为两个链表的长度</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode* headA, ListNode* headB)</span> </span>&#123;ListNode* l1 = headA, * l2 = headB;<span class="hljs-comment">//求l1的长度</span><span class="hljs-keyword">int</span> countL1 = <span class="hljs-number">0</span>;<span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">nullptr</span>)&#123;countL1++;l1 = l1-&gt;next;&#125;<span class="hljs-comment">//求l2的长度</span><span class="hljs-keyword">int</span> countL2 = <span class="hljs-number">0</span>;<span class="hljs-keyword">while</span> (l2 != <span class="hljs-literal">nullptr</span>)&#123;countL2++;l2 = l2-&gt;next;&#125;<span class="hljs-comment">//求l1和l2的差值,l1指向长链表，l2指向短链表</span>l1 = headA;l2 = headB;<span class="hljs-keyword">int</span> diff = countL1 - countL2;<span class="hljs-comment">//判断两者谁更长</span><span class="hljs-keyword">if</span> (countL1 &lt; countL2)&#123;l1 = headB;l2 = headA;diff = countL2 - countL1;&#125;<span class="hljs-comment">//l1先走diff步</span><span class="hljs-keyword">while</span> (diff--)&#123;l1 = l1-&gt;next;&#125;<span class="hljs-comment">//找共同节点</span><span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">nullptr</span> &amp;&amp; l2 != <span class="hljs-literal">nullptr</span> &amp;&amp; l1 != l2)&#123;l1 = l1-&gt;next;l2 = l2-&gt;next;&#125;<span class="hljs-keyword">return</span> l1;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】25.合并两个排序的链表</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9125-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9125-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="2020-7-8更新"><a href="#2020-7-8更新" class="headerlink" title="2020.7.8更新"></a>2020.7.8更新</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//递归法</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;        <span class="hljs-keyword">if</span> (l1 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> l2;        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> l1;        ListNode* pMergedHead = <span class="hljs-literal">nullptr</span>;        <span class="hljs-keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;<span class="hljs-comment">//l1比l2小</span>            pMergedHead = l1;            pMergedHead-&gt;next = mergeTwoLists(l1-&gt;next, l2);        &#125;        <span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//l1比l2大</span>            pMergedHead = l2;            pMergedHead-&gt;next = mergeTwoLists(l1, l2-&gt;next);        &#125;        <span class="hljs-keyword">return</span> pMergedHead;    &#125;&#125;;<span class="hljs-comment">//迭代法</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;        ListNode* pMergedHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);        ListNode* ans = pMergedHead;        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-literal">nullptr</span> &amp;&amp; l2 != <span class="hljs-literal">nullptr</span>) &#123;            <span class="hljs-keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;<span class="hljs-comment">//l1比l2小，将l1的结点给head，之后l1后移</span>                pMergedHead-&gt;next = l1;                l1 = l1-&gt;next;            &#125;            <span class="hljs-keyword">else</span> &#123;                pMergedHead-&gt;next = l2;<span class="hljs-comment">//l1比l2大，将l2的结点给head，之后l2后移</span>                l2 = l2-&gt;next;            &#125;            pMergedHead = pMergedHead-&gt;next;        &#125;        pMergedHead-&gt;next = (l1 == <span class="hljs-literal">nullptr</span> ? l2 : l1);<span class="hljs-comment">//最后退出循环如果是l1为nullptr，则将l2全部给head，如果是l2，则将l1全部给head</span>        <span class="hljs-keyword">return</span> ans-&gt;next;<span class="hljs-comment">//返回头结点的下一个结点</span>    &#125;&#125;;</code></pre></div><hr><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>做题的时候，犯了一些文中提到的错误，如何进行合并，刚开始自己的思路是把l2插到l1里面，但实际上发现行不通，自己的合并思路有一些错误<br>迭代法的思路，参考了<a href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/solution/he-bing-liang-ge-pai-xu-de-lian-biao-die-dai-di-gu/" target="_blank" rel="noopener">迭代法思路</a><br>递归法的思路，参考自剑指offer书籍</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>: <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123; <span class="hljs-keyword">if</span> (l1 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> l2;<span class="hljs-comment">//特殊情况处理</span> <span class="hljs-keyword">if</span> (l2 == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> l1;<span class="hljs-comment">//特殊情况处理</span> ListNode* mergeHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">5</span>);<span class="hljs-comment">//定义头节点</span> ListNode* cur=mergeHead;<span class="hljs-comment">//指向当前节点</span> <span class="hljs-keyword">while</span> (l1!=<span class="hljs-literal">nullptr</span>&amp;&amp;l2!=<span class="hljs-literal">nullptr</span>)<span class="hljs-comment">//循环进行，直到有一者出现null</span> &#123; <span class="hljs-keyword">if</span> (l1-&gt;val&lt;l2-&gt;val)<span class="hljs-comment">//l1指向的节点值&lt;l2指向的节点值</span> &#123; cur-&gt;next = l1; l1 = l1-&gt;next; &#125; <span class="hljs-keyword">else</span> &#123; cur-&gt;next = l2; l2 = l2-&gt;next; &#125; cur = cur-&gt;next; &#125; cur-&gt;next = l1 == <span class="hljs-literal">nullptr</span> ? l2 : l1; <span class="hljs-keyword">return</span> mergeHead-&gt;next; &#125;&#125;;</code></pre></div><h4 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:       <span class="hljs-function">ListNode* <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;              <span class="hljs-comment">//如果l1为空，则返回l2,如果l2为空，则返回l1</span>              <span class="hljs-keyword">if</span> (l1==<span class="hljs-literal">nullptr</span>)              &#123;                     <span class="hljs-keyword">return</span> l2;              &#125;              <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l2 == <span class="hljs-literal">nullptr</span>)              &#123;                     <span class="hljs-keyword">return</span> l1;              &#125;              ListNode* mergeHead=<span class="hljs-literal">nullptr</span>; <span class="hljs-comment">//将小的节点接在mergeHead后面</span>              <span class="hljs-keyword">if</span> (l1-&gt;val&lt;l2-&gt;val)              &#123;                     mergeHead = l1;                     mergeHead-&gt;next = mergeTwoLists(l1-&gt;next, l2);              &#125;              <span class="hljs-keyword">else</span>              &#123;                     mergeHead = l2;                     mergeHead-&gt;next = mergeTwoLists(l1, l2-&gt;next);              &#125;              <span class="hljs-keyword">return</span> mergeHead;       &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】18. 删除链表的节点</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9118-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9118-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>主要分了4种情况进行分析<br>1、链表为空，直接返回<br>2、链表只有一个节点时，如果该节点值和其相等，或者不等<br>3、链表的第一个节点和该节点值相等的处理<br>4、链表中的某个值和该节点值相等</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//head为空</span>ListNode* cur=head;ListNode* prev = <span class="hljs-literal">nullptr</span>;<span class="hljs-keyword">if</span> (cur-&gt;next==<span class="hljs-literal">nullptr</span>)<span class="hljs-comment">//只有一个节点</span>&#123;<span class="hljs-keyword">if</span> (cur-&gt;val==val)<span class="hljs-comment">//该节点值与所给值相等</span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;&#125;<span class="hljs-keyword">else</span><span class="hljs-comment">//不等</span>&#123;<span class="hljs-keyword">return</span> head;&#125;&#125;<span class="hljs-comment">//如果第一个节点和其相等</span><span class="hljs-keyword">if</span> (cur-&gt;val==val)&#123;<span class="hljs-keyword">return</span> head-&gt;next;&#125;<span class="hljs-keyword">while</span> (cur)&#123;<span class="hljs-keyword">if</span> (cur-&gt;val==val)<span class="hljs-comment">//值相等</span>&#123;prev-&gt;next=cur-&gt;next;<span class="hljs-keyword">return</span> head;&#125;prev = cur;cur = cur-&gt;next;&#125;<span class="hljs-keyword">return</span> head;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】24.反转链表</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9124-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9124-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="2020-7-7更新"><a href="#2020-7-7更新" class="headerlink" title="2020.7.7更新"></a>2020.7.7更新</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//迭代求解</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;        <span class="hljs-keyword">if</span> (head==<span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;        ListNode* cur, *pre, *next;<span class="hljs-comment">//当前节点，前节点，后节点</span>        cur = head;        pre = <span class="hljs-literal">nullptr</span>;        next = cur-&gt;next;        <span class="hljs-keyword">while</span> (cur) &#123;            cur-&gt;next = pre;            <span class="hljs-keyword">if</span> (next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> cur;            pre = cur;            cur = next;            next = cur-&gt;next;        &#125;        <span class="hljs-keyword">return</span> cur;    &#125;&#125;;</code></pre></div><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//递归求解</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;<span class="hljs-comment">//第一个条件用来处理0个节点和奇数个节点，第二个处理偶数个</span>        ListNode* ret = reverseList(head-&gt;next);        head-&gt;next-&gt;next = head;<span class="hljs-comment">//head-&gt;next的下一个节点</span>        head-&gt;next = <span class="hljs-literal">nullptr</span>;        <span class="hljs-keyword">return</span> ret;    &#125;&#125;;</code></pre></div><hr><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>同06.从尾到头打印链表</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;ListNode* prev, * cur, * temp;<span class="hljs-comment">//prev指向当前结点的前驱结点,cur指向当前结点,temp存储当前结点的下一节点</span>prev = <span class="hljs-literal">NULL</span>;cur = head;<span class="hljs-keyword">while</span> (cur)&#123;temp = cur-&gt;next;cur-&gt;next = prev;prev = cur;cur = temp;&#125;<span class="hljs-keyword">return</span> prev;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】22.链表中倒数第k个节点</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9122-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9122-%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%80%92%E6%95%B0%E7%AC%ACk%E4%B8%AA%E8%8A%82%E7%82%B9.html</url>
+    
+    <content type="html"><![CDATA[<p>2020.7.7 更新</p><p>使用栈来实现</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function">ListNode* <span class="hljs-title">getKthFromEnd</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || k &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;        <span class="hljs-built_in">stack</span>&lt;ListNode*&gt; saveNode;        <span class="hljs-keyword">while</span> (head)        &#123;            saveNode.push(head);            head = head-&gt;next;        &#125;        <span class="hljs-keyword">if</span> (k &gt; saveNode.size()) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;        <span class="hljs-keyword">while</span> (--k) &#123;            saveNode.pop();        &#125;        <span class="hljs-keyword">return</span> saveNode.top();    &#125;&#125;;</code></pre></div><hr><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>传统解法：</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">/*传统解法*/</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:       <span class="hljs-function">ListNode* <span class="hljs-title">getKthFromEnd</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;              ListNode* p;              <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;              p = head;              <span class="hljs-keyword">while</span> (p)              &#123;                     count++;                     p = p-&gt;next;              &#125;              p = head;              count -= k;              <span class="hljs-keyword">while</span> (count--)              &#123;                     p = p-&gt;next;              &#125;              <span class="hljs-keyword">return</span> p;       &#125;&#125;;</code></pre></div><p>快慢指针解法：</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">//快慢指针，参考剑指offer，算法更好，且增强了代码鲁棒性</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:       <span class="hljs-function">ListNode* <span class="hljs-title">getKthFromEnd</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;              <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || k == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//链表为空或者k==0</span>              ListNode* slow=head, * fast=head;              <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k<span class="hljs-number">-1</span>;i++)<span class="hljs-comment">//快指针先走k-1步</span>              &#123;                     <span class="hljs-keyword">if</span> (fast-&gt;next!=<span class="hljs-literal">nullptr</span>)<span class="hljs-comment">//链表中的节点个数少于k个</span>                     &#123;                           fast = fast-&gt;next;                     &#125;                     <span class="hljs-keyword">else</span>                     &#123;                           <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//返回空指针</span>                     &#125;                                   &#125;              <span class="hljs-keyword">while</span> (fast)<span class="hljs-comment">//同时走</span>              &#123;                     fast = fast-&gt;next;                     slow = slow-&gt;next;              &#125;              <span class="hljs-keyword">return</span> slow;       &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【剑指offer】06.从尾到头打印链表</title>
+    <link href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9106-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9106-%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>栈法： 双百<br>利用栈结构的特性，先进后出</p><p>递归法：<br>同样利用栈的特性，因为递归在本质上就是一个栈结构</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>//栈法</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">reversePrint</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;        <span class="hljs-built_in">stack</span>&lt;ListNode*&gt; tempS;<span class="hljs-comment">//中间结果保存到栈中</span>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;        <span class="hljs-keyword">while</span> (head!=<span class="hljs-literal">nullptr</span>)        &#123;            tempS.push(head);            head = head-&gt;next;        &#125;        <span class="hljs-keyword">while</span> (!tempS.empty())        &#123;            ans.push_back(tempS.top()-&gt;val);            tempS.pop();        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;;</code></pre></div><p>//递归法</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">reversePrint</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;        print(head);        <span class="hljs-keyword">return</span> ans;    &#125;    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;        <span class="hljs-keyword">if</span> (head != <span class="hljs-literal">nullptr</span>) &#123;            <span class="hljs-keyword">if</span> (head-&gt;next != <span class="hljs-literal">nullptr</span>) &#123;                print(head-&gt;next);            &#125;            ans.push_back(head-&gt;val);        &#125;    &#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>剑指offer</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】80.删除排序数组中的重复项2</title>
+    <link href="/%E3%80%90leetcode%E3%80%9180-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92.html"/>
+    <url>/%E3%80%90leetcode%E3%80%9180-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>双指针法<br>i为慢指针，j为快指针<br>当nums[j]==nums[i-1]时，直接跳过，如果不相等，则复制nums[j]给nums[++i]，并同时递增两个索引，重复这一过程，直到j到达数组的末尾，该数组的新长度为i<br>对于上述的具体解释可参考：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/solution/c-shuang-zhi-zhen-dan-ci-sao-miao-tu-jie-by-dexin/" target="_blank" rel="noopener">双指针图解</a><br>由此题的分析我们可以知道，如果要使得每个元素最多出现n次，则将nums[j]和nums[i-n+1]进行比较</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<span class="hljs-keyword">if</span> (nums.size() &lt;= <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> nums.size();<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<span class="hljs-comment">//慢指针</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">2</span>;j&lt;nums.size();j++)<span class="hljs-comment">//快指针</span>&#123;<span class="hljs-keyword">if</span> (nums[j]!=nums[i<span class="hljs-number">-1</span>])<span class="hljs-comment">//和慢指针所指的前一个元素不同</span>&#123;nums[++i] = nums[j];&#125;&#125;<span class="hljs-keyword">return</span> i+<span class="hljs-number">1</span>;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】26. 删除排序数组中的重复项</title>
+    <link href="/%E3%80%90leetcode%E3%80%9126-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9.html"/>
+    <url>/%E3%80%90leetcode%E3%80%9126-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>双指针法<br>i为慢指针，j为快指针<br>但nums[j]==nums[j-1]时，直接跳过，如果不相等，则复制nums[j]给nums[i]，并同时递增两个索引，重复这一过程，直到j到达数组的末尾，该数组的新长度为i</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums)</span> </span>&#123;<span class="hljs-keyword">if</span> (nums.size() &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<span class="hljs-comment">//慢指针</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;nums.size();j++)&#123;<span class="hljs-keyword">if</span> (nums[j]!=nums[j<span class="hljs-number">-1</span>])&#123;nums[i++] = nums[j];&#125;&#125;<span class="hljs-keyword">return</span> i;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】27.移除元素</title>
+    <link href="/%E3%80%90leetcode%E3%80%9127-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html"/>
+    <url>/%E3%80%90leetcode%E3%80%9127-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>LeetCode官方解法<br>双指针，但nums[j]与给定的值相等时，递增j以跳过该元素。只要nums[j]!=val，就赋值nums[j]到nums[i]并同时递增两个索引。重复这一过程，直到j到达数组的末尾，该数组的新长度为i。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">removeElement</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> val)</span> </span>&#123;<span class="hljs-comment">//i为慢指针,j为快指针</span><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;nums.size();j++)&#123;<span class="hljs-keyword">if</span> (nums[j]!=val)&#123;nums[i] = nums[j];i++;&#125;&#125;<span class="hljs-keyword">return</span> i;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】532.数组中的K-diff数对</title>
+    <link href="/%E3%80%90leetcode%E3%80%91532-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84k-diff%E6%95%B0%E5%AF%B9.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91532-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84k-diff%E6%95%B0%E5%AF%B9.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>暴力求解:排序+遍历<br>时间复杂度最坏o(n^2)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findPairs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums.size()&lt;=<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//对于nums数组数量不足时，直接返回0</span>sort(nums.begin(), nums.end());<span class="hljs-comment">//对数组排序</span><span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;<span class="hljs-comment">//统计个数</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.size()<span class="hljs-number">-1</span>;i++)<span class="hljs-comment">//遍历</span>&#123;<span class="hljs-keyword">if</span> (i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;nums.size();j++)&#123;<span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(nums[i]-nums[j])==k)&#123;count++;<span class="hljs-keyword">break</span>;<span class="hljs-comment">//避免重复计算</span>&#125;&#125;&#125;<span class="hljs-keyword">return</span> count;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+      <tag>暴力法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】61.加一</title>
+    <link href="/%E3%80%90leetcode%E3%80%9161-%E5%8A%A0%E4%B8%80.html"/>
+    <url>/%E3%80%90leetcode%E3%80%9161-%E5%8A%A0%E4%B8%80.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>加1情况有两种<br>1.除9之外的数字加一<br>2.数字9<br>加1得10进一位，个位数为0，加法运算如不出现进位就运算结束了且进位只会是1<br>所以只需要判断有没有进位并模拟出它的进位方式，如十位数+1，个位数则置为0，如此循环直到判断没有再进位就退出循环，返回结果。</p><p>如果是有特殊情况，比如出现99,999之类的数字，循环到最后也需要进位，出现这种情况需要手动将它进1位（通过开辟更大的数组，并使第一位为1）</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-comment">//除9,99,999之外的数字+1即可</span><span class="hljs-comment">//数字9，99，999等类型数字，需要额外手动增大数组并+1</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">plusOne</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; digits)</span> </span>&#123;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=digits.size()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;digits[i]++;digits[i] = digits[i] % <span class="hljs-number">10</span>;<span class="hljs-keyword">if</span> (digits[i] != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> digits;&#125;<span class="hljs-comment">//对于特殊情况，出现9，99等，要手动加1</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ans</span><span class="hljs-params">(digits.size() + <span class="hljs-number">1</span>)</span></span>;ans[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<span class="hljs-keyword">return</span> ans;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数学</tag>
+      
+      <tag>模拟</tag>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】121. 买卖股票的最佳时机</title>
+    <link href="/%E3%80%90leetcode%E3%80%91121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>最大子序列和求解<br>思路参考自<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-dp-7-xing-ji/" target="_blank" rel="noopener">LeetCode的某位同学题解</a><br>对其中的将两者之差转换为最大连续子序列和的更形象的解释如下：<br>对于a[i]-a[j]可展开成如下形式<br>a[i]-a[j]<br>=a[i]-a[i-1]+a[i-1]-a[i-2]+…+a[j+1]-a[j]<br>=diff[i]+diff[i-1]+…+diff[j+1]<br>举例：假设输入为[7,1,5,3,6,4]的序列，输出为5，<br>则我们知道a[4]-a[1]为最大，等于5<br>按上述思路可知：<br>a[4]-a[1]=diff[4]+diff[3]+diff[2]<br>而diff数组为[-6,4,-2,3,-2]，注意假设diff数组从0开始，则对应于上文的diff[1]对应上文的diff[2],依次类推<br>diff[2]=4,diff[3]=-2,diff[4]=3<br>因此a[4]-a[1]=4-2+3=5</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; prices)</span> </span>&#123;<span class="hljs-keyword">if</span> (prices.size() &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//prices.size()只有1个或0个元素，直接返回0</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">diff</span><span class="hljs-params">(prices.size() - <span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//存储两两的差值</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(prices.size() - <span class="hljs-number">1</span>)</span></span>;<span class="hljs-comment">//dp[i]表示以diff[i]作为末尾的连续序列的最大和</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;prices.size()<span class="hljs-number">-1</span>;i++)&#123;diff[i] = prices[i + <span class="hljs-number">1</span>] - prices[i];<span class="hljs-comment">//计算diff</span>&#125;<span class="hljs-comment">//边界</span>dp[<span class="hljs-number">0</span>] = max(<span class="hljs-number">0</span>,diff[<span class="hljs-number">0</span>]);<span class="hljs-comment">//注意这里但对初始状态要进行一个比较，如果diff[0]比0小，则要取0</span><span class="hljs-comment">//状态转移方程</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;diff.size();i++)&#123;dp[i] = max(<span class="hljs-number">0</span>, dp[i - <span class="hljs-number">1</span>] + diff[i]);&#125;<span class="hljs-comment">//输出连续子序列的最大值</span><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator myMax = max_element(dp.begin(), dp.end());<span class="hljs-comment">//求出dp中的最大值</span><span class="hljs-keyword">return</span> *myMax;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】219.存在重复的元素2</title>
+    <link href="/%E3%80%90leetcode%E3%80%91219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A02.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91219-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A02.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用哈希表构成滑动窗口<br>1、维护一个哈希表，里面始终最多包含k个元素，当出现重复值时说明k距离内存在重复元素<br>2、每次遍历一个元素则将其加入到哈希表中，如果哈希表的大小大于k，则移除最先添加的数字</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">containsNearbyDuplicate</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt; umap;<span class="hljs-comment">//哈希表，键为nums[i]，值为i，该hash的size为k；利用该哈希表形成一个滑动窗口</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.size(); i++)&#123;<span class="hljs-keyword">if</span> (umap.find(nums[i])!=umap.end())<span class="hljs-comment">//如果hash表中能找到重复元素，说明存在</span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;&#125;umap.insert(make_pair(nums[i],i));<span class="hljs-comment">//向hash表中添加元素</span><span class="hljs-keyword">if</span> (umap.size()&gt;k)<span class="hljs-comment">//哈希表大小超过k，则删除最旧的元素/最先添加的元素</span>&#123;umap.erase(nums[i - k]);&#125;&#125;<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+      <tag>滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】2.两数相加</title>
+    <link href="/%E3%80%90leetcode%E3%80%912-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.html"/>
+    <url>/%E3%80%90leetcode%E3%80%912-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>模拟两数相加的方法，对每一次数进位后存储到新的链表中，注意点是最后一次相加有进位，需要在遍历后进行处理</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode* l1, ListNode* l2)</span> </span>&#123;ListNode* res = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);<span class="hljs-comment">//存储结果</span>res-&gt;next = <span class="hljs-literal">NULL</span>;ListNode* p = res;<span class="hljs-comment">//指向存储链表的当前结点</span>ListNode* q;<span class="hljs-comment">//新建结点</span><span class="hljs-keyword">int</span> num1, num2, temp=<span class="hljs-number">0</span>;<span class="hljs-keyword">while</span> (l1!=<span class="hljs-literal">NULL</span>||l2!=<span class="hljs-literal">NULL</span>)&#123;<span class="hljs-comment">//获取两个链表相加的数字</span><span class="hljs-keyword">if</span> (l1!=<span class="hljs-literal">NULL</span>) &#123;num1 = l1-&gt;val;l1 = l1-&gt;next;&#125;<span class="hljs-keyword">else</span>&#123;num1 = <span class="hljs-number">0</span>;&#125;<span class="hljs-keyword">if</span> (l2 != <span class="hljs-literal">NULL</span>) &#123;num2 = l2-&gt;val;l2 = l2-&gt;next;&#125;<span class="hljs-keyword">else</span>&#123;num2 = <span class="hljs-number">0</span>;&#125;<span class="hljs-comment">//数字相加</span>p-&gt;val = (num1 + num2 + temp) % <span class="hljs-number">10</span>;<span class="hljs-comment">//获得相加的数字</span>temp = (num1 + num2 + temp) / <span class="hljs-number">10</span>;<span class="hljs-comment">//每次相加后的进位数</span><span class="hljs-comment">//新建结点</span><span class="hljs-keyword">if</span> (l1!=<span class="hljs-literal">NULL</span>||l2!=<span class="hljs-literal">NULL</span>)&#123;q = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);q-&gt;next = <span class="hljs-literal">NULL</span>;p-&gt;next = q;p = q;&#125;&#125;<span class="hljs-keyword">if</span> (temp!=<span class="hljs-number">0</span>)&#123;q = <span class="hljs-keyword">new</span> ListNode(temp);q-&gt;next = <span class="hljs-literal">NULL</span>;p-&gt;next = q;&#125;<span class="hljs-keyword">return</span> res;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+      <tag>模拟</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】92.反转链表2</title>
+    <link href="/%E3%80%90leetcode%E3%80%9192-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A82.html"/>
+    <url>/%E3%80%90leetcode%E3%80%9192-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A82.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://blog.csdn.net/weixin_41234001/article/details/104011639" target="_blank" rel="noopener">92 反转链表</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>参考LeetCode的官方解析，迭代法完成，注意反转之后，首尾的连接，此处是反转链表2的难点</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<span class="hljs-comment">//链表定义</span><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> &#123;</span><span class="hljs-keyword">int</span> val;ListNode* next;ListNode(<span class="hljs-keyword">int</span> x) : val(x), next(<span class="hljs-literal">NULL</span>) &#123;&#125;ListNode() &#123;&#125;&#125;;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">reverseBetween</span><span class="hljs-params">(ListNode* head, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;<span class="hljs-comment">//链表为空</span><span class="hljs-keyword">if</span> (head==<span class="hljs-literal">NULL</span>)&#123;<span class="hljs-keyword">return</span> head;&#125;<span class="hljs-comment">//寻找开始结点位置</span>ListNode* prev=<span class="hljs-literal">NULL</span>;<span class="hljs-comment">//指向当前结点的前继</span>ListNode* curr = head;<span class="hljs-comment">//当前结点</span><span class="hljs-keyword">while</span> (m&gt;<span class="hljs-number">1</span>)&#123;prev = curr;curr= curr-&gt;next;m--;n--;&#125;<span class="hljs-comment">//链表开始反转</span>ListNode* con = prev;<span class="hljs-comment">//反转链表的头结点</span>ListNode* tail = curr;<span class="hljs-comment">//反转链表的尾</span><span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">0</span>)&#123;ListNode* nextTemp = curr-&gt;next;<span class="hljs-comment">//当前结点的下一个结点</span>curr-&gt;next = prev;<span class="hljs-comment">//当前结点指向其前继</span>prev = curr;<span class="hljs-comment">//前继改为当前结点</span>curr = nextTemp;<span class="hljs-comment">//移到当前结点为下一个结点</span>n--;&#125;<span class="hljs-comment">//利用con，tail修复连接</span><span class="hljs-comment">//设置头</span><span class="hljs-keyword">if</span> (con==<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//头结点为prev</span>&#123;head=prev;&#125;<span class="hljs-keyword">else</span><span class="hljs-comment">//不为空</span>&#123;con-&gt;next = prev;&#125;<span class="hljs-comment">//设置尾</span>tail-&gt;next = curr;<span class="hljs-keyword">return</span> head;&#125;&#125;;<span class="hljs-comment">//创建结点</span><span class="hljs-function">ListNode* <span class="hljs-title">Create</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec)</span></span><span class="hljs-function"></span>&#123;ListNode* head=<span class="hljs-keyword">new</span> ListNode;head-&gt;next = <span class="hljs-literal">NULL</span>;ListNode* p = head;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ivec.<span class="hljs-built_in">size</span>(); i++)&#123;ListNode* q = <span class="hljs-keyword">new</span> ListNode(ivec[i]);q-&gt;next = <span class="hljs-literal">NULL</span>;p-&gt;next = q;p = q;&#125;<span class="hljs-keyword">return</span> head;&#125;<span class="hljs-comment">//输出链表</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PrintList</span><span class="hljs-params">(ListNode* head)</span></span><span class="hljs-function"></span>&#123;<span class="hljs-keyword">while</span> (head!=<span class="hljs-literal">NULL</span>)&#123;<span class="hljs-built_in">cout</span> &lt;&lt; head-&gt;val &lt;&lt; <span class="hljs-string">" "</span>;head = head-&gt;next;&#125;&#125;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">ivec</span><span class="hljs-params">(<span class="hljs-number">5</span>)</span></span>;<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ivec.<span class="hljs-built_in">size</span>(); i++)&#123;<span class="hljs-built_in">cin</span> &gt;&gt; ivec[i];&#125;ListNode* head = Create(ivec);PrintList(head-&gt;next);<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;Solution s;PrintList(s.reverseBetween(head-&gt;next, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>));<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】206.反转链表</title>
+    <link href="/%E3%80%90leetcode%E3%80%91206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91206-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><h4 id="递归法思路"><a href="#递归法思路" class="headerlink" title="递归法思路"></a>递归法思路</h4><p>引用自<a href="https://leetcode-cn.com/explore/orignial/card/recursion-i/257/recurrence-relation/1209/" target="_blank" rel="noopener">反转链表</a><br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMubGVldGNvZGUtY24uY29tL2U3OTEwNTlkMTk2YTkxZDA0NjU0ZjExYzZhZjM2OWYzZjY2ZGFlMDQ0Y2NiN2FkYWY0OWE0ZTBjZDAxMDI4YTYtaW1hZ2UucG5n?x-oss-process=image/format,png" srcset="/img/loading.gif" alt="image.png"></p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;<span class="hljs-keyword">if</span> (head == <span class="hljs-literal">nullptr</span> || head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;<span class="hljs-comment">//空链表或者一个节点的链表的特判</span><span class="hljs-keyword">if</span> (head-&gt;next == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> head;<span class="hljs-comment">//寻找翻转后链表的头节点</span>ListNode* newHead = reverseList(head-&gt;next);head-&gt;next-&gt;next = head;<span class="hljs-comment">//翻转</span>head-&gt;next = <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//主要为了处理翻转后的最后一个节点没有给予空值</span><span class="hljs-keyword">return</span> newHead;&#125;&#125;;</code></pre></div><h4 id="非递归法"><a href="#非递归法" class="headerlink" title="非递归法"></a>非递归法</h4><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-function">ListNode* <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode* head)</span> </span>&#123;ListNode* prev = <span class="hljs-literal">nullptr</span>;<span class="hljs-comment">//前驱节点</span>ListNode* cur = head;<span class="hljs-comment">//当前节点</span><span class="hljs-keyword">while</span> (cur)&#123;ListNode* temp = cur-&gt;next;<span class="hljs-comment">//当前节点的next节点</span>cur-&gt;next = prev;<span class="hljs-comment">//该节点指向其前驱节点</span>prev = cur;<span class="hljs-comment">//前驱节点后移</span>cur = temp;<span class="hljs-comment">//当前节点后移</span>&#125;<span class="hljs-keyword">return</span> prev;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【OpenGL】Windows下创建第一个OpenGL程序</title>
+    <link href="/%E3%80%90opengl%E3%80%91windows%E4%B8%8B%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AAopengl%E7%A8%8B%E5%BA%8F.html"/>
+    <url>/%E3%80%90opengl%E3%80%91windows%E4%B8%8B%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AAopengl%E7%A8%8B%E5%BA%8F.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><p>IDE：VS2019<br>GLFW<br>CMake<br>GLAD</p><h2 id="glfw下载"><a href="#glfw下载" class="headerlink" title="glfw下载"></a>glfw下载</h2><p>glfw源码：<a href="https://www.glfw.org/download.html" target="_blank" rel="noopener">下载地址</a><br>下载的内容如下所示：<br><img src="https://img-blog.csdnimg.cn/2019122519585140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="CMake下载"><a href="#CMake下载" class="headerlink" title="CMake下载"></a>CMake下载</h2><p>CMake（将源码生成自己想要的IDE工程）：<a href="https://cmake.org/download/" target="_blank" rel="noopener">下载地址</a><br>下载的内容如下所示：<br><img src="https://img-blog.csdnimg.cn/2019122520005271.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>下载完成后安装即可</p><h2 id="生成工程文件GLFW"><a href="#生成工程文件GLFW" class="headerlink" title="生成工程文件GLFW"></a>生成工程文件GLFW</h2><p>使用CMake程序生成GLFW.sln文件<br>1、打开CMake<br>设置好glfw根目录和生成的工程目标目录（自己任意设置，我这里设置为在glfw根目录下创建的一个build文件夹）<br><img src="https://img-blog.csdnimg.cn/20191225200118292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191225200129502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>2、点击Configure，选择IDE<br>我使用的IDE是VS2019，因此我选择VS2019<br>点击后的结果如下图所示<br><img src="https://img-blog.csdnimg.cn/20191225200153690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>3、点击Generate<br><img src="https://img-blog.csdnimg.cn/20191225200302557.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>生成工程文件，生成后可以在工程目标目录下看到，如下图所示<br><img src="https://img-blog.csdnimg.cn/20191225200329167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>4、编译GLFW.sln<br>用Visual Studio 2019打开。因为CMake已经配置好了项目，所以我们直接点击Build Solution(生成解决方案)按钮，然后编译的库glfw3.lib（注意我们用的是第3版）就会出现在src/Debug文件夹内。<br><img src="https://img-blog.csdnimg.cn/20191225200344152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h2><p>首先，打开Visual Studio，创建一个新的项目。如果VS提供了多个选项，选择Visual C++，然后选择Empty Project(空项目)（别忘了给你的项目起一个合适的名字）。现在我们终于有一个空的工作空间了，开始创建我们第一个OpenGL程序吧！</p><p>1、在VC++ Directories中进行链接<br>为了使我们的程序使用GLFW，我们需要把GLFW库链接(Link)进工程。这可以通过在链接器的设置里指定我们要使用glfw3.lib来完成，但是由于我们将第三方库放在另外的目录中，我们的工程还不知道在哪寻找这个文件。于是我们首先需要将我们放第三方库的目录添加进设置。</p><p>要添加这些目录（需要VS搜索库和include文件的地方），我们首先进入Project Properties(工程属性，在解决方案窗口里右键项目)，然后选择VC++ Directories(VC++ 目录)选项卡（如下图）。在下面的两栏添加目录：<br><img src="https://img-blog.csdnimg.cn/20191225200407580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>2、在Linker(链接器)选项卡里的Input(输入)选项卡里添加glfw3.lib、opengl32.lib</p><blockquote><p>如果你是Windows平台，opengl32.lib已经包含在Microsoft SDK里了，它在Visual Studio安装的时候就默认安装了。由于这篇教程用的是VS编译器，并且是在Windows操作系统上，我们只需将opengl32.lib添加进连接器设置里就行了。<br><img src="https://img-blog.csdnimg.cn/20191225200429140.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p></blockquote><h2 id="GLAD的下载及配置"><a href="#GLAD的下载及配置" class="headerlink" title="GLAD的下载及配置"></a>GLAD的下载及配置</h2><p>打开glad<a href="https://glad.dav1d.de/" target="_blank" rel="noopener">在线服务</a>，将模式Profile选择为Core，再点击生成 Generate，过程如图所示<br><img src="https://img-blog.csdnimg.cn/20191225200517382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>下载到本地的glad文件夹结构如下所示<br><img src="https://img-blog.csdnimg.cn/20191225200541711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><p>1、将include包含到项目内<br>此处可以将include中的两个文件夹移到之前创建好的includes文件夹中，再次进行一下链接即可，示意图如下<br><img src="https://img-blog.csdnimg.cn/20191225200606612.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>2、将src中的glad.c添加到创建的工程中<br><img src="https://img-blog.csdnimg.cn/20191225200620195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p><h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><p>新建一个CPP文件，将如下代码拷贝进去（暂时无需理会代码含义），成功运行如下代码表示运行成功</p><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><span class="hljs-comment"> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * </span><span class="hljs-comment"> *                                                                                                 </span><span class="hljs-comment"> * Blog: https://blog.csdn.net/weixin_41234001                                      </span><span class="hljs-comment"> *                                                                                                 </span><span class="hljs-comment"> * Author: DoBetter                                                               </span><span class="hljs-comment"> *                                                                                                 </span><span class="hljs-comment"> * Time: 2019.12.25                                                                            </span><span class="hljs-comment"> *                                                                                                 </span><span class="hljs-comment"> * Describe: 第一个OpenGL程序                                             </span><span class="hljs-comment"> *                                                                                                 </span><span class="hljs-comment"> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * </span><span class="hljs-comment"> */</span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;glad/glad.h&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;GLFW/glfw3.h&gt;</span></span><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> SCR_WIDTH = <span class="hljs-number">800</span>;<span class="hljs-keyword">const</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> SCR_HEIGHT = <span class="hljs-number">600</span>;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;glfwInit();glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="hljs-number">3</span>);glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="hljs-number">3</span>);glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, <span class="hljs-string">"HelloWorld"</span>, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);<span class="hljs-comment">//创建窗口 </span>system(<span class="hljs-string">"pause"</span>);<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;</code></pre></div><p>运行成功画面如下<br><img src="https://img-blog.csdnimg.cn/20191225200635836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTIzNDAwMQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>【精·术】计算机图形学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】232.用栈实现队列</title>
+    <link href="/%E3%80%90leetcode%E3%80%91232-%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91232-%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/submissions/" target="_blank" rel="noopener">232.用栈实现队列</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过使用双栈模拟出队列，A栈为入队操作，B栈为出队操作<br>在每次需要设计到出队时，则要去<strong>检查B栈是否为空，如果为空，则要把A栈中的内容装入到B中</strong>，该操作对应的函数即为A2B，如果不为空，则对B进行操作即可。<br>另外此处判断是否为空，看了别人代码后，一种非常简单的写法是，判断A和B是否都为空，如果都为空，则为空，否则说明不为空。<br>自己刚开始的思路是先执行一次A2B，最后再判断一次B是否为空。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyQueue</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-comment">/** Initialize your data structure here. */</span>MyQueue() &#123;&#125;<span class="hljs-comment">/** Push element x to the back of queue. */</span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<span class="hljs-comment">//入队</span>A.push(x);&#125;<span class="hljs-comment">/** Removes the element from in front of queue and returns that element. */</span><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-comment">//队列的弹出有返回值？</span><span class="hljs-comment">//B为空，将A中数据全部转到B中</span>A2B();<span class="hljs-comment">//不为空，直接弹出B</span><span class="hljs-keyword">int</span> front = B.top();B.pop();<span class="hljs-keyword">return</span> front;&#125;<span class="hljs-comment">/** Get the front element. */</span><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-comment">//B为空，将A中数据全部转到B中</span>A2B();<span class="hljs-comment">//不为空，返回B的头部元素</span><span class="hljs-keyword">return</span> B.top();&#125;<span class="hljs-comment">/** Returns whether the queue is empty. */</span><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-comment">//A和B全部为空，则全为空,否则不为空</span><span class="hljs-keyword">return</span> A.empty() &amp;&amp; B.empty();&#125;<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">A2B</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;<span class="hljs-comment">//B为空时，将A中所有元素压入B中</span><span class="hljs-keyword">if</span> (B.size() == <span class="hljs-number">0</span>)&#123;<span class="hljs-keyword">while</span> (!A.empty())&#123;B.push(A.top());<span class="hljs-comment">//将A中元素压入B中</span>A.pop();<span class="hljs-comment">//A中元素出栈</span>&#125;&#125;&#125;<span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt; A, B;<span class="hljs-comment">//A出队时使用，B入队时使用</span>&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】347. 前K个高频元素</title>
+    <link href="/%E3%80%90leetcode%E3%80%91347-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0.html"/>
+    <url>/%E3%80%90leetcode%E3%80%91347-%E5%89%8Dk%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0.html</url>
+    
+    <content type="html"><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>使用最小堆排序完成了TopK问题</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">cmp</span> &#123;</span><span class="hljs-keyword">public</span>:<span class="hljs-comment">//通过重载操作符来对优先队列定义排序规则</span><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&amp; a, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&amp; b)</span></span><span class="hljs-function"></span>&#123;<span class="hljs-keyword">return</span> a.second &gt; b.second;&#125;&#125;;<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">topKFrequent</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<span class="hljs-comment">//map&lt;int, int&gt; myMap; </span><span class="hljs-comment">//不使用map的原因是map底层是红黑树，每次插入会进行排序，增加了时间复杂度</span><span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; myMap;<span class="hljs-comment">//统计该值出现的次数</span><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> num : nums)&#123;myMap[num]++;&#125;<span class="hljs-comment">//遍历map，用最小堆保存频率最大的k个元素</span><span class="hljs-comment">//优先队列，把最小的元素放在队首</span>priority_queue&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;, <span class="hljs-built_in">vector</span>&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt;, cmp&gt; pq;<span class="hljs-keyword">for</span> (<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;::iterator beg = myMap.begin(); beg != myMap.end(); beg++)&#123;pq.push(make_pair(beg-&gt;first, beg-&gt;second));<span class="hljs-comment">//压入该键值对</span><span class="hljs-keyword">if</span> (pq.size() &gt; k)<span class="hljs-comment">//堆中元素多于k个</span>&#123;pq.pop();&#125;&#125;<span class="hljs-comment">//取出最小堆中的元素</span><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;<span class="hljs-keyword">while</span> (!pq.empty())&#123;res.push_back(pq.top().first);pq.pop();&#125;<span class="hljs-comment">//结果要逆序输出</span><span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">tempRes</span><span class="hljs-params">(res.rbegin(), res.rend())</span></span>;<span class="hljs-keyword">return</span> tempRes;&#125;&#125;;</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>【魂】数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>LeetCode</tag>
+      
+      <tag>优先队列</tag>
       
     </tags>
     

@@ -1,900 +1,519 @@
-
-
-<!DOCTYPE html>
-<html lang="en" data-default-color-scheme=&#34;auto&#34;>
-
-
+<!DOCTYPE HTML>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/myFavicon.png">
-  <link rel="icon" type="image/png" href="/img/myFavicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="XDB的博客诞生了">
-  <meta name="author" content="XDB">
-  <meta name="keywords" content="Blog CG 离线渲染 分布式">
-  <title>XDB&#39;S Blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 4.2.1"></head>
-
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>DoBetter</title>
+  <meta name="author" content="DoBetter">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="assets/kitty.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>DoBetter</strong>&nbsp;</a>
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding:2.5%;width:63%;vertical-align:middle">
+                  <p class="name" style="text-align: center;">
+                    Dianbing Xi
+                  </p>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
+                  <p>
+                    I'm a final-year Ph.D. student at the <a href="http://www.cad.zju.edu.cn/">State Key Laboratory of
+                      CAD&CG</a>, <a href="https://www.zju.edu.cn/">Zhejiang University</a>, supervised by Prof. <a
+                      href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a> and Prof. <a
+                      href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>.
+                    I have been fortunate to collaborate with Dr. <a href="https://jiepengwang.github.io/">Jiepeng
+                      Wang</a> at TeleAI, Prof. <a href="https://liuyuan-pal.github.io/">Yuan Liu</a> at the Hong Kong
+                    University of Science and Technology, and Prof. <a href="https://xiuyuliang.cn/">Yuliang Xiu</a> at
+                    Westlake University.
+                  </p>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                Home
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                Archives
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                Categories
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                Tags
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                About
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/links/">
-                <i class="iconfont icon-link-fill"></i>
-                Links
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
 
-    <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/myDefault.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+                  <p style="text-align:center">
+                    <a href="mailto:db.xi@zju.edu.cn">Email</a> &nbsp;/&nbsp;
+                    <a href="https://www.overleaf.com/read/ncnbkgfgjpcr#bc0579">CV</a> &nbsp;/&nbsp;
+                    <a href="https://scholar.google.com/citations?user=7H29mf4AAAAJ&hl=en">Scholar</a> &nbsp;/&nbsp;
+                    <a href="https://github.com/xdobetter">Github</a>
+                  </p>
+                </td>
+                <td style="padding:2.5%;width:37%;max-width:37%">
+                  <a href="assets/me.jpg"><img
+                      style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo"
+                      src="assets/me.jpg" class="hoverZoomLink"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr>
+                <td style="padding:16px;width:100%;vertical-align:middle">
+                  <h2>Research</h2>
+                  <p>
+                    My research primarily focuses on
+                    <strong>Computer Graphics</strong> and
+                    <strong>Artificial Intelligence Generated Content (AIGC)</strong>.
+                    I currently work on <strong>controllable video generation</strong>,
+                    which I see as a promising new paradigm for future rendering.
+                    I also have prior experience in
+                    <strong>3D avatar generation</strong>,
+                    <strong>inverse rendering</strong>, and
+                    <strong>neural rendering</strong>.
+                  </p>
+                  
+
+                  <p style="text-decoration: underline;">
+                    <span style="color: red; font-size: 1.4em; font-weight: bold;">!!!</span>
+                    I am expected to complete my Ph.D. in
+                    <strong><span class="highlight">June 2026</span></strong> and am actively seeking
+                    <strong><span class="highlight">research positions in industry</span></strong> or
+                    <strong><span class="highlight">postdoctoral opportunities</span></strong>.
+                  </p>
+                  <p>
+                    Feel free to contact me at <strong>db.xi@zju.edu.cn</strong> regarding relevant positions or collaboration opportunities.
+                  </p>
+             
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+         
+          <table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;">
+            <tbody>
+              <tr>
+                <td>
+                  <h2>Selected Publications</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+
+
+
+          <table
+            style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/ctrlvdiff_teaser.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://tele-ai.github.io/CtrlVDiff/">
+                    <span class="papertitle">CtrlVDiff: Controllable Video Generation via Unified Multimodal Video
+                      Diffusion</span>
+                  </a>
+                  <br>
+                  <strong>Dianbing Xi</strong>,
+                  <a href="https://jiepengwang.github.io/">Jiepeng Wang</a>,
+                  <a href="https://akira-l.github.io/">Yuanzhi Liang</a>,
+                  <a href="">Xi Qiu</a>,
+                  <a href="">Jialun Liu</a>,
+                  <a href="https://haopan.github.io/">Hao Pan</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>,
+                  <a href="https://brotherhuang.github.io/index.html">Haibin Huang</a>,
+                  <a href="https://scholar.google.com/citations?hl=en&user=PXlNTokAAAAJ">Chi Zhang</a>,
+                  <a href="http://xuelongli.cn/en.php">Xuelong Li</a>
+                  <br>
+                  <em>arXiv</em>, 2025
+                  <br>
+                  <a href="https://tele-ai.github.io/CtrlVDiff/">project page</a>
+                  /
+                  <a href="https://arxiv.org/abs/2511.21129">arXiv</a>
+                  <p></p>
+                  <p>
+                    CtrlVDiff unifies forward and inverse video generation within a single model, enabling the
+                    extraction of all modalities in a single pass. It provides layer-wise control over appearance and
+                    structure, facilitating applications such as material editing and object insertion.
+                  </p>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/omnivdiff_teaser.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://tele-ai.github.io/OmniVDiff/">
+                    <span class="papertitle">OmniVDiff: Omni Controllable Video Diffusion for Generation and Understanding</span>
+                  </a>
+                  <br>
+                  <strong>Dianbing Xi</strong>,
+                  <a href="https://jiepengwang.github.io/">Jiepeng Wang</a>,
+                  <a href="https://akira-l.github.io/">Yuanzhi Liang</a>,
+                  <a href="">Xi Qiu</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>,
+                  <a href="https://scholar.google.com/citations?hl=en&user=PXlNTokAAAAJ">Chi Zhang</a>,
+                  <a href="http://xuelongli.cn/en.php">Xuelong Li</a>
+                  <br>
+                  <em>AAAI</em>, 2026
+                  <br>
+                  <a href="https://tele-ai.github.io/OmniVDiff/">project page</a>
+                  /
+                  <a href="https://arxiv.org/abs/2504.10825">arXiv</a>
+                  <p>
+                    OmniVDiff enables controllable video generation and understanding in a unified video diffusion framework.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/pfavatar_teaser.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="">
+                    <span class="papertitle">PFAvatar: Pose-Fusion 3D Personalized Avatar Reconstruction from Real-World Outfit-of-the-Day Photos</span>
+                  </a>
+                  <br>
+                  <strong>Dianbing Xi</strong>,
+                  <a href="https://anguoyuan.github.io/">Guoyuan An</a>,
+                  <a href="https://jingsenzhu.github.io/">Jingsen Zhu</a>,
+                  <a href="">Zhijian Liu</a>,
+                  <a href="https://liuyuan-pal.github.io/">Yuan Liu</a>,
+                  <a href="https://scholar.google.com/citations?user=Vw5X8yEAAAAJ&hl=en">Ruiyuan Zhang</a>,
+                  <a href="https://github.com/jiayuanlu">Jiayuan Lu</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>
+                  <br>
+                  <em>AAAI</em>, 2026
+                  <br>
+                  <a href="">project page</a>
+                  /
+                  <a href="https://arxiv.org/abs/2511.12935">arXiv</a>
+                  <p>
+                    PFAvatar reconstructs and edits personalized avatars from OOTD photos using pose-aware diffusion
+models and 3D-SDS, overcoming previous method limitations and supporting editing and animation.
+                  </p>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/anitex_teaser.webp" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="">
+                    <span class="papertitle">AniTex: light-geometry consistent PBR Material Generation for Animatable Objects</span>
+                  </a>
+                  <br>
+                  <a href="">Jieting Xu</a>,
+                  <a href="">Ziyi Xu</a>,
+                  <a href="https://yiweihu.netlify.app/">Yiwei Hu</a>,
+                  <a href="https://anguoyuan.github.io/">Guoyuan An</a>,
+                  <a href="https://rgxie.me/">Rengan Xie</a>,
+                  <a href="">Zhijian Liu</a>,
+                  <strong>Dianbing Xi</strong>,
+                  <a href="">Wenjun Song</a>,                  
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>
+                  <br>
+                  <em>SIGGRAPH ASIA</em>, 2025
+                  <br>
+                  <a  href="">project page</a> /
+                  <a  href="">arXiv</a>
+                  <p>
+                    AniTex generates high-quality, temporally consistent PBR materials for animated 3D objects using a two-stage diffusion pipeline, achieving realistic multi-view textures and outperforming existing static-focused methods.
+                  </p>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/teaser_iccv.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://intrinsiccontrolnet.github.io/">
+                    <span class="papertitle">IntrinsicControlNet: Cross-distribution Image Generation with Real and Unreal</span>
+                  </a>
+                  <br>
+                  <a href="https://github.com/jiayuanlu">Jiayuan Lu</a>,
+                  <a href="https://rgxie.me/">Rengan Xie</a>,
+                  <a href="">Zixuan Xie</a>,
+                  <a href="">Zhizhen Wu</a>,
+                  <strong>Dianbing Xi</strong>,
+                  <a href="https://perple-zju.github.io/">Qi Ye</a>,        
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>
+                  <br>
+                  <em>ICCV</em>, 2025
+                  <br>
+                  <a  href="https://intrinsiccontrolnet.github.io/">project page</a> /
+                  <a  href="">arXiv</a>
+                  <p>
+                    IntrinsicControlNet uses intrinsic images and cross-domain control to generate photorealistic yet explicitly controllable images, combining rendering-level precision with diffusion-model realism while bridging gaps between synthetic and real data.
+                  </p>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/dualband_teaser.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="">
+                    <span class="papertitle">Dual-Band Feature Fusion for All-Frequency Neural Global Illumination</span>
+                  </a>
+                  <br>
+                  <a href="">Shaohua Mo</a>,
+                  <a href="">Chuankun Zheng</a>,
+                  <a href="">Zihao Lin</a>,
+                  <strong>Dianbing Xi</strong>,
+                  <a href="https://perple-zju.github.io/">Qi Ye</a>,        
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>
+                  <br>
+                  <em>SIGGRAPH</em>, 2025
+                  <br>
+                  <a  href="">project page</a> /
+                  <a  href="">arXiv</a>
+                  <p>
+                    We propose a dual-band neural GI framework using object-centric feature grids and single-bounce queries to fuse low- and high-frequency illumination, enabling high-quality multi-frequency dynamic reflections beyond prior GI and denoising methods.
+                  </p>
+                </td>
+              </tr>
+
+          
+
+
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/mirres_teaser.png" width="100%">
+                </td>
+
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://brabbitdousha.github.io/MIRReS/">
+                    <span class="papertitle">MIRReS: Inverse Rendering using Multi-Bounce Path Tracing and Reservoir Sampling</span>
+                  </a>
+                  <br>
+                  <a href="https://brabbitdousha.github.io/">Yuxin Dai</a>,
+                  <a href="https://cce.ncepu.edu.cn/szdw/jsml/jsjkxyjsjys/682c2df08a1247e3bdd6b3d6ec19ea48.htm">Qi Wang</a>,
+                  <a href="https://jingsenzhu.github.io/">Jingsen Zhu</a>,
+                  <strong>Dianbing Xi</strong>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>
+                  <a href="">Chen Qian</a>,        
+                  <a href="https://personal.ntu.edu.sg/yhe/">Ying He</a>
+
+                  <br>
+                  <em>ICLR</em>, 2025
+                  <br>
+                  <a  href="https://brabbitdousha.github.io/MIRReS/">project page</a> /
+                  <a  href="https://arxiv.org/abs/2406.16360">arXiv</a>
+                  <p>
+                    We propose MIRReS, a two-stage inverse rendering framework that recovers explicit geometry, materials, and lighting using multi-bounce path tracing with reservoir-sampled gradients, achieving accurate intrinsic decomposition and SOTA performance.
+                  </p>
+                </td>
+              </tr>
               
-            </span>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+           
 
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html">【剑指offer】46. 把数字翻译成字符串</a>
-      </h1>
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/I2_teaser.png" width="100%">
+                </td>
 
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9146-%E6%8A%8A%E6%95%B0%E5%AD%97%E7%BF%BB%E8%AF%91%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
-          
-          
-            
-          
-          解题思路第一步：定义数组元素的含义题目要求的是一个数字有多少种不同的翻译方法，因此设dp[i]代表第i个结尾的数字的翻译方案数量
-第二步：找出关系数组元素间的关系式若$x_{i}$和$x_{i-1}$组成的数字可以被翻译，则dp[i]=dp[i-1]+dp[i-2],$x_{i-1}x_{i}\epsilon [10,25]$;否则dp[i]=dp[i-1],$x_{i-1}x_{i}\epsil
-        </a>
-      </p>
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://jingsenzhu.github.io/i2-sdf/">
+              I^2-SDF: Intrinsic Indoor Scene Reconstruction and Editing via Raytracing in Neural SDFs
+              <span class="papertitle"></span>
+                  </a>
+                  <br>
+                  <a href="https://jingsenzhu.github.io/">Jingsen Zhu</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,
+                  <a href="https://perple-zju.github.io/">Qi Ye</a>,        
+                  <a href="">Fujun Luan</a>,
+                  <a href="">Jifan Li</a>,
+                  <strong>Dianbing Xi</strong>,    
+                  <a href="">Lisha Wang</a>,
+                  <a href="">Rui Tang</a>,  
+                  <a href="">Wei Hua</a>,  
+                  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>
+                  <br>
+                  <em>CVPR</em>, 2023
+                  <br>
+                  <a  href="https://jingsenzhu.github.io/i2-sdf/">project page</a> /
+                  <a  href="https://arxiv.org/abs/2303.07634">arXiv</a>
+                  <p>
+                    We introduce I^2-SDF, a neural SDF–based inverse rendering framework that reconstructs indoor geometry, materials, and radiance via differentiable MC ray tracing, enabling high-quality reconstruction, relighting, and editing with SOTA performance.
+                  </p>
+                </td>
+              </tr>
 
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-19 16:47" pubdate>
-              2020-07-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
+         
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9145-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html">【剑指offer】45. 把数组排成最小的数</a>
-      </h1>
+              <tr>
+                <td style="padding:16px;width:30%;vertical-align:middle">
+                  <img src="./assets/invrender_teaser.png" width="100%">
+                </td>
 
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9145-%E6%8A%8A%E6%95%B0%E7%BB%84%E6%8E%92%E6%88%90%E6%9C%80%E5%B0%8F%E7%9A%84%E6%95%B0.html">
-          
-          
-            
-          
-          解题思路通过题意可知，不管这些数字如何排列，形成的数字位数时不变的。所以如果高位的数字越小，则最终的结果也就越小。下面的n为数字的个数
+                <td style="padding:8px;width:80%;vertical-align:middle">
+                  <a href="https://jingsenzhu.github.io/invrend/">
+                    Learning-based Inverse Rendering of Complex Indoor Scenes with Differentiable Monte Carlo Raytracing
+              <span class="papertitle"></span>
+                  </a>
+                  <br>
+                  <a href="https://jingsenzhu.github.io/">Jingsen Zhu</a>,
+                  <a href="">Fujun Luan</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/huo/">Yuchi Huo</a>,       
+                  <a href="">Zihao Lin</a>,
+                  <a href="https://isaac-paradox.github.io/">Zhihua Zhong</a>,
+                  <strong>Dianbing Xi</strong>,    
+                  <a href="">Jiaxiang Zheng</a>,
+                  <a href="">Rui Tang</a>,   
+                  <a href="http://www.cad.zju.edu.cn/home/rwang/">Rui Wang</a>,
+                  <a href="http://www.cad.zju.edu.cn/home/bao/">Hujun Bao</a>
+                  <br>
+                  <em>SIGGRAPH Asia</em>, 2022
+                  <br>
+                  <a  href="https://jingsenzhu.github.io/invrend/">project page</a> /
+                  <a  href="https://arxiv.org/abs/2211.03017">arXiv</a>
+                  <p>
+                    We propose a single-image inverse rendering framework using differentiable MC ray tracing and uncertainty-aware out-of-view lighting prediction, enabling accurate geometry, lighting, and material recovery with photorealistic edits beyond prior methods.
+                  </p>
+                </td>
+              </tr>
+              
 
-对于n=2的情况如[26,38],根据高位越小越好，可知，我们应该排列成2638
-对于n&gt;2的情况如[26,29,1]，根据我们定义的规则，一定是将第一位小的数字放在最高位，因此先选出1，对于剩下两个数字，由于第1位数字相同，我们会比较第2位，因此我们最终
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-19 15:18" pubdate>
-              2020-07-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">排序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90leetcode%E3%80%91215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0.html">【LeetCode】215.数组中的第K个最大元素</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90leetcode%E3%80%91215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0.html">
-          
-          
-            
-          
-          解题思路方法一使用快速排序中的Partition函数，获得第j位上的元素，如果第j位和k-1相同，则直接返回即可时间复杂度O(N)
-代码#include&lt;vector&gt;
-class Solution &#123;
-public:
-    int findKthLargest(std::vector&lt;int&gt;&amp; nums, int k) &#123;
-        
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-15 15:50" pubdate>
-              2020-07-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LeetCode/">LeetCode</a>
-            
-              <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">优先队列</a>
-            
-              <a href="/tags/Partition%E7%AE%97%E6%B3%95/">Partition算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9136-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html">【剑指offer】36. 二叉搜索树与双向链表</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9136-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.html">
-          
-          
-            
-          
-          思路算法流程：Node* treeToDoublyList(Node* root)1.特例处理：若结点root为空，直接返回2.转化为排序双向链表：调用inorder(Node* root)3.构建循环链表：head和pre双向结点引用4.返回头结点
-void inorder(Node* root)中序遍历的改写，在访问根节点时，同时更新pre，head的值，使其能够双向连接
-代码class So
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-10 11:45" pubdate>
-              2020-07-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/BST/">BST</a>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9135-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html">【剑指offer】35. 复杂链表的复制</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9135-%E5%A4%8D%E6%9D%82%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6.html">
-          
-          
-            
-          
-          解题思路算法流程：
-
-建立映射
-对新链表结点和原链表结点建立hashmap的映射关系，原链表结点为key，新链表结点为value
+              <table style="width:100%; margin:0 auto; border:0; border-spacing:0; padding:16px;">
+                <tbody>
+                  <tr>
+                    <td>
+                      <h2>Experience</h2>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table
+                style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
 
 
-赋值 
-通过hashmap将原链表的next，random所指结点赋给新链表，注意赋值时，要判断该两值是否不为空，因为建立hashmap时，没有建立null，null的映射
+                  <tr>
+                    <!-- Left icon / logo -->
+                    <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+                      <img src="./assets/02_Tencent_Vertical-logo.avif" style="width:100px; height:auto;" alt="Micropapers Icon">
+                    </td>
+                  
+                    <!-- Right text -->
+                    <td style="padding:8px;width:80%;vertical-align:middle">
+                      Research Intern, Tencent Video AI Center, Tencent <br>
+                      Nov. 2025 - Present <br>   
+                      Advisor: <a href="ran-zhang.com">Ran Zhang</a> <br>
+                      Interests:  Generative Video Rendering
+                    </td>
+                  </tr>
+                 
+                  <tr>
+                    <!-- Left icon / logo -->
+                    <td align="center" style="padding:16px;width:20%;vertical-align:middle">
+                      <img src="./assets/teleai.png" style="width:100px; height:auto;" alt="Micropapers Icon">
+                    </td>
+                  
+                    <!-- Right text -->
+                    <td style="padding:8px;width:80%;vertical-align:middle">
+                      Research Intern, Institute of Artificial Intelligence, China Telecom (TeleAI) <br>
+                      Jan. 2025 - Oct. 2025 <br>   
+                      Advisor: <a href="https://jiepengwang.github.io/">Jiepeng Wang</a>, <a href="https://brotherhuang.github.io/">Haibin Huang</a> <br>
+                      Interests:  Controllable Video Generation
+                    </td>
+                  </tr>
 
+                 
 
-返回新链表头结点hashmap[head]
+                </tbody>
+              </table>
+              
+              <table style="width:100%;border:0;border-spacing:0;border-collapse:separate;margin:0 auto;">
+                <tbody>
+                  <tr>
+                    <td style="padding:0;">
+                      <br>
+                      <p style="text-align:center; font-size:small; color:#000;">
+                        ©<strong>Dianbing Xi</strong>.  
+                        Last updated: <span id="last-updated"></span>.
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
 
-代码class Solution &#12
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-10 10:44" pubdate>
-              2020-07-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9133-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html">【剑指offer】33.二叉搜索树的后序遍历序列</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9133-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97.html">
-          
-          
-            
-          
-          
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-09 19:39" pubdate>
-              2020-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/BST/">BST</a>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90sum%E3%80%91%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95.html">【SUM】二叉树的遍历方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90sum%E3%80%91%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95.html">
-          
-          
-            
-          
-          先序遍历递归版非递归版中序遍历递归版非递归版后序遍历递归版非递归版层序遍历
-#include&lt;iostream&gt;
-#include&lt;queue&gt;
-#include&lt;vector&gt;
-using namespace std;
-struct TreeNode &#123;
-      int val;
-      TreeNode *left;
-      TreeN
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-09 15:44" pubdate>
-              2020-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/SUM/">SUM</a>
-            
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9131-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html">【剑指offer】31. 栈的压入、弹出序列</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9131-%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97.html">
-          
-          
-            
-          
-          解题思路算法流程：
-
-初始化，辅助栈tempS和弹出序列的索引i
-遍历压入序列pushed
-压入pushed的元素e
-判断tempS是否为空且栈顶元素和popped[i]相等
-tempS出栈
-i++
+        </td>
+      </tr>
+  </table>
 
 
 
-
-
-3.返回tempS.empty()，如果其为空，说明合法，反之不合法
-代码class Solution &#123;
-public:
-    bool validateStackSequen
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-09 15:14" pubdate>
-              2020-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E6%A0%88/">栈</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9121-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html">【剑指offer】21. 调整数组顺序使奇数位于偶数前面</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90%E5%89%91%E6%8C%87offer%E3%80%9121-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2.html">
-          
-          
-            
-          
-          解题思路双指针，p1指向头，p2指向尾，p1在遇到偶数时停下，p2在遇到奇数时停下，如果此时p1&lt;p2，则进行交换
-代码class Solution &#123;
-public:
-    vector&lt;int&gt; exchange(vector&lt;int&gt;&amp; nums) &#123;
-        int p1 = 0, p2 = nums.size() - 1
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-07 10:55" pubdate>
-              2020-07-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E9%AD%82%E3%80%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">【魂】数据结构与算法</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%91%E6%8C%87offer/">剑指offer</a>
-            
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/%E3%80%90mit6-837%E3%80%91a3-opengl-phong-shading.html">【MIT6.837】A3:OpenGL &amp; Phong Shading</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/%E3%80%90mit6-837%E3%80%91a3-opengl-phong-shading.html">
-          
-          
-            
-          
-          A3：OpenGL &amp; Phong Shading
-实验概述
-实现交互式相机
-实现Blinn-Phong光照模型及对应的光滑明暗处理技术
-实现绘制各个图元的方法，尤其是球图元的绘制
-
-Hints1、Phong模型与Bling-Phong的区别
-Phong适合模拟塑料，比”反射”材质表现出的介质更光滑一些，适合模拟玻璃、水、冰等高反光特性的介质
-
-BlinnPhong大多适用于金属材质
-
-B
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-19 22:25" pubdate>
-              2020-05-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E3%80%90%E7%B2%BE%C2%B7%E6%9C%AF%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">【精·术】计算机图形学</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/MIT6-837/">MIT6.837</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
   <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
+    fetch(window.location.href, { method: 'HEAD' })
+      .then(response => {
+        const lastModified = response.headers.get('Last-Modified');
+        if (lastModified) {
+          const date = new Date(lastModified);
+  
+          const day = date.getDate();
+          const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ];
+          const month = monthNames[date.getMonth()];
+          const year = date.getFullYear();
+  
+          document.getElementById("last-updated").textContent =
+            `${day}th ${month}, ${year}`;
+        }
+      })
+      .catch(err => {
+        console.log("Failed to load Last-Modified:", err);
+      });
   </script>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-  </main>
-
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
-
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
-    
-
-    
-
-    
-  </div>
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
-
-
-  
-    <script  src="/js/lazyload.js" ></script>
   
 
 
-
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "人生如一场修行，得意时，一日看尽长安花，艰难时，潦倒新停浊酒杯，但生命的跋涉不能回头，哪怕，畏涂巉岩不可攀，也要会当凌绝顶，哪怕无人会登临意，也要猛志固常在，从生活中，汲取九万里风鹏正举的力量，历练也无风雨也无晴的豁然，待到重阳日，我们还来就菊花&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
+    document.querySelectorAll('a').forEach(a => {
+      const href = a.getAttribute('href');
+      // 空字符串、#、null 都视为 “无效链接”
+      if (!href || href.trim() === "" || href.trim() === "#" ) {
+        a.style.pointerEvents = "none";    // 禁止点击
+        a.style.color = "gray";            // 变灰色
+        a.style.textDecoration = "none";   // 去掉下划线
+        a.style.cursor = "default";        // 鼠标变回普通箭头
+      }
     });
   </script>
-
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
+
 </html>
